@@ -4,6 +4,7 @@ export type Guide = {
   name: string;
   category: string;
   description: string;
+  cardDescription: string;
   access: string;
   risk: 'read' | 'action';
   accent: string;
@@ -20,6 +21,7 @@ export const guides: Guide[] = [
   {
     slug: 'google-drive', mark: 'G', name: 'Google Drive MCP', category: '文書・ナレッジ', accent: '#247653', access: '読み取り中心から', risk: 'read',
     description: '社内資料を探し、読み取り、必要な情報を業務判断へつなげる。',
+    cardDescription: 'Drive内の提案書や議事録を横断検索し、必要な箇所を要約。原文リンクを残し、会議準備や社内確認を速くします。',
     purpose: 'Driveに分散した提案書、議事録、社内資料をAIから横断的に扱うための接続候補です。',
     bestFor: ['資料探しに時間がかかっている', '会議前の情報収集を短くしたい', '複数資料から要点をまとめたい'],
     notFor: ['閲覧権限の棚卸しができていない', '機密文書を一律にAIへ渡したい', '出典確認なしで自動回答したい'],
@@ -31,6 +33,7 @@ export const guides: Guide[] = [
   {
     slug: 'slack', mark: 'S', name: 'Slack MCP', category: '営業・顧客対応', accent: '#5d47a8', access: '送信権限に注意', risk: 'action',
     description: '会話や決定事項を見つけ、チームの状況把握を速くする。',
+    cardDescription: '許可した会話から決定事項・担当・期限を抽出。投稿は下書きに止め、送信前に人が確認できる運用を組み立てます。',
     purpose: 'Slackの会話から決定、担当、期限を探し、確認や共有を支援するための接続候補です。',
     bestFor: ['重要な決定が会話に埋もれる', '商談前に過去のやり取りを確認したい', 'チームの状況を短く把握したい'],
     notFor: ['全チャンネルを無条件で検索させたい', '人の確認なしに投稿させたい', '保持ポリシーが未整理'],
@@ -42,6 +45,7 @@ export const guides: Guide[] = [
   {
     slug: 'notion', mark: 'N', name: 'Notion MCP', category: '文書・ナレッジ', accent: '#26322c', access: 'ページ権限を限定', risk: 'action',
     description: '社内Wikiやプロジェクト情報を、必要なときにAIから引き出す。',
+    cardDescription: '社内Wikiやプロジェクト情報を検索し、複数ページの要点を整理。更新範囲を限定し、原本確認を保ったまま使います。',
     purpose: 'Notionに蓄積した規程、議事録、プロジェクト情報を検索・整理するための接続候補です。',
     bestFor: ['社内Wikiが育っている', 'ナレッジ検索を会話型にしたい', '定型報告の材料を集めたい'],
     notFor: ['ページ構造と権限が未整理', '原本確認なしで規程回答を自動化したい', '全社員の個人ページまで接続したい'],
@@ -53,6 +57,7 @@ export const guides: Guide[] = [
   {
     slug: 'github', mark: 'GH', name: 'GitHub MCP', category: '開発・サイト運用', accent: '#27313b', access: '読み書きあり', risk: 'action',
     description: '開発状況や課題を読み解き、修正やレビューの入口をつくる。',
+    cardDescription: 'コード・Issue・Pull Requestを参照し、状況整理やレビュー準備を支援。変更・マージは人の承認フローに残します。',
     purpose: 'リポジトリ、Issue、Pull RequestなどをAIから参照し、開発の確認や作業を支援する接続候補です。',
     bestFor: ['開発状況を経営側も把握したい', 'Issue整理を速くしたい', 'レビュー準備を効率化したい'],
     notFor: ['本番リポジトリへ広い権限を即時付与したい', 'レビューなしでマージしたい', '秘密情報がコードに混在している'],
@@ -64,6 +69,7 @@ export const guides: Guide[] = [
   {
     slug: 'playwright', mark: 'PW', name: 'Playwright MCP', category: '開発・サイト運用', accent: '#2d7e62', access: 'ブラウザ操作あり', risk: 'action',
     description: 'Web画面を開き、表示確認や定型操作をAIと一緒に進める。',
+    cardDescription: 'Web画面を開いて表示や導線を確認し、定型操作を再現。送信・購入・公開の直前で、必ず人に引き継ぎます。',
     purpose: 'ブラウザ上の表示確認や操作をAIから実行し、サイトQAや定型確認を支援する接続候補です。',
     bestFor: ['公開前の画面確認を効率化したい', '複数画面の同じ確認を繰り返す', '操作手順を再現可能にしたい'],
     notFor: ['購入・送信を無承認で行わせたい', '規約上自動操作できないサイト', '認証情報の保管方法が未定'],
@@ -75,6 +81,7 @@ export const guides: Guide[] = [
   {
     slug: 'postgresql', mark: 'PG', name: 'PostgreSQL MCP', category: 'データ・分析', accent: '#356584', access: 'DB権限に注意', risk: 'read',
     description: '業務データを照会し、集計や状況把握の下準備を短くする。',
+    cardDescription: '読み取り専用DBへ接続し、自然言語から集計や確認を支援。対象スキーマを限定し、元クエリと数値を照合します。',
     purpose: 'PostgreSQLのデータをAIから照会し、分析やレポート作成を支援する接続候補です。',
     bestFor: ['定型集計に時間がかかる', '自然言語でデータ確認したい', '読み取り用DBを用意できる'],
     notFor: ['本番DBへ管理者権限で接続したい', '個人情報を無制限に返したい', 'クエリ負荷を監視できない'],
@@ -86,6 +93,7 @@ export const guides: Guide[] = [
   {
     slug: 'calendar', mark: 'C', name: 'Calendar MCP', category: '社内業務', accent: '#b05b39', access: '予定変更に注意', risk: 'action',
     description: '予定を確認し、会議候補の整理や準備を支援する。',
+    cardDescription: '予定と空き時間を参照し、会議候補や準備事項を整理。作成・変更・通知は、人が最終確認してから実行します。',
     purpose: 'カレンダーをAIから参照し、日程調整や会議準備を助けるための接続候補です。',
     bestFor: ['会議調整が多い', '予定前の準備を定型化したい', '空き時間の確認を速くしたい'],
     notFor: ['人の確認なしに予定を確定したい', '全社員の予定を無制限に公開したい', 'タイムゾーン運用が曖昧'],
@@ -97,6 +105,7 @@ export const guides: Guide[] = [
   {
     slug: 'stripe', mark: 'ST', name: 'Stripe MCP', category: '経理・決済', accent: '#6250c7', access: '金銭操作に注意', risk: 'action',
     description: '決済情報の確認や顧客対応の下調べを、会話から始める。',
+    cardDescription: '決済・請求情報を照会し、顧客対応の下調べを支援。テスト環境から始め、返金や変更操作は人が実行します。',
     purpose: '決済・請求情報の検索や説明を支援する接続候補です。金銭に関わるため、特に慎重な権限設計が必要です。',
     bestFor: ['決済状況の照会が多い', 'サポート前の確認を速くしたい', 'テスト環境から試せる'],
     notFor: ['返金や請求変更を無承認で実行したい', '本番秘密鍵を広く共有したい', '操作ログを残せない'],

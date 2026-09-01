@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { categories, guides } from './catalog-data';
+import McpIllustration from './mcp-illustration';
 
 export default function CatalogGrid() {
   const [category, setCategory] = useState('すべて');
@@ -27,12 +28,12 @@ export default function CatalogGrid() {
           <Link href={`/guides/${guide.slug}`} className="guide-card" key={guide.slug}>
             <div className="card-poster">
               <div className="poster-toolbar"><span>0{guides.indexOf(guide) + 1}</span><span>CANDIDATE</span></div>
-              <span className="poster-mark">{guide.mark}</span>
+              <McpIllustration slug={guide.slug} />
               <div className="poster-caption"><span>{guide.category}</span><h3>{guide.name}</h3></div>
             </div>
             <div className="card-meta">
               <div className="card-status"><span className="prototype-state"><i /> 実機未検証</span></div>
-              <p className="card-description">{guide.description}</p>
+              <p className="card-description">{guide.cardDescription}</p>
               <div className="card-tags"><span>{guide.access}</span></div>
               <span className="card-link">導入前チェック <b>↗</b></span>
             </div>

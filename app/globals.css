@@ -27,7 +27,7 @@ body {
 a { color:inherit; text-decoration:none; }
 button { font:inherit; }
 h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif; }
-.shell { width:min(100% - 48px,1350px); margin-inline:auto; }
+.shell { width:min(100% - 48px,1300px); margin-inline:auto; }
 
 .site-header { position:sticky; top:0; z-index:30; color:#fff; background:var(--plum); }
 .nav-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
@@ -109,8 +109,6 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 .poster-toolbar { position:relative; z-index:2; display:flex; justify-content:space-between; color:var(--smoke); font:800 9px var(--font-geist-mono); letter-spacing:.08em; }
 .guide-card:nth-child(4n+2) .poster-toolbar { color:rgba(255,255,255,.62); }
 .poster-toolbar span:last-child { padding:3px 5px; border-radius:4px; color:#fff; background:var(--pink); }
-.poster-mark { position:absolute; right:10px; bottom:21px; color:rgba(13,12,34,.06); font-size:clamp(90px,10vw,138px); line-height:.72; font-weight:800; letter-spacing:-.1em; }
-.guide-card:nth-child(4n+2) .poster-mark { color:rgba(255,255,255,.08); }
 .poster-caption { position:absolute; z-index:2; left:14px; right:14px; bottom:14px; display:grid; gap:5px; }
 .poster-caption span { color:var(--pink); font-size:10px; font-weight:800; }
 .poster-caption h3 { margin:0; font-size:clamp(17px,1.45vw,21px); line-height:1.08; letter-spacing:-.045em; }
@@ -195,7 +193,7 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 .starter-card dl div:last-child { border-bottom:0; }
 .starter-card dt { color:var(--fog); }
 .starter-card dd { margin:0; font-weight:700; }
-.setup-section { background:linear-gradient(90deg,transparent 0,transparent calc((100vw - min(100% - 48px,1350px))/2),rgba(243,243,240,.55) calc((100vw - min(100% - 48px,1350px))/2)); }
+.setup-section { background:linear-gradient(90deg,transparent 0,transparent calc((100vw - min(100% - 48px,1300px))/2),rgba(243,243,240,.55) calc((100vw - min(100% - 48px,1300px))/2)); }
 .setup-steps { margin:0; padding:0; list-style:none; }
 .setup-steps li { display:grid; grid-template-columns:46px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line); }
 .setup-steps li>span { display:grid; place-items:center; width:36px; height:36px; border-radius:8px; color:#fff; background:var(--ink); font:800 11px var(--font-geist-mono); }
@@ -264,7 +262,7 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
 }
 .eyebrow { color:var(--ink); letter-spacing:.17em; }
 .eyebrow>span { height:2px; background:var(--pink); border-radius:0; }
-.hero h1 { max-width:780px; font-size:clamp(58px,6.15vw,88px); line-height:.94; letter-spacing:-.078em; }
+.hero h1 { max-width:720px; font-size:clamp(48px,5.2vw,72px); line-height:.96; letter-spacing:-.074em; }
 .hero-title-accent {
   position:relative;
   width:max-content;
@@ -327,7 +325,7 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
 
 .catalog { padding-block:110px 126px; }
 .section-heading { padding-bottom:28px; border-bottom:1px solid var(--ink); }
-.section-heading h2 { font-size:clamp(46px,4.8vw,66px); }
+.section-heading h2 { font-size:clamp(38px,4vw,54px); }
 .filter-stack { padding:16px 0; border-block:0 1px solid var(--line); }
 .filter { border-radius:2px; }
 .filter.active { background:var(--ink); }
@@ -366,11 +364,26 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
   margin-top:-2px;
   background:var(--pink);
 }
-.poster-mark { right:12px; bottom:22px; color:rgba(17,17,17,.055); }
-.guide-card:nth-child(4n+2) .poster-mark { color:rgba(255,255,255,.075); }
+.card-illustration {
+  position:absolute;
+  inset:38px 18px 50px;
+  width:calc(100% - 36px);
+  height:calc(100% - 88px);
+  color:currentColor;
+  opacity:.9;
+}
+.card-illustration .svg-accent { stroke:var(--pink); }
+.card-illustration .svg-accent-fill { fill:var(--pink); stroke:none; }
 .poster-caption span { color:var(--smoke); }
 .guide-card:nth-child(4n+2) .poster-caption span { color:rgba(255,255,255,.58); }
 .prototype-state i { background:var(--pink); border-radius:0; }
+.card-description {
+  min-height:calc(1.7em * 3);
+  display:-webkit-box;
+  overflow:hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+}
 .card-tags span { background:#fafafa; }
 .card-link b { color:var(--pink); }
 
@@ -414,14 +427,21 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
 .policy-status p { border-radius:2px; }
 .policy-status span.pending { color:var(--warning); }
 
+.decision-grid h2 { font-size:clamp(34px,3.7vw,48px); }
+.detail-title h1 { font-size:clamp(36px,4.6vw,58px); }
+.detail-intro h2 { font-size:clamp(30px,3.2vw,40px); }
+.next-action h2 { font-size:clamp(30px,4vw,46px); }
+.policy-hero h1 { font-size:clamp(42px,5.6vw,68px); }
+.policy-note h2 { font-size:clamp(29px,3.3vw,42px); }
+
 @media (max-width:1080px) {
   .hero-inner { grid-template-columns:1fr 1fr; gap:40px; }
-  .hero h1 { font-size:clamp(50px,5.4vw,64px); }
+  .hero h1 { font-size:clamp(44px,4.8vw,56px); }
   .guide-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
 @media (max-width:900px) {
   .hero-inner { min-height:auto; grid-template-columns:1fr; gap:44px; padding-block:70px; }
-  .hero h1 { font-size:clamp(54px,8.3vw,66px); }
+  .hero h1 { font-size:clamp(46px,7.2vw,58px); }
   .hero-panel { max-width:650px; }
   .guide-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .section-heading { align-items:start; flex-direction:column; }
@@ -434,24 +454,24 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
   .policy-status { grid-template-columns:1fr 1fr; }
 }
 @media (max-width:620px) {
-  .shell { width:min(100% - 32px,1350px); }
+  .shell { width:min(100% - 32px,1300px); }
   .nav-inner { min-height:60px; }
   .top-nav a { display:none; }
   .nav-status { padding:7px 8px; }
   .hero-inner { padding-block:50px; }
-  .hero h1 { font-size:clamp(44px,13vw,54px); }
+  .hero h1 { font-size:clamp(38px,11vw,46px); }
   .hero-title-row { flex-direction:column; gap:0; }
   .hero-lead br { display:none; }
   .hero-panel { padding:20px; }
   .definition-inner { grid-template-columns:auto 1fr; padding-block:15px; }
   .definition-inner a { grid-column:2; }
   .catalog { padding-block:68px 80px; }
-  .section-heading h2 { font-size:44px; }
+  .section-heading h2 { font-size:36px; }
   .filter-group { grid-template-columns:44px minmax(0,1fr); }
   .guide-grid { grid-template-columns:1fr; gap:30px; }
   .card-poster { aspect-ratio:1.18/1; }
   .decision-section { padding:72px 0; }
-  .decision-grid h2 { font-size:42px; }
+  .decision-grid h2 { font-size:34px; }
   .footer-inner { grid-template-columns:1fr; }
   .footer-inner nav { grid-column:auto; }
   .detail-shell { padding-bottom:70px; }
@@ -466,7 +486,7 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
   .next-action { margin-top:62px; padding:42px 18px; }
   .next-buttons { flex-direction:column; }
   .policy-hero { padding:72px 0 62px; }
-  .policy-hero h1 { font-size:48px; }
+  .policy-hero h1 { font-size:40px; }
   .policy-status { grid-template-columns:1fr; }
   .policy-list article { grid-template-columns:34px 1fr; gap:16px; }
 }
