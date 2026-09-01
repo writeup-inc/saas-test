@@ -1,4 +1,5 @@
 import CatalogGrid from './catalog-grid';
+import HeroMcpCarousel from './hero-mcp-carousel';
 import SiteFooter from './site-footer';
 import SiteHeader from './site-header';
 
@@ -17,12 +18,7 @@ export default function Home() {
             <p className="prototype-count"><span>PROTOTYPE</span> 掲載候補 8件 / 実機検証済み 0件</p>
             <div className="hero-actions"><a className="primary-button" href="#guides">おすすめMCPを見る <span>↓</span></a><a className="text-button" href="/policy">編集方針を見る <span>↗</span></a></div>
           </div>
-          <aside className="hero-panel" aria-label="このガイドで分かること">
-            <div className="panel-head"><p className="panel-kicker">DECISION INDEX</p><span>3 SIGNALS</span></div>
-            <div className="panel-row"><span>01</span><p><b>SCOPE</b><small>どの業務とデータを扱うか</small></p></div>
-            <div className="panel-row"><span>02</span><p><b>ACCESS</b><small>読み取り・更新・送信の範囲</small></p></div>
-            <div className="panel-row"><span>03</span><p><b>APPROVAL</b><small>誰が最終判断を残すか</small></p></div>
-          </aside>
+          <HeroMcpCarousel />
         </div>
       </section>
 
