@@ -17,6 +17,10 @@ dist/
 build/
 .next/
 out/
+.vinext/
+.wrangler/
+next-env.d.ts
+/.playwright-cli/
 
 # OS・エディタ
 .DS_Store

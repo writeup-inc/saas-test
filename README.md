@@ -2,6 +2,19 @@
 
 SaaS検証用リポジトリ。
 
+## 公開中のLP
+
+### MCP導入ガイド
+
+中小企業の社長が、業務MCPを「人気」ではなく「自社で使ってよいか」で選び、小さく試すための導入判断メディアです。
+
+- 公開URL: https://writeup-inc.github.io/saas-test/
+- トップページ: MCP一覧と絞り込み
+- 詳細ページ: 権限、承認ポイント、導入手順、検証情報
+- 現在の状態: 掲載候補8件、実機検証済み0件のプロトタイプ
+
+`main`へ変更がマージされると、GitHub Actionsが自動でGitHub Pagesへ公開します。
+
 ## 運用ルール
 
 複数人で触ります。以下は**技術的に強制されていません**（GitHub Free プランのため）。
@@ -49,6 +62,14 @@ push 前に `git diff --cached` で必ず目視してください。
 git clone https://github.com/writeup-inc/saas-test.git
 cd saas-test
 cp .env.example .env   # 値は各自で埋める
+npm install
+npm run dev
+```
+
+公開用ビルドを手元で確認する場合:
+
+```
+npm run build:pages
 ```
 
 ## メモ
