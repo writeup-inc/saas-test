@@ -1,17 +1,17 @@
 @import 'tailwindcss';
 
 :root {
-  --pink:#ea4c89;
-  --pink-soft:#faedf3;
-  --ink:#0d0c22;
-  --plum:#060318;
-  --charcoal:#3d3d4e;
-  --smoke:#6e6d7a;
-  --fog:#9e9ea7;
-  --mist:#f3f3f6;
-  --line:#e2e8f2;
+  --pink:#f97316;
+  --pink-soft:#fff4eb;
+  --ink:#111111;
+  --plum:#090909;
+  --charcoal:#3f3f3f;
+  --smoke:#686868;
+  --fog:#969696;
+  --mist:#f2f2f0;
+  --line:#dededb;
   --paper:#fff;
-  --warning:#a24d28;
+  --warning:#9a3f00;
 }
 
 * { box-sizing:border-box; }
@@ -27,7 +27,7 @@ body {
 a { color:inherit; text-decoration:none; }
 button { font:inherit; }
 h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif; }
-.shell { width:min(100% - 48px,1280px); margin-inline:auto; }
+.shell { width:min(100% - 48px,1350px); margin-inline:auto; }
 
 .site-header { position:sticky; top:0; z-index:30; color:#fff; background:var(--plum); }
 .nav-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
@@ -95,8 +95,9 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 .filter { flex:0 0 auto; min-height:38px; padding:0 12px; border:0; border-radius:8px; color:var(--smoke); background:transparent; font-size:13px; font-weight:600; cursor:pointer; }
 .filter:hover { color:var(--ink); background:var(--mist); }
 .filter.active { color:#fff; background:var(--ink); }
-.result-line { margin:0 0 14px; color:var(--fog); font:700 10px var(--font-geist-mono); letter-spacing:.08em; text-transform:uppercase; }
+.result-line { display:flex; align-items:center; gap:6px; margin:0 0 14px; color:var(--fog); font:700 10px var(--font-geist-mono); letter-spacing:.08em; text-transform:uppercase; }
 .result-line span { color:var(--pink); }
+.result-line small { margin-left:auto; color:var(--smoke); font:600 10px var(--font-geist-sans); letter-spacing:0; text-transform:none; }
 .guide-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:34px 20px; }
 .guide-card { min-width:0; display:flex; flex-direction:column; }
 .card-poster { position:relative; overflow:hidden; aspect-ratio:1/.88; padding:14px; border-radius:8px; background:var(--mist); transition:transform .18s ease,outline-color .18s ease; outline:1px solid transparent; }
@@ -112,13 +113,12 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 .guide-card:nth-child(4n+2) .poster-mark { color:rgba(255,255,255,.08); }
 .poster-caption { position:absolute; z-index:2; left:14px; right:14px; bottom:14px; display:grid; gap:5px; }
 .poster-caption span { color:var(--pink); font-size:10px; font-weight:800; }
-.poster-caption b { font-size:clamp(17px,1.45vw,21px); line-height:1.08; letter-spacing:-.045em; }
+.poster-caption h3 { margin:0; font-size:clamp(17px,1.45vw,21px); line-height:1.08; letter-spacing:-.045em; }
 .card-meta { display:flex; flex:1; flex-direction:column; padding-top:12px; }
-.card-status { display:flex; align-items:center; justify-content:space-between; gap:8px; color:var(--smoke); font-size:10px; }
+.card-status { display:flex; align-items:center; justify-content:flex-end; gap:8px; color:var(--smoke); font-size:10px; }
 .card-status>span:first-child { font-weight:700; }
 .prototype-state { flex:0 0 auto; color:var(--smoke); font-size:10px; }
 .prototype-state i { display:inline-block; width:6px; height:6px; margin-right:5px; border-radius:50%; background:var(--pink); }
-.guide-card h3 { margin:10px 0 0; font-size:19px; line-height:1.2; letter-spacing:-.04em; font-weight:800; }
 .card-description { margin:9px 0 13px; color:var(--smoke); font-size:12px; line-height:1.65; }
 .card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:auto; }
 .card-tags span { padding:5px 7px; border:1px solid var(--line); border-radius:999px; color:var(--smoke); background:#fff; font-size:9px; font-weight:650; }
@@ -195,7 +195,7 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 .starter-card dl div:last-child { border-bottom:0; }
 .starter-card dt { color:var(--fog); }
 .starter-card dd { margin:0; font-weight:700; }
-.setup-section { background:linear-gradient(90deg,transparent 0,transparent calc((100vw - min(100% - 48px,1280px))/2),rgba(243,243,246,.55) calc((100vw - min(100% - 48px,1280px))/2)); }
+.setup-section { background:linear-gradient(90deg,transparent 0,transparent calc((100vw - min(100% - 48px,1350px))/2),rgba(243,243,240,.55) calc((100vw - min(100% - 48px,1350px))/2)); }
 .setup-steps { margin:0; padding:0; list-style:none; }
 .setup-steps li { display:grid; grid-template-columns:46px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line); }
 .setup-steps li>span { display:grid; place-items:center; width:36px; height:36px; border-radius:8px; color:#fff; background:var(--ink); font:800 11px var(--font-geist-mono); }
@@ -237,6 +237,183 @@ h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic Pro
 
 a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
 
+/* Editorial monochrome system: orange is reserved for small functional cues. */
+.site-header {
+  color:var(--ink);
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);
+}
+.nav-inner { min-height:68px; }
+.brand-mark {
+  color:#fff;
+  background:var(--ink);
+  border-bottom:3px solid var(--pink);
+  border-radius:3px;
+}
+.top-nav a { color:var(--smoke); }
+.top-nav a:hover { color:var(--ink); }
+.nav-status { color:var(--ink); border-color:var(--line); background:#fff; }
+
+.hero { border-bottom:0; }
+.hero-inner {
+  min-height:690px;
+  grid-template-columns:1.12fr .88fr;
+  gap:clamp(56px,7vw,110px);
+  padding-block:92px 104px;
+}
+.eyebrow { color:var(--ink); letter-spacing:.17em; }
+.eyebrow>span { height:2px; background:var(--pink); border-radius:0; }
+.hero h1 { max-width:780px; font-size:clamp(58px,6.15vw,88px); line-height:.94; letter-spacing:-.078em; }
+.hero-title-accent {
+  position:relative;
+  width:max-content;
+  color:var(--ink);
+}
+.hero-title-accent:after {
+  content:"";
+  position:absolute;
+  right:-15px;
+  bottom:.08em;
+  width:10px;
+  height:10px;
+  background:var(--pink);
+}
+.hero-lead { margin-top:36px; }
+.hero-body { max-width:620px; }
+.audience-line { color:var(--smoke); }
+.prototype-count span { color:var(--ink); background:#fff; border:1px solid var(--ink); }
+.primary-button { background:var(--ink); border-radius:3px; }
+.primary-button:hover { background:#292929; }
+.primary-button span,.text-button span { color:var(--pink); }
+
+.hero-panel {
+  padding:30px;
+  color:var(--ink);
+  background:var(--mist);
+  border:1px solid var(--line);
+  border-radius:3px;
+}
+.hero-panel:after { right:-12px; bottom:-48px; color:rgba(17,17,17,.035); }
+.panel-head { padding-bottom:20px; border-bottom:1px solid #cfcfcb; }
+.panel-kicker { color:var(--ink); }
+.panel-head>span { color:var(--smoke); }
+.panel-row { grid-template-columns:48px 1fr; padding:24px 0; border-bottom:1px solid #d4d4d0; }
+.panel-row>span,
+.panel-row:nth-of-type(3)>span {
+  width:38px;
+  height:38px;
+  color:#fff;
+  background:var(--ink);
+  border-radius:2px;
+}
+.panel-row:nth-of-type(3)>span { border-bottom:3px solid var(--pink); }
+.panel-row b { font:800 11px var(--font-geist-mono); letter-spacing:.12em; }
+.panel-row small { color:var(--smoke); font-size:13px; }
+
+.definition-strip { color:#fff; background:var(--ink); border:0; }
+.definition-inner { min-height:78px; }
+.definition-inner>span {
+  padding:0 0 0 12px;
+  color:#fff;
+  background:transparent;
+  border-left:3px solid var(--pink);
+  border-radius:0;
+  font:800 10px var(--font-geist-mono);
+  letter-spacing:.1em;
+}
+.definition-inner p { color:rgba(255,255,255,.62); }
+.definition-inner a { color:#fff; }
+
+.catalog { padding-block:110px 126px; }
+.section-heading { padding-bottom:28px; border-bottom:1px solid var(--ink); }
+.section-heading h2 { font-size:clamp(46px,4.8vw,66px); }
+.filter-stack { padding:16px 0; border-block:0 1px solid var(--line); }
+.filter { border-radius:2px; }
+.filter.active { background:var(--ink); }
+.result-line { margin-top:24px; }
+.result-line span { color:var(--ink); }
+
+.guide-grid { gap:42px 22px; }
+.card-poster {
+  aspect-ratio:1/.92;
+  padding:16px;
+  border-radius:2px;
+  outline:0;
+  border:1px solid transparent;
+}
+.guide-card:hover .card-poster { transform:translateY(-3px); outline:0; border-color:var(--ink); }
+.guide-card:nth-child(4n+1) .card-poster { color:var(--ink); background:#ececea; }
+.guide-card:nth-child(4n+2) .card-poster { color:#fff; background:var(--ink); }
+.guide-card:nth-child(4n+3) .card-poster { color:var(--ink); background:#fff; border-color:var(--line); }
+.guide-card:nth-child(4n+4) .card-poster { color:var(--ink); background:#d6d6d2; border-color:transparent; }
+.poster-toolbar { color:var(--smoke); }
+.guide-card:nth-child(4n+2) .poster-toolbar { color:rgba(255,255,255,.6); }
+.poster-toolbar span:last-child {
+  position:relative;
+  padding:0 0 0 9px;
+  color:inherit;
+  background:transparent;
+  border-radius:0;
+}
+.poster-toolbar span:last-child:before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:4px;
+  height:4px;
+  margin-top:-2px;
+  background:var(--pink);
+}
+.poster-mark { right:12px; bottom:22px; color:rgba(17,17,17,.055); }
+.guide-card:nth-child(4n+2) .poster-mark { color:rgba(255,255,255,.075); }
+.poster-caption span { color:var(--smoke); }
+.guide-card:nth-child(4n+2) .poster-caption span { color:rgba(255,255,255,.58); }
+.prototype-state i { background:var(--pink); border-radius:0; }
+.card-tags span { background:#fafafa; }
+.card-link b { color:var(--pink); }
+
+.decision-section { padding:112px 0; background:#f4f4f1; }
+.decision-list article { border-color:#d2d2ce; }
+.trust-strip { background:var(--ink); }
+.trust-inner span { color:var(--pink); }
+.site-footer { color:var(--smoke); background:#fff; border-top:1px solid var(--line); }
+.footer-brand { color:var(--ink); }
+.footer-inner>div>p { color:var(--fog); }
+.footer-note b { color:var(--ink); }
+.footer-inner nav a:hover { color:var(--ink); text-decoration:underline; text-decoration-color:var(--pink); text-underline-offset:4px; }
+
+.detail-mark { border-bottom-color:var(--pink); border-radius:2px; }
+.card-category,.mini-label,.section-label span { color:var(--pink); }
+.verification-banner { border-color:var(--line); background:#f7f7f4; border-radius:2px; }
+.warning-dot { border-radius:1px; background:var(--pink); }
+.verification-banner b { color:var(--ink); }
+.verification-banner p { color:var(--smoke); }
+.detail-jump a { border-radius:2px; }
+.fit-card,.content-grid>article,.client-grid>article { border-radius:2px; }
+.fit-card.pause { background:#f6f6f3; }
+.flow-card { background:var(--ink); border-radius:2px; }
+.approval-card {
+  color:var(--ink);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:2px;
+}
+.approval-card .mini-label { color:var(--pink); }
+.approval-card>div p {
+  color:var(--charcoal);
+  background:var(--mist);
+  border-color:transparent;
+  border-radius:2px;
+}
+.starter-card { border-radius:2px; background:#dededb; }
+.setup-steps li>span { border-radius:2px; }
+.unknown-chip { color:var(--warning); background:var(--pink-soft); }
+.next-action { border-radius:3px; }
+.policy-status p { border-radius:2px; }
+.policy-status span.pending { color:var(--warning); }
+
 @media (max-width:1080px) {
   .hero-inner { grid-template-columns:1fr 1fr; gap:40px; }
   .hero h1 { font-size:clamp(50px,5.4vw,64px); }
@@ -257,7 +434,7 @@ a:focus-visible,button:focus-visible { outline:3px solid var(--pink); outline-of
   .policy-status { grid-template-columns:1fr 1fr; }
 }
 @media (max-width:620px) {
-  .shell { width:min(100% - 32px,1280px); }
+  .shell { width:min(100% - 32px,1350px); }
   .nav-inner { min-height:60px; }
   .top-nav a { display:none; }
   .nav-status { padding:7px 8px; }
