@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './agency.css';
 
-const publicUrl = 'https://writeup-inc.github.io/saas-test/web-agency-kit/';
+const publicUrl = 'https://writeup-inc.github.io/saas/web-agency-kit/';
 
 export const metadata: Metadata = {
   title: 'ホームページ制作会社パック｜御社の中にWeb制作会社をひとつ',
