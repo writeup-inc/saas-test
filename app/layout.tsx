@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'MCP導入ガイド｜見つける。確かめる。小さく始める。',
   description: '中小企業のためのMCP導入判断メディア。業務に合うMCPを探し、権限・対応クライアント・導入条件まで確認できます。',
   alternates: { canonical: publicUrl },
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: `${publicUrl}favicon.svg` },
   openGraph: {
     title: 'MCP導入ガイド｜見つける。確かめる。小さく始める。',
     description: '中小企業のためのMCP導入判断メディア。',
