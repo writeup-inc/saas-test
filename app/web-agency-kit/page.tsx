@@ -180,27 +180,43 @@ export default function WebAgencyKitPage() {
 
       <section className="difference-section section-pad" id="difference">
         <div className="shell">
-          <div className="section-heading split-heading">
+          <div className="section-heading split-heading difference-heading">
             <div>
-              <p className="section-kicker">WHAT MAKES IT DIFFERENT</p>
-              <h2 className="display-title">人を雇うでも、<br />丸投げでもない。</h2>
+              <p className="section-kicker">WHAT CHANGES</p>
+              <h2 className="display-title">Web制作未経験の会社が、<br />地元のWeb制作会社になる。</h2>
             </div>
-            <p>御社の中に、Web制作会社の機能をつくる。<br />営業・制作・品質管理を、自社で回せる形にします。</p>
+            <p>新規顧客をゼロから探す必要はありません。すでに信頼関係のある地元企業へ、ホームページ制作を自社の商品として提案できるようになります。</p>
           </div>
-          <div className="compare-grid">
-            <article className="compare-card quiet">
-              <span>LEARN</span><h3>AI制作講座</h3><p>作り方を学ぶ</p>
-              <ul><li>営業は自分で考える</li><li>契約範囲は自分で決める</li><li>納品品質は自分次第</li></ul>
+          <div className="transformation-flow" aria-label="地方企業がWeb制作会社になるまでの3段階">
+            <article className="transformation-card before-card">
+              <div className="transformation-no"><span>01</span><small>BEFORE</small></div>
+              <BriefcaseBusiness aria-hidden="true" />
+              <h3>地元に顧客はいる</h3>
+              <p>既存の取引先や、経営者とのつながりがある。Webの相談を受けることもある。</p>
+              <strong>ただ、売る商品と制作体制がない。</strong>
             </article>
-            <article className="compare-card quiet">
-              <span>REFER</span><h3>紹介代理店</h3><p>案件を本部へ渡す</p>
-              <ul><li>制作は本部が担当</li><li>紹介手数料を受け取る</li><li>制作能力は残りにくい</li></ul>
+            <article className="transformation-card install-card">
+              <div className="transformation-no"><span>02</span><small>INSTALL</small></div>
+              <div className="install-engine"><span>CORE</span><strong>Codex</strong></div>
+              <h3>制作機能を会社に追加</h3>
+              <p>提案、ヒアリング、制作、品質確認、公開・納品の仕事を12個のスキルで実装する。</p>
+              <div className="skill-stamp"><strong>12</strong><span>SKILLS<br />MONTHLY UPDATE</span></div>
             </article>
-            <article className="compare-card active">
-              <div className="recommended">YOUR WEB COMPANY</div>
-              <span>OPERATE</span><h3>自社の制作会社</h3><p>提案から納品まで自社で</p>
-              <ul><li><CheckCircle2 />自社名義で提案・納品</li><li><CheckCircle2 />商品と標準範囲がある</li><li><CheckCircle2 />制作能力が社内に残る</li></ul>
+            <article className="transformation-card after-card">
+              <div className="transformation-no"><span>03</span><small>AFTER</small></div>
+              <Layers3 aria-hidden="true" />
+              <h3>地元のWeb制作会社になる</h3>
+              <ul>
+                <li><CheckCircle2 />自社名義で提案できる</li>
+                <li><CheckCircle2 />地元企業から直接受注できる</li>
+                <li><CheckCircle2 />制作から納品まで進められる</li>
+                <li><CheckCircle2 />新しい収益事業にできる</li>
+              </ul>
             </article>
+          </div>
+          <div className="transformation-result">
+            <div><small>THE FIRST OPPORTUNITY IS ALREADY NEARBY</small><strong>「ホームページもお願いできますか？」を、<br />新しい売上に変えられる会社へ。</strong></div>
+            <a href="#offer">では、何を商品として売るのか <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
       </section>
