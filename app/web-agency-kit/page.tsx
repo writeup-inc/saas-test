@@ -23,19 +23,34 @@ const process = [
   { no: '01', title: '見極める', text: '標準範囲で受ける案件か、最初に判断する。', icon: SearchCheck },
   { no: '02', title: '聞く', text: '事業と代表者、2つの角度から話を聞く。', icon: MessageSquareText },
   { no: '03', title: '組み立てる', text: '信頼と共感に情報を分け、構成と原稿をつくる。', icon: Layers3 },
-  { no: '04', title: 'つくる', text: 'AIを使いながら、デザインと実装を進める。', icon: PenTool },
+  { no: '04', title: 'つくる', text: 'Codexを中核に、デザインと実装を進める。', icon: PenTool },
   { no: '05', title: '確かめる', text: '事実、権利、表示、導線を人が確認する。', icon: ShieldCheck },
   { no: '06', title: '納める', text: '顧客承認後に公開し、ソースと手順を渡す。', icon: PackageCheck },
 ];
 
 const faq = [
   ['Web制作の経験がなくても参加できますか？', '参加できます。ただし、顧客対応・事実確認・最終承認は自社で担っていただきます。初回3案件は納品前レビューを必須とする想定です。'],
-  ['Web制作以外の問い合わせが来たときも相談できますか？', 'はい、相談できます。広告運用、集客、AI活用、業務システムなど、Web制作の標準範囲を超える問い合わせも、まず内容を整理してご相談いただけます。対応可否・費用・担当範囲は案件ごとに確認します。'],
+  ['Web制作以外の案件も本部へ依頼できますか？', 'はい。広告運用、AI開発、業務のAI化、システム連携などは、本部へ相談・依頼できます。本部側で成約した場合は、受注金額のおよそ10%を紹介マージンとして還元する設計です。対象案件、料率、支払時期、担当範囲は案件ごとの契約で確定します。'],
   ['本部が仕事を紹介してくれますか？', '仕事の紹介や受注を保証するサービスではありません。まずは既存顧客から寄せられるWeb相談を、自社の商品として受けられる体制づくりを支援します。'],
   ['36万円で売れることは保証されますか？', '保証されません。36万円は、会社サイトと共感型LPの2ページ、取材・構成・制作・確認・公開を含む標準販売価格の設計例です。'],
   ['AIサービスの利用料は含まれますか？', '含まれません。利用するAI、ドメイン、ホスティング、有料素材などの外部費用は各社でご契約いただく想定です。'],
   ['WordPressやEC、予約サイトも作れますか？', '初期の標準商品には含めません。CMS、EC、予約、会員、決済、外部システム連携は、個別見積または対象外として判断します。'],
   ['制作物の責任は誰が持ちますか？', 'エンド顧客への提案・契約・納品の主体はパートナー企業です。本部は手順と品質レビューを提供します。詳細な責任分界は正式契約で明示します。'],
+];
+
+const agencySkills = [
+  { no: '01', group: 'SELL', title: '案件診断', text: 'いま受けるべき相談か、標準範囲と採算から見極める。' },
+  { no: '02', group: 'SELL', title: '提案・見積', text: '商品、価格、範囲を揃え、自社名義の提案へ落とし込む。' },
+  { no: '03', group: 'HEAR', title: '事業ヒアリング', text: '事業内容、強み、実績、顧客像を90分で聞き切る。' },
+  { no: '04', group: 'HEAR', title: '物語ヒアリング', text: '代表者の経歴、原体験、仕事への想いを言葉にする。' },
+  { no: '05', group: 'DESIGN', title: '情報設計', text: '信頼に必要な情報を選び、縦長1ページへ整理する。' },
+  { no: '06', group: 'DESIGN', title: '構成・コピー', text: '論理と共感を分け、見出しと原稿の草案をつくる。' },
+  { no: '07', group: 'BUILD', title: 'デザイン生成', text: '業種と目的に合わせ、サイト固有の表現を設計する。' },
+  { no: '08', group: 'BUILD', title: 'Codex実装', text: 'CodexでレスポンシブなWebページをコードにする。' },
+  { no: '09', group: 'CHECK', title: '表示・導線確認', text: 'スマホ表示、リンク、問い合わせ導線を機械と人で確認。' },
+  { no: '10', group: 'CHECK', title: '事実・権利確認', text: '事実、画像、引用、表現リスクを納品前に点検する。' },
+  { no: '11', group: 'DELIVER', title: '顧客承認', text: '確認事項を整理し、公開前の承認を記録に残す。' },
+  { no: '12', group: 'DELIVER', title: '公開・納品', text: '公開、ソース、更新手順まで一式で引き渡す。' },
 ];
 
 const demandSignals = [
@@ -93,7 +108,7 @@ export default function WebAgencyKitPage() {
             </h1>
             <p className="hero-lead">
               「ホームページも頼めますか？」を、もう断らない。<br className="desktop-only" />
-              AIと実務の型を使って、既存顧客へ自社名義で<br className="desktop-only" />
+              Codexと12個の実務スキルを使って、既存顧客へ自社名義で<br className="desktop-only" />
               提案・制作・納品できる新事業をつくります。
             </p>
             <div className="hero-actions">
@@ -105,7 +120,7 @@ export default function WebAgencyKitPage() {
             <div className="hero-notes" aria-label="サービスの特徴">
               <span><Check aria-hidden="true" />既存顧客から始める</span>
               <span><Check aria-hidden="true" />自社名義で販売</span>
-              <span><Check aria-hidden="true" />会社サイト＋LP</span>
+              <span><Check aria-hidden="true" />Codex＋12スキル</span>
             </div>
           </div>
 
@@ -224,8 +239,8 @@ export default function WebAgencyKitPage() {
       <section className="system-section section-pad" id="system">
         <div className="shell">
           <div className="section-heading split-heading light-heading">
-            <div><p className="section-kicker">THE OPERATING SYSTEM</p><h2 className="display-title">制作会社の仕事を、<br />そのまま仕組みに。</h2></div>
-            <p>制作会社の仕事を、6つの工程に分解。<br />各工程をスキルとテンプレートにして更新します。</p>
+            <div><p className="section-kicker">THE OPERATING SYSTEM</p><h2 className="display-title">Codexを中核に、<br />仕事を仕組みに。</h2></div>
+            <p>制作会社の仕事を、6つの工程に分解。<br />12個の実務スキルが、判断から納品まで支えます。</p>
           </div>
           <div className="process-grid">
             {process.map(({ no, title, text, icon: Icon }) => (
@@ -237,43 +252,87 @@ export default function WebAgencyKitPage() {
           </div>
           <div className="update-band">
             <RefreshCw aria-hidden="true" />
-            <div><small>MONTHLY UPDATE</small><strong>古くなった型は、残さない。</strong></div>
-            <p>初期搭載12スキルを目標に、運用データを見ながら毎月改善・差し替え。固定の教材ではなく、使える型を保ち続けます。</p>
+            <div><small>12 SKILLS / MONTHLY UPDATE</small><strong>古くなったスキルは、すぐ回収。</strong></div>
+            <p>常時12個を基本に、毎月数個を点検・修正・入れ替え。古くなったスキルは止め、新しいスキルを随時追加します。</p>
           </div>
         </div>
       </section>
 
-      <section className="included-section section-pad">
-        <div className="shell included-grid">
+      <section className="included-section section-pad" id="skills">
+        <div className="shell">
           <div className="included-copy">
-            <p className="section-kicker">WHAT YOU GET</p>
-            <h2 className="display-title">売るための型を、<br />ひとつに。</h2>
-            <p>プロンプト集を渡して終わりではありません。迷いやすい判断と顧客確認まで、仕事の順番に沿って揃えます。</p>
+            <div>
+              <p className="section-kicker">12 SKILLS, ONE WEB COMPANY</p>
+              <h2 className="display-title">12個のスキルが、<br />あなたをWeb制作会社にする。</h2>
+              <p>単なるプロンプト集ではありません。売る、聞く、設計する、つくる、確かめる、納める。その仕事を12個に分け、迷う順番まで揃えます。</p>
+            </div>
+            <div className="codex-core">
+              <span>CORE ENGINE</span>
+              <strong>Codex</strong>
+              <p>会話だけで終わらず、デザインをコードにし、修正し、表示まで確かめる制作基盤。</p>
+            </div>
           </div>
           <div className="included-list">
-            <article><BriefcaseBusiness /><span>01</span><h3>営業キット</h3><p>簡易診断、提案書、標準見積、商談の進め方</p></article>
-            <article><MessageSquareText /><span>02</span><h3>ヒアリング</h3><p>事業と代表者ストーリーを聞き切る質問設計</p></article>
-            <article><Sparkles /><span>03</span><h3>制作スキル</h3><p>構成、コピー、デザイン、実装を工程ごとに支援</p></article>
-            <article><FileCheck2 /><span>04</span><h3>品質と納品</h3><p>事実・権利・表示・導線の確認と納品手順</p></article>
-            <article><UsersRound /><span>05</span><h3>実践会</h3><p>月1回90分。案件で詰まった点を持ち寄る</p></article>
-            <article><ShieldCheck /><span>06</span><h3>案件レビュー</h3><p>月1案件・90分相当。初回3案件は必須</p></article>
+            {agencySkills.map(({ no, group, title, text }) => (
+              <article key={no}>
+                <div><small>{group}</small><span>{no}</span></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="sales-section section-pad">
+      <section className="sales-section section-pad" id="sales">
         <div className="shell">
           <div className="section-heading centered-heading">
             <p className="section-kicker">HOW TO SELL</p>
-            <h2 className="display-title">「作れます」だけでは売れない。<br />商談の見せ方まで決めておく。</h2>
+            <h2 className="display-title">商談で見せる順番まで、<br />型になっている。</h2>
+            <p>完成品を先に無料で渡さない。診断で課題を共有し、商談で可能性を見せ、契約後に相手企業だけのサイトを仕上げます。</p>
           </div>
           <div className="sales-flow">
-            <article><span>FREE</span><strong>簡易診断3項目</strong><p>いまのサイトで伝わっていない点と、許諾済み事例を提示。</p></article>
-            <ArrowRight aria-hidden="true" />
-            <article><span>MEETING</span><strong>部分デモ</strong><p>ファーストビューのラフやコピー候補を商談中に一緒につくる。</p></article>
-            <ArrowRight aria-hidden="true" />
-            <article><span>AFTER CONTRACT</span><strong>完成デザイン</strong><p>相手企業固有の全ページとソースは、契約後に制作・納品。</p></article>
+            <article><span>STEP 01 / DIAGNOSE</span><strong>無料の簡易診断</strong><p>いまのサイトで伝わっていない3点と、許諾済みの他社事例を提示する。</p></article>
+            <article><span>STEP 02 / DEMONSTRATE</span><strong>商談中に部分デモ</strong><p>ファーストビューのラフやコピー候補を、その場で一緒につくる。</p></article>
+            <article><span>STEP 03 / DELIVER</span><strong>契約後に完成・納品</strong><p>相手企業固有の全ページ、公開環境、ソース一式を仕上げて渡す。</p></article>
           </div>
+        </div>
+      </section>
+
+      <section className="headquarters-section section-pad" id="headquarters">
+        <div className="shell">
+          <div className="section-heading split-heading headquarters-heading">
+            <div>
+              <p className="section-kicker">PARTNER BACKOFFICE</p>
+              <h2 className="display-title">Webの外側まで、<br />本部が後ろにいる。</h2>
+            </div>
+            <p>顧客から相談されるのは、ホームページだけとは限りません。標準外の案件は断らず、本部へつなげられます。</p>
+          </div>
+          <div className="hq-services" aria-label="本部へ相談できる案件例">
+            <span><BriefcaseBusiness aria-hidden="true" />広告運用・集客</span>
+            <span><Sparkles aria-hidden="true" />AI開発・業務AI化</span>
+            <span><FileCheck2 aria-hidden="true" />システム開発・外部連携</span>
+          </div>
+          <div className="hq-flow">
+            <article>
+              <span>01</span><UsersRound aria-hidden="true" />
+              <strong>顧客から相談を受ける</strong>
+              <p>まず課題を聞き、Web制作の標準範囲か、それ以外かを整理する。</p>
+            </article>
+            <ArrowRight aria-hidden="true" />
+            <article>
+              <span>02</span><BriefcaseBusiness aria-hidden="true" />
+              <strong>本部へ相談・依頼する</strong>
+              <p>本部が対応可否、専門チーム、見積、役割分担を案件ごとに確認する。</p>
+            </article>
+            <ArrowRight aria-hidden="true" />
+            <article className="margin-card">
+              <span>03 / 成約時の目安</span>
+              <strong>約10<em>%</em></strong>
+              <p>本部側で成約した場合、受注金額のおよそ10%を紹介マージンとして還元。</p>
+            </article>
+          </div>
+          <p className="hq-note">※ 対象案件、紹介料率、支払時期、業務範囲は案件ごとの契約で確定します。すべての相談の受託・成約・還元を保証するものではありません。</p>
         </div>
       </section>
 
@@ -295,8 +354,8 @@ export default function WebAgencyKitPage() {
             <div className="price-top"><span>企画時点の価格案</span><strong><small>月額</small>5<em>万円</em><i>税別</i></strong><p>初期費用 0円</p></div>
             <div className="price-body">
               <h3>含まれるもの</h3>
-              <ul><li><Check />中核スキル群と月次アップデート</li><li><Check />営業・契約範囲・納品テンプレート</li><li><Check />月1回のグループ実践会</li><li><Check />月1案件・90分相当のレビュー</li><li><Check />月5質問までの個別チャット</li></ul>
-              <p className="price-caution">AI利用料、ドメイン、ホスティング、有料素材、撮影、制作代行は含まれません。</p>
+              <ul><li><Check />Codexを中核とする12個の実務スキル</li><li><Check />毎月の点検・修正・スキル入れ替え</li><li><Check />営業・契約範囲・納品テンプレート</li><li><Check />月1回のグループ実践会</li><li><Check />月1案件・90分相当のレビュー</li><li><Check />月5質問までの個別チャット</li></ul>
+              <p className="price-caution">Codex等のAI利用料、ドメイン、ホスティング、有料素材、撮影、制作代行は含まれません。</p>
             </div>
           </div>
           <div className="eligibility-grid">

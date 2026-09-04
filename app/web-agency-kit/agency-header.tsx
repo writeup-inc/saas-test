@@ -46,9 +46,10 @@ export function AgencyHeader() {
           <span>ホームページ制作会社パック</span>
         </a>
         <nav className="desktop-nav" aria-label="ページ内ナビゲーション">
-          <a href="#difference">違い</a>
           <a href="#offer">売る商品</a>
-          <a href="#system">仕組み</a>
+          <a href="#skills">12スキル</a>
+          <a href="#sales">売り方</a>
+          <a href="#headquarters">本部連携</a>
           <a href="#price">料金</a>
         </nav>
         <a className="header-cta" href="#entry">
