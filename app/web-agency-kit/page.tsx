@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   Check,
   CheckCircle2,
+  ExternalLink,
   FileCheck2,
   Layers3,
   MessageSquareText,
@@ -16,6 +17,8 @@ import {
   X,
 } from 'lucide-react';
 
+import { AgencyHeader } from './agency-header';
+
 const process = [
   { no: '01', title: '見極める', text: '標準範囲で受ける案件か、最初に判断する。', icon: SearchCheck },
   { no: '02', title: '聞く', text: '事業と代表者、2つの角度から話を聞く。', icon: MessageSquareText },
@@ -27,6 +30,7 @@ const process = [
 
 const faq = [
   ['Web制作の経験がなくても参加できますか？', '参加できます。ただし、顧客対応・事実確認・最終承認は自社で担っていただきます。初回3案件は納品前レビューを必須とする想定です。'],
+  ['Web制作以外の問い合わせが来たときも相談できますか？', 'はい、相談できます。広告運用、集客、AI活用、業務システムなど、Web制作の標準範囲を超える問い合わせも、まず内容を整理してご相談いただけます。対応可否・費用・担当範囲は案件ごとに確認します。'],
   ['本部が仕事を紹介してくれますか？', '仕事の紹介や受注を保証するサービスではありません。まずは既存顧客から寄せられるWeb相談を、自社の商品として受けられる体制づくりを支援します。'],
   ['36万円で売れることは保証されますか？', '保証されません。36万円は、会社サイトと共感型LPの2ページ、取材・構成・制作・確認・公開を含む標準販売価格の設計例です。'],
   ['AIサービスの利用料は含まれますか？', '含まれません。利用するAI、ドメイン、ホスティング、有料素材などの外部費用は各社でご契約いただく想定です。'],
@@ -34,26 +38,49 @@ const faq = [
   ['制作物の責任は誰が持ちますか？', 'エンド顧客への提案・契約・納品の主体はパートナー企業です。本部は手順と品質レビューを提供します。詳細な責任分界は正式契約で明示します。'],
 ];
 
+const demandSignals = [
+  {
+    no: '01',
+    value: '22.5',
+    unit: '%',
+    title: 'まだ、サイトがない。',
+    text: '資本金1,000万円未満のインターネット利用企業では、ホームページ未開設が22.5%。',
+    note: '総務省「令和6年通信利用動向調査」企業編（2024年8月末時点）',
+    href: 'https://www.e-stat.go.jp/stat-search/files?cycle=0&layout=datalist&month=0&page=1&stat_infid=000040278555&tclass1=000001228812&tclass2val=0&toukei=00200356&tstat=000001228811&year=20240',
+  },
+  {
+    no: '02',
+    value: '144,757',
+    unit: '件',
+    title: '毎年、会社が生まれる。',
+    text: '2024年の会社の設立登記。新しい会社には、信頼を伝える最初のWeb拠点が必要になる。',
+    note: '法務省「令和6年における登記の概況」',
+    href: 'https://www.moj.go.jp/content/001447340.pdf',
+  },
+  {
+    no: '03',
+    value: '約6',
+    unit: '割',
+    title: 'つくった後も、止まっている。',
+    text: '小規模事業者のホームページなどの更新頻度は、約6割が「不定期」。更新・再設計にも仕事がある。',
+    note: '日本商工会議所「2016年版小規模企業白書（概要）」',
+    href: 'https://ab.jcci.or.jp/article/43509/',
+  },
+  {
+    no: '04',
+    value: '3',
+    unit: '接点',
+    title: '1社に、入口はひとつではない。',
+    text: '白書掲載事例では、SNSから自社HP、さらにECへ発信・信頼・販売の接点を拡張。ページ需要は一度きりではない。',
+    note: '中小企業庁「2025年版 小規模企業白書」掲載事例',
+    href: 'https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/shokibo/b2_1_1.html',
+  },
+];
+
 export default function WebAgencyKitPage() {
   return (
     <main className="agency-page">
-      <header className="site-header">
-        <div className="shell header-inner">
-          <a className="brand" href="#top" aria-label="ホームページ制作会社パック トップへ">
-            <span className="brand-mark"><Layers3 aria-hidden="true" /></span>
-            <span>ホームページ制作会社パック</span>
-          </a>
-          <nav className="desktop-nav" aria-label="ページ内ナビゲーション">
-            <a href="#difference">違い</a>
-            <a href="#offer">売る商品</a>
-            <a href="#system">仕組み</a>
-            <a href="#price">料金</a>
-          </nav>
-          <a className="header-cta" href="#entry">
-            事業説明を聞く <ArrowRight aria-hidden="true" />
-          </a>
-        </div>
-      </header>
+      <AgencyHeader />
 
       <section className="hero" id="top">
         <div className="hero-grid shell">
@@ -285,11 +312,35 @@ export default function WebAgencyKitPage() {
           <div className="faq-list">
             {faq.map(([q, a], index) => (
               <details className="faq-item" key={q}>
-                <summary className="faq-trigger"><span>Q{String(index + 1).padStart(2, '0')}</span>{q}<i aria-hidden="true" /></summary>
+                <summary className="faq-trigger"><span>Q{String(index + 1).padStart(2, '0')}</span><b className="faq-question">{q}</b><i aria-hidden="true" /></summary>
                 <div className="faq-content">{a}</div>
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="demand-section section-pad" aria-labelledby="demand-heading">
+        <div className="shell">
+          <div className="section-heading demand-heading">
+            <p className="section-kicker">WEB PRODUCTION IS NOT OVER</p>
+            <h2 className="display-title" id="demand-heading">Web制作は、<br />まだ終わっていない。</h2>
+            <p>会社が生まれ、最初のサイトが必要になり、古い情報を更新し、事業ごとの入口が増えていく。需要は一度で終わりません。</p>
+          </div>
+          <div className="demand-story">
+            {demandSignals.map(({ no, value, unit, title, text, note, href }, index) => (
+              <article className="demand-card" key={no}>
+                <div className="demand-step"><span>{no}</span>{index < demandSignals.length - 1 && <ArrowRight aria-hidden="true" />}</div>
+                <div className="demand-number"><strong>{value}</strong><em>{unit}</em></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <a href={href} target="_blank" rel="noreferrer">
+                  出典：{note}<ExternalLink aria-hidden="true" />
+                </a>
+              </article>
+            ))}
+          </div>
+          <p className="demand-caution">※ 各データは調査年・対象母集団が異なります。Web制作の市場規模、受注件数、売上を示すものでも、成果を保証するものでもありません。</p>
         </div>
       </section>
 
