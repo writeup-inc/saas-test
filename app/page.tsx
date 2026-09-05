@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import CatalogGrid from './catalog-grid';
 import HeroMcpCarousel from './hero-mcp-carousel';
 import SiteFooter from './site-footer';
@@ -16,7 +17,7 @@ export default function Home() {
             <p className="hero-body">AIを業務につなぐMCPを、できることだけでなく、必要な権限・人の承認・対応クライアントまで整理して紹介します。</p>
             <div className="audience-line"><p><b>対象</b> 自社でAI活用を進めたい中小企業の社長</p><p><b>対象外</b> 無確認で全面自動化したい方</p></div>
             <p className="prototype-count"><span>PROTOTYPE</span> 掲載候補 8件 / 実機検証済み 0件</p>
-            <div className="hero-actions"><a className="primary-button" href="#guides">おすすめMCPを見る <span>↓</span></a><a className="text-button" href="/policy">編集方針を見る <span>↗</span></a></div>
+            <div className="hero-actions"><a className="primary-button" href="#guides">おすすめMCPを見る <span>↓</span></a><Link className="text-button" href="/policy">編集方針を見る <span>↗</span></Link></div>
           </div>
           <HeroMcpCarousel />
         </div>
