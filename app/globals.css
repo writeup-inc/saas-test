@@ -29,7 +29,8 @@ button { font:inherit; }
 h1,h2,h3,b,strong { font-family:var(--font-geist-sans),"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif; }
 .shell { width:min(100% - 48px,1200px); margin-inline:auto; }
 
-.site-header { position:sticky; top:0; z-index:30; color:#fff; background:var(--plum); }
+.site-header { position:sticky; top:0; z-index:30; color:#fff; background:var(--plum); transition:transform .22s ease; will-change:transform; }
+.site-header--hidden { transform:translateY(calc(-100% - 1px)); }
 .nav-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
 .brand { display:inline-flex; align-items:center; gap:10px; font-size:15px; font-weight:800; letter-spacing:-.035em; }
 .brand-mark { width:30px; height:30px; display:grid; place-items:center; border-radius:8px; color:#fff; background:var(--pink); font:800 12px var(--font-geist-mono); }
