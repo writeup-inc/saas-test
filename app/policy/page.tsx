@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import SiteFooter from '../site-footer';
 import SiteHeader from '../site-header';
+import { absoluteSiteUrl } from '../site-config';
 
 export const metadata: Metadata = {
   title: '編集方針｜MCP導入ガイド',
   description: 'MCP導入ガイドの確認方法、更新表示、利益相反、訂正方針。',
-  alternates: { canonical: 'https://writeup-inc.github.io/saas-test/policy/' },
+  alternates: { canonical: absoluteSiteUrl('policy/') },
 };
 
 const policies = [

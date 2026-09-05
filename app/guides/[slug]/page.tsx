@@ -5,6 +5,7 @@ import { getGuide, guides } from '../../catalog-data';
 import SiteFooter from '../../site-footer';
 import SiteHeader from '../../site-header';
 import ShareGuide from '../../share-guide';
+import { absoluteSiteUrl } from '../../site-config';
 
 type GuidePageProps = { params: Promise<{ slug: string }> };
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const guide = getGuide(slug);
   if (!guide) return {};
   const description = `${guide.description} 対応クライアント、権限、承認ポイント、導入前チェックを紹介。`;
-  const url = `https://writeup-inc.github.io/saas-test/guides/${slug}/`;
+  const url = absoluteSiteUrl(`guides/${slug}/`);
   return { title: `${guide.name} 導入前ガイド｜MCP導入ガイド`, description, alternates: { canonical: url }, openGraph: { title: `${guide.name} 導入前ガイド`, description, url, images: [] }, twitter: { card: 'summary', title: `${guide.name} 導入前ガイド`, description, images: [] } };
 }
 

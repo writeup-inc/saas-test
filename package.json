@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:pages": "GITHUB_PAGES=true next build",
+    "build:saas": "GITHUB_PAGES=true GITHUB_PAGES_BASE_PATH=/saas/mcp-guide NEXT_PUBLIC_SITE_URL=https://writeup-inc.github.io/saas/mcp-guide/ next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
