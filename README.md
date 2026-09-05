@@ -8,12 +8,13 @@ SaaS検証用リポジトリ。
 
 中小企業の社長が、業務MCPを「人気」ではなく「自社で使ってよいか」で選び、小さく試すための導入判断メディアです。
 
-- 公開URL: https://writeup-inc.github.io/saas-test/
+- 正式公開URL: https://writeup-inc.github.io/saas/mcp-guide/
+- 開発プレビュー: https://writeup-inc.github.io/saas-test/
 - トップページ: MCP一覧と絞り込み
 - 詳細ページ: 権限、承認ポイント、導入手順、検証情報
 - 現在の状態: 掲載候補8件、実機検証済み0件のプロトタイプ
 
-`main`へ変更がマージされると、GitHub Actionsが自動でGitHub Pagesへ公開します。
+`main`へ変更がマージされると、GitHub Actionsが開発プレビューへ自動公開します。正式版は `writeup-inc/saas` リポジトリの `mcp-guide/` へ静的出力を配置します。
 
 ## 運用ルール
 
@@ -71,6 +72,14 @@ npm run dev
 ```
 npm run build:pages
 ```
+
+正式公開用の静的出力を作る場合:
+
+```
+npm run build:saas
+```
+
+生成された `out/` の中身を `writeup-inc/saas` リポジトリの `mcp-guide/` へ配置します。このビルドでは、内部リンクとアセットを `/saas/mcp-guide/` 配下に閉じ、canonical・OG画像・ファビコンも正式URLへ揃えます。
 
 ## メモ
 
