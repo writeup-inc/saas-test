@@ -32,7 +32,7 @@ for line in lines[1:]:
         flush(); body.append(f"<h2>{inline(s[3:])}</h2>")
     elif s.startswith("（ここに比較表の画像を挿入"):
         flush()
-        body.append(f'<figure><img src="data:image/png;base64,{img_b64}" alt="大阪で美容室・サロンの物件を相談できる不動産会社 比較表"></figure>')
+        body.append(f'<figure><img src="data:image/png;base64,{img_b64}" alt="大阪の美容室・サロン向け不動産会社3社（iYエステート、ベンチャースペースラボ、BGパートナーズ）の比較表"><figcaption>大阪で美容室・サロンの物件を扱う不動産会社3社を、拠点・強み・物件のタイプなど同じ項目で比較</figcaption></figure>')
     elif re.fullmatch(r"(#\S+\s*)+", s):
         flush()
         tags = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in s.split())
@@ -67,6 +67,7 @@ hr {{ border:0; border-top:1px solid var(--line); margin:40px auto; width:100%; 
 strong {{ font-weight:700; }}
 em {{ font-style:normal; font-size:14px; color:var(--sub); }}
 figure {{ margin:0 0 28px; }}
+figcaption {{ font-size:13px; color:var(--sub); text-align:center; margin-top:8px; line-height:1.6; }}
 figure img {{ width:100%; height:auto; display:block; border:1px solid var(--line); }}
 .tags {{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }}
 .tag {{ background:var(--soft); color:#333; border-radius:20px; padding:6px 14px; font-size:14px; }}
