@@ -432,6 +432,32 @@ footer{font-size:12px;color:var(--ink-soft)}
   .inputbar{padding:10px 12px}
   .mic{width:46px;height:46px}
 }
+
+/* 調整10：スマホのホームの縦幅を詰める */
+@media (max-width:600px){
+  .shellhead p{display:none}
+  .wrap{gap:12px;padding-block:16px 32px}
+}
+@container mock (max-width:760px){
+  .wave{padding:12px 14px 26px}
+  .wave b{font-size:16px;line-height:1.4}
+  .wave span{display:none}
+  .wave .sun{width:48px;height:48px}
+  .wave svg{height:22px}
+  .entry{gap:10px}
+  .entry h3{display:none}
+  .eface{width:52px;height:52px}
+  .ebubble p{font-size:13.5px;line-height:1.5}
+  .moods{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .entry .moods .btn.mood{flex-direction:column;justify-content:center;text-align:center;min-height:0;padding:10px 6px;font-size:13px;line-height:1.35;gap:6px;border-radius:14px}
+  .entry .moods .btn.mood br{display:inline}
+  .btn.mood .mi{width:32px;height:32px}
+  .btn.mood .mi svg{width:18px;height:18px}
+  .entry .link{padding:2px;font-size:12.5px}
+  .cards .panel .note,.cards .panel .sample{display:none}
+  .cards .panel b{font-size:14px;line-height:1.45}
+  .cards .panel .link{font-size:12px}
+}
 @media (prefers-reduced-motion:no-preference){
   .center .halo{animation:glow 4s ease-in-out infinite alternate}
   .routes path{animation:sail 30s linear infinite}
@@ -506,7 +532,7 @@ footer{font-size:12px;color:var(--ink-soft)}
     return head+
       '<div class="panel entry"><h3>'+(true?rb([['先生','せんせい'],'に',['相談','そうだん'],'する']):'先生に相談する')+'</h3>'+
       '<div class="entryhead"><div class="eface" role="img" aria-label="徳尾先生（アバターのキャプチャーが入ります）">'+PERSON+'<span>アバター画像</span></div><div class="ebubble"><span class="k">'+rb([['徳尾','とくお'],' ',['先生','せんせい']])+'</span><p>きょうは、どんな気持ちですか。どれをえらんでも大丈夫ですよ。</p></div></div>'+
-      '<div class="row moods"><button type="button" class="btn mood" data-avatar="new" data-mood="moya"><span class="mi" aria-hidden="true">'+MOOD_IC.moya+'</span>もやもやを<br>聞いてほしい</button><button type="button" class="btn mood" data-avatar="new" data-mood="decide"><span class="mi" aria-hidden="true">'+MOOD_IC.decide+'</span>決めたいことが<br>ある</button><button type="button" class="btn mood warmish" data-sec="report"><span class="mi" aria-hidden="true">'+MOOD_IC.happy+'</span>うれしい報告が<br>ある</button></div>'+
+      '<div class="row moods"><button type="button" class="btn mood" data-avatar="new" data-mood="moya"><span class="mi" aria-hidden="true">'+MOOD_IC.moya+'</span>もやもやを<br>聞いてほしい</button><button type="button" class="btn mood" data-avatar="new" data-mood="decide"><span class="mi" aria-hidden="true">'+MOOD_IC.decide+'</span>決めたい<br>ことがある</button><button type="button" class="btn mood warmish" data-sec="report"><span class="mi" aria-hidden="true">'+MOOD_IC.happy+'</span>うれしい<br>報告がある</button></div>'+
       '<div class="row" style="gap:4px 16px"><button type="button" class="link" data-avatar="cont">前回「転職を考えている」の続きから</button><button type="button" class="link">学問分野から選んで相談する</button></div></div>'+
       '<div class="cards">'+
         '<div class="panel"><span class="k">今日の習慣</span><b>朝、今日やることを1つだけ書く</b><span class="note">あすの朝9時に、先生からおたよりが届きます</span></div>'+
