@@ -270,7 +270,7 @@ footer{font-size:12px;color:var(--ink-soft)}
 @media (prefers-reduced-motion:no-preference){.tip:not([hidden]){animation:pop .35s ease-out}}
 @keyframes pop{from{opacity:0;margin-top:6px}to{opacity:1;margin-top:0}}
 
-/* 調整3：先生のひとことをコンパクトに */
+/* 調整3：先生の一言をコンパクトに */
 .tcomment{width:auto;max-width:280px;right:1.5%;top:3%;gap:8px;align-items:flex-start}
 .tc-face{width:46px;height:46px;border-width:3px}
 .tc-bubble{padding:8px 12px 9px;gap:4px;border-radius:4px 16px 16px 16px}
@@ -356,7 +356,7 @@ footer{font-size:12px;color:var(--ink-soft)}
 }
 @keyframes hintout{to{opacity:0}}
 
-/* 調整6：習慣のおたより */
+/* 調整6：習慣のお便り */
 .days{display:flex;gap:6px;flex-wrap:wrap}
 .days .day{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-variant-numeric:tabular-nums;border:1.5px solid var(--panel-line);color:var(--muted);background:var(--white)}
 .days .day.on{background:var(--leaf-light);border-color:var(--leaf-light);color:var(--white);font-weight:700}
@@ -508,7 +508,7 @@ footer{font-size:12px;color:var(--ink-soft)}
       sum:['抱えている仕事を全部書き出す','優先順位は「人に迷惑がかかる順」','断る練習を一つする'],habit:'金曜の夜、翌週の仕事を書き出す',
       report:'書き出したら半分は急がなくてよいものでした。気持ちが軽くなりました。',replyT:'見えるようにしただけで軽くなるものです。次は「断る練習」の結果も待っています。'}
   ];
-  var STAGES=[['chat','雑談','ざつだん','無料'],['narrow','絞り込み','しぼりこみ','無料'],['free','フリートーク','じっくり相談','有料'],['end','要約','おわりに','']];
+  var STAGES=[['chat','雑談','雑談','無料'],['narrow','絞り込み','絞り込み','無料'],['free','フリートーク','じっくり相談','有料'],['end','要約','まとめ','']];
   var st={v:'a',tab:'member',sec:'home',open:'c1',rep:'c2',feel:'',txt:'',sent:false,copied:'',share:false,trivia:true,feeds:0,stage:'chat',cont:false,theme:'',review:'',reviewed:false,
     habits:{c1:{on:true,slot:'朝',freq:'毎日'},c2:{on:true,slot:'晩',freq:'毎日'},c3:{on:false,slot:'晩',freq:'1週間おき'}}};
   try{var sv=localStorage.getItem('tokuo-mp-v3'); if(sv==='a'||sv==='b') st.v=sv;}catch(e){}
@@ -527,15 +527,15 @@ footer{font-size:12px;color:var(--ink-soft)}
   V.home=function(){
     var unrep=C.filter(function(c){return c.status==='unreported';}).length;
     var head = true
-      ?'<div class="wave"><div class="sun" aria-hidden="true"></div><b>こんにちは、やまださん</b><span>きょうも いっしょに まなびましょう</span>'+WAVE+'</div>'
+      ?'<div class="wave"><div class="sun" aria-hidden="true"></div><b>こんにちは、山田さん</b><span>今日も一緒に学びましょう</span>'+WAVE+'</div>'
       : '<div><h2 class="h">こんにちは、山田さん</h2><p class="sub">相談はアバター相談画面で行います。</p></div>';
     return head+
       '<div class="panel entry"><h3>'+(true?rb([['先生','せんせい'],'に',['相談','そうだん'],'する']):'先生に相談する')+'</h3>'+
-      '<div class="entryhead"><div class="eface" role="img" aria-label="徳尾先生（アバターのキャプチャーが入ります）">'+PERSON+'<span>アバター画像</span></div><div class="ebubble"><span class="k">'+rb([['徳尾','とくお'],' ',['先生','せんせい']])+'</span><p>きょうは、どんな気持ちですか。どれをえらんでも大丈夫ですよ。</p></div></div>'+
-      '<div class="row moods"><button type="button" class="btn mood" data-avatar="new" data-mood="moya"><span class="mi" aria-hidden="true">'+MOOD_IC.moya+'</span>もやもやを<br>聞いてほしい</button><button type="button" class="btn mood" data-avatar="new" data-mood="decide"><span class="mi" aria-hidden="true">'+MOOD_IC.decide+'</span>決めたい<br>ことがある</button><button type="button" class="btn mood warmish" data-sec="report"><span class="mi" aria-hidden="true">'+MOOD_IC.happy+'</span>うれしい<br>報告がある</button></div>'+
+      '<div class="entryhead"><div class="eface" role="img" aria-label="徳尾先生（アバターのキャプチャーが入ります）">'+PERSON+'<span>アバター画像</span></div><div class="ebubble"><span class="k">'+rb([['徳尾','とくお'],' ',['先生','せんせい']])+'</span><p>今日は、どんな気持ちですか。どれを選んでも大丈夫ですよ。</p></div></div>'+
+      '<div class="row moods"><button type="button" class="btn mood" data-avatar="new" data-mood="moya"><span class="mi" aria-hidden="true">'+MOOD_IC.moya+'</span>もやもやを<br>聞いてほしい</button><button type="button" class="btn mood" data-avatar="new" data-mood="decide"><span class="mi" aria-hidden="true">'+MOOD_IC.decide+'</span>決めたい<br>ことがある</button><button type="button" class="btn mood warmish" data-sec="report"><span class="mi" aria-hidden="true">'+MOOD_IC.happy+'</span>嬉しい<br>報告がある</button></div>'+
       '<div class="row" style="gap:4px 16px"><button type="button" class="link" data-avatar="cont">前回「転職を考えている」の続きから</button><button type="button" class="link">学問分野から選んで相談する</button></div></div>'+
       '<div class="cards">'+
-        '<div class="panel"><span class="k">今日の習慣</span><b>朝、今日やることを1つだけ書く</b><span class="note">あすの朝9時に、先生からおたよりが届きます</span></div>'+
+        '<div class="panel"><span class="k">今日の習慣</span><b>朝、今日やることを1つだけ書く</b><span class="note">明日の朝9時に、先生からお便りが届きます</span></div>'+
         '<div class="panel"><span class="k">報告を待っている相談</span><span class="v">'+unrep+' 件</span><button type="button" class="link" data-sec="report" style="align-self:flex-start">「家族との関わり方」を報告する</button></div>'+
         '<div class="panel"><span class="k">自分の文庫（PDF）</span><span class="v">3 件</span><span class="note">相談ごとのPDFが入っています</span></div>'+
         '<div class="panel"><span class="k">同じ「仕事・キャリア」の悩みで相談した人</span><span class="v">128 人</span><span class="sample">サンプル</span></div>'+
@@ -569,14 +569,14 @@ footer{font-size:12px;color:var(--ink-soft)}
   V.habit=function(){
     var cur=C[0], days=7, done=5;
     var dots='';for(var i=1;i<=days;i++){dots+='<span class="day'+(i<=done?' on':'')+'" aria-hidden="true">'+i+'</span>';}
-    var mail=['9:00','おはようございます。きのうはよく眠れましたか。きょうも「やることを1つだけ書く」から始めてみましょう。できなかった日があっても大丈夫。また今日から、ですよ。'];
-    var past=C.slice(1).map(function(c){return '<div class="voice"><span class="k">'+c.date+'の相談「'+esc(c.title)+'」から</span><p>'+esc(c.habit)+'</p><span class="pill ok" style="align-self:flex-start">7日間のおたより 終了</span></div>';}).join('');
-    return title('habit')+'<p class="sub">相談の中で先生がすすめた習慣は、自動でここに入ります。毎朝9時に、先生からおたよりが1通届きます。</p>'+
-      '<div class="panel"><span class="pill tag" style="align-self:flex-start">いま届いているおたより</span><h3>'+esc(cur.habit)+'</h3>'+
+    var mail=['9:00','おはようございます。昨日はよく眠れましたか。今日も「やることを1つだけ書く」から始めてみましょう。できなかった日があっても大丈夫。また今日から、ですよ。'];
+    var past=C.slice(1).map(function(c){return '<div class="voice"><span class="k">'+c.date+'の相談「'+esc(c.title)+'」から</span><p>'+esc(c.habit)+'</p><span class="pill ok" style="align-self:flex-start">7日間のお便り 終了</span></div>';}).join('');
+    return title('habit')+'<p class="sub">相談の中で先生がすすめた習慣は、自動でここに入ります。毎朝9時に、先生からお便りが1通届きます。</p>'+
+      '<div class="panel"><span class="pill tag" style="align-self:flex-start">今届いているお便り</span><h3>'+esc(cur.habit)+'</h3>'+
       '<span class="note">'+cur.date+'の相談「'+esc(cur.title)+'」で先生がすすめた習慣です。</span>'+
       '<div class="days" role="img" aria-label="'+days+'日のうち'+done+'日目">'+dots+'</div><span class="note">1週間、毎朝9時に1通だけ届きます（期間は仮）。</span></div>'+
-      '<div class="panel"><h3>けさのおたより</h3><div class="mail"><span class="mt"><b>朝</b>'+mail[0]+'</span><p>'+esc(mail[1])+'</p></div></div>'+
-      '<div class="panel"><h3>これまでのおたより</h3>'+past+'</div>'+
+      '<div class="panel"><h3>今朝のお便り</h3><div class="mail"><span class="mt"><b>朝</b>'+mail[0]+'</span><p>'+esc(mail[1])+'</p></div></div>'+
+      '<div class="panel"><h3>これまでのお便り</h3>'+past+'</div>'+
       '<div class="row" style="align-items:center;justify-content:space-between"><span class="note">送り先：yamada@example.com</span><button type="button" class="link">メールの受け取りを止める</button></div>';
   };
   V.library=function(){
@@ -626,30 +626,30 @@ footer{font-size:12px;color:var(--ink-soft)}
       return '<div class="banner">前回（10/05）「転職を考えている」の続きです。雑談と絞り込みは省いています。</div>'+
         t('おかえりなさい。前回は「まず上司と一度話してみる」というお話でしたね。その後どうでしたか。')+
         u('話してみたら、来月から担当が変わることになりました。',true)+
-        t('話しに行けたことが、まず大きな一歩です。担当が変わると聞いて、いまの気持ちはどうですか。');
+        t('話しに行けたことが、まず大きな一歩です。担当が変わると聞いて、今の気持ちはどうですか。');
     }
-    if(s==='chat') return t(b?'こんにちは。せかいそうぞうだいがくの とくお です。きょうは きてくれて ありがとう。':'こんにちは。世界創造大学の徳尾です。今日は来てくれてありがとう。')+
-      t(st.mood==='moya'?'もやもやしているんですね。うまく言葉にならなくても大丈夫。ゆっくり聞かせてください。':st.mood==='decide'?'決めたいことがあるんですね。あせらず、一緒に整理していきましょう。':'さいきん、どんなことを考えていますか。')+
-      '<div class="chips" role="group" aria-label="話題をえらぶ">'+['しごとのこと','人とのかかわり','これからの人生','べんきょうの仕方'].map(function(x,i){return '<button type="button" aria-pressed="'+(i===0)+'">'+x+'</button>';}).join('')+'</div>'+
+    if(s==='chat') return t(b?'こんにちは。世界創造大学の徳尾です。今日は来てくれてありがとう。':'こんにちは。世界創造大学の徳尾です。今日は来てくれてありがとう。')+
+      t(st.mood==='moya'?'もやもやしているんですね。うまく言葉にならなくても大丈夫。ゆっくり聞かせてください。':st.mood==='decide'?'決めたいことがあるんですね。焦らず、一緒に整理していきましょう。':'最近、どんなことを考えていますか。')+
+      '<div class="chips" role="group" aria-label="話題を選ぶ">'+['仕事のこと','人との関わり','これからの人生','勉強の仕方'].map(function(x,i){return '<button type="button" aria-pressed="'+(i===0)+'">'+x+'</button>';}).join('')+'</div>'+
       u('仕事のことで、少し行き詰まっていて…')+t('そうでしたか。話してくれてありがとう。もう少しくわしく聞かせてください。');
-    if(s==='narrow') return t('よかったら、いま思っていることを ぜんぶ 声で話してみてください。まとまっていなくて大丈夫です。')+
+    if(s==='narrow') return t('よかったら、今思っていることを全部、声で話してみてください。まとまっていなくて大丈夫です。')+
       u('上司に評価されていない気がして、転職も考えているんですが、家族のこともあって決めきれなくて…',true)+
       t('ありがとう。お話を聞いて、今日はこの中のどれかを一緒に考えたいと思いました。')+
-      '<div class="chips" role="group" aria-label="テーマをえらぶ">'+['転職するか、とどまるか','上司とのかかわり方','家族への伝え方'].map(function(x){return '<button type="button" data-theme="'+x+'" aria-pressed="'+(st.theme===x)+'">'+x+'</button>';}).join('')+'</div>'+
+      '<div class="chips" role="group" aria-label="テーマを選ぶ">'+['転職するか、留まるか','上司との関わり方','家族への伝え方'].map(function(x){return '<button type="button" data-theme="'+x+'" aria-pressed="'+(st.theme===x)+'">'+x+'</button>';}).join('')+'</div>'+
       (st.theme?'<div class="gate"><b>「'+esc(st.theme)+'」を、じっくり話しましょう</b><span class="note" style="color:var(--fg)">ここから先は有料です。ログインとカード登録のあと、この続きから話せます。</span>'+
         '<div class="row"><button type="button" class="btn pri sm">Googleでログイン</button><button type="button" class="btn sm">メールアドレスで登録</button></div><span class="note">ログインのあと、料金と条件を確認してカードを登録します（料金は未確定）。</span>'+
         '<button type="button" class="btn sm'+(b?' warm':'')+'" data-stage="free" style="align-self:flex-start">登録が済んだとして続きを見る</button></div>':'<p class="note">テーマを選ぶと、続けるための案内が出ます。</p>');
-    if(s==='free') return '<div class="banner">テーマ：'+esc(st.theme||'転職するか、とどまるか')+'</div>'+
+    if(s==='free') return '<div class="banner">テーマ：'+esc(st.theme||'転職するか、留まるか')+'</div>'+
       t('では、今の職場で一番つらいと感じるのは、どんなときですか。')+
-      u('がんばっても、何も言われないときです。',true)+
+      u('頑張っても、何も言われないときです。',true)+
       t('それはつらいですね。人は認められると力が出るものです。転職を考える前に、上司と一度だけ話してみるのはどうでしょう。')+
       u('話す勇気が出るか、不安です。')+
       t('では、伝えることを一つだけ決めておきましょう。「今の仕事で大事にしていること」を一言で書いてみてください。');
-    if(s==='end') return '<div class="panel summary"><h3>きょうの要約</h3><ul class="dots"><li>今の職場で一番つらいのは「評価されない」こと</li><li>転職先の条件を3つに絞ってみる</li><li>決める前に、今の上司と一度話す</li></ul>'+
-      '<span class="k">先生からの「次に試す習慣」</span><p class="habitline">朝、今日やることを1つだけ書く</p><span class="note">あすから1週間、毎朝9時に先生からおたよりが1通届きます。</span>'+
+    if(s==='end') return '<div class="panel summary"><h3>今日の要約</h3><ul class="dots"><li>今の職場で一番つらいのは「評価されない」こと</li><li>転職先の条件を3つに絞ってみる</li><li>決める前に、今の上司と一度話す</li></ul>'+
+      '<span class="k">先生からの「次に試す習慣」</span><p class="habitline">朝、今日やることを1つだけ書く</p><span class="note">明日から1週間、毎朝9時に先生からお便りが1通届きます。</span>'+
       '<div class="row"><button type="button" class="btn pri sm">PDFをダウンロード</button><button type="button" class="btn sm">文字起こしをコピー</button></div></div>'+
-      '<form class="panel" id="revForm"><h3>きょうの感想をひとこと</h3><label class="f" for="revText">先生の言葉で響いたこと、気づいたこと<textarea id="revText" placeholder="例：「人は認められると力が出る」という言葉に救われました。">'+esc(st.review)+'</textarea></label>'+
-      '<label class="sw"><input type="checkbox" checked> 「みんなの一言」にのせてもよい（名前は出ません）</label>'+
+      '<form class="panel" id="revForm"><h3>今日の感想を一言</h3><label class="f" for="revText">先生の言葉で響いたこと、気づいたこと<textarea id="revText" placeholder="例：「人は認められると力が出る」という言葉に救われました。">'+esc(st.review)+'</textarea></label>'+
+      '<label class="sw"><input type="checkbox" checked> 「みんなの一言」に載せてもよい（名前は出ません）</label>'+
       '<div class="row"><button type="submit" class="btn pri sm">感想を送る</button><button type="button" class="btn sm" data-tab="member">マイページへ</button></div>'+
       (st.reviewed?'<p class="flash">ありがとうございました。AIの確認のあと「みんなの一言」にのります（サンプル）</p>':'')+'</form>';
     return '';
@@ -686,9 +686,9 @@ footer{font-size:12px;color:var(--ink-soft)}
   };
   /* 地図上で5秒止まると出る豆知識。GRIDは地図を125×70のマス目に分け、どの国・海かを1文字で表したもの */
   var TRIVIA=[
-    ['日本','日本には100をこえる活火山があり、そのおかげで温泉がたくさんあります。'],
-    ['中国','万里の長城は、すべてつなぐと2万kmをこえるとも言われています。'],
-    ['インド','インドでは、20をこえる言葉が公用語として認められています。'],
+    ['日本','日本には100を超える活火山があり、そのおかげで温泉がたくさんあります。'],
+    ['中国','万里の長城は、すべてつなぐと2万kmを超えるとも言われています。'],
+    ['インド','インドでは、20を超える言葉が公用語として認められています。'],
     ['オーストラリア','グレートバリアリーフは、宇宙からも見えるほど大きなサンゴ礁です。'],
     ['ニュージーランド','ニュージーランドでは、人よりも羊のほうがずっと多く暮らしています。'],
     ['アメリカ','ゴールデンゲートブリッジの色は「インターナショナル・オレンジ」という名前です。'],
@@ -696,25 +696,25 @@ footer{font-size:12px;color:var(--ink-soft)}
     ['ブラジル','アマゾン川は、流れる水の量が世界一の川です。'],
     ['メキシコ','チョコレートのもとになるカカオは、メキシコのあたりで昔から飲まれていました。'],
     ['イギリス','「ビッグ・ベン」は、時計塔の中にある大きな鐘の名前です。'],
-    ['フランス','フランスは、世界で一番多くの旅行者がおとずれる国です。'],
+    ['フランス','フランスは、世界で一番多くの旅行者が訪れる国です。'],
     ['イタリア','フィレンツェは、ダ・ヴィンチやミケランジェロが活躍したルネサンスの町です。'],
     ['エジプト','アレクサンドリアには昔、世界中の本を集めた大きな図書館がありました。'],
     ['ロシア','ロシアは世界一広い国で、国の中に11もの時間帯があります。'],
     ['ケニア','ケニアのサバンナでは、たくさんのヌーが川をわたる大移動が見られます。'],
     ['ペルー','マチュピチュは、標高2,400mほどの山の上にある「空中都市」です。'],
     ['太平洋','太平洋は、地球のすべての陸地を合わせたよりも広い海です。'],
-    ['大西洋','大西洋の海の底には、南北にのびる長い山脈がかくれています。'],
+    ['大西洋','大西洋の海の底には、南北にのびる長い山脈が隠れています。'],
     ['インド洋','インド洋のモルディブは、島の平均の高さがおよそ1.5mしかない国です。'],
-    ['北極海','北極海のまわりでは、夏になると一日中太陽がしずまない日があります。']
+    ['北極海','北極海のまわりでは、夏になると一日中太陽が沈まない日があります。']
   ];
   var GRID='TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGGGGGGT------------TTTTTTTTTTTTTTTTTTTTTTTTTTTNTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGGGGGGG-------------TTTTTTTTTTTTTTTTGGGTT-------------TTTTTTTT-TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTGGGTT-------------TTTTTTTT-TTTTTTTTTTTT----------TTTTTTTTTTTTTTTTTTTTNTTTTTTTNNNNNNTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTTTTTTGGTTTTTT----------TTTTTTTTTTTTTTTTTTT---------TTTTTTTTTTTTTTTTTTTTNTTTTNNNNNNNNNNNNNNNNTTTNNNTTTTTTTTTTTTTTTTTTTTTTTGTGGGTTGGGGGGGTTTTT---------TTTTTTTTTTTTTTTTTT-------TTTTTTTTTTTT---NNTTTTTTTNTNTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNTTTTFFFFFFFGGGGGGGTGTTTTGGTGTGGTTTTT-------TTTTTTTTTTTT-TTT-----TTT---TTTTTTTT-----NTTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNTFFFFFFFFGGGGGGGGGGGGGGGTTTTGTGTTT-----TTT---TTTTTTTTRR---RRRRRRRRRRRRRR-------NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNQQQFQQFFFFFFGGGGGGGGGGGGGGGRGRRRGGRRRR---RRRRRRRRRRRRRRRRR-RRRRRRRRRRRRRRR---R---NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNQQNNQQQQQQQFFFFFQFGGGGGGGGGGGGGGRRRRRGGGRRRRRRR-RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR-R-RQQ-NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNQQQQQNNQQQQQQQQQQQQFQQQQQFGGGGGGGGGGGGGRRRRGGGGGRRRRRRRRRRRRRRRRRJRRRRRRRRRRRRRRJRRRR-RR--NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNQQQQQQNNQQQQQQQQQQQFQQQQQQQQFGGGGGGGGGGGGGRRRGGGGGRRRRRRRRRRRRRRRRRJRRRRRRRRRRR-JJR---------NNNNNNNNN-----NNNNNNNNNNNNNNBNNNNNNQQQQNQQQQQQQQQQQQQQQQQQQQQQGGGGGGGGGGGGGGGRGGGGGGGRRRRRRRRRRRRRRR-RRRRRRRRRRRJJK----------NNNNN-----------NNNN--NNNNNBBBNNNNNQQQQQQQQQQQQQQQQQQQQQQQQQQQQGGGGGGGGGGGGGGGGGGGGGGRRRRRRRRRRRRRRRRRRRRRRRRRRRKKKK----------NN-------------B---------BBBBBNNNNQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFGGGGGGGGGRRGGRRRRRRRRRRRRRRRRRRRRRRRRKKKLL-----QQQNNNNQ----------BB---------BBBBBNNQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFGGGGGFGRRRRRRRRRRRRRRRRRRRRRRRR-RKKKRLR----QQQQNNNQ----------BBBBB-----BBBBBBBNQQAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFFGFFFRRRRRRRRRRRRRRRRRRRRRRRRR----RRRRLR------Q---QQ--------BBBBBBBBBBBBBBBB-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRRRRRRRRRR---RRRRRRR-Q-------QQ-------BBBBBBBBBBBBBBBQQ-QQQQAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRRRRRRRRRR-RR---RRRQQQ--Q-------------BBBBBBBBBBBBBBBBQQ-QQAAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRRRRRRRRR------RRRRQQQQQ-------------CCBBBBBBBBBBBBBBBQQQAAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRRRRRRRR---------R--QQQQ-------------CCBBBBBBBBBBBBBBBQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIFIFFFFFFFFFRRRRRRRRRRRRRRRRRRRRRRRR------------MMM-----Q--------CC-BBBBBBBBBBBBBBQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIIIFFFRRRRFRRRRRRRRRRRRRRRRRRRRRR--------------MMM-----QQ-----CCCCCC--CC-BBBBBBBQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIIIIFRRRRRFRRRRRRRRRRRRRRRRRRRR--------------MMMMS-----S-SSS--CCCCCC-C-BBBBBBBB-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIIIRRRRRRRRRRRRRRRRRRRRRRRRR---------------MMMMS--------SSSCCCCCCC-C--B-BBBSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIIRRRRRR-RRRRRRRRRRRRRRRRRR-------------------S-------SSSSSCCCCCSS-----SBSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQFQQQQQQQQQQQQQQQQQIIIIRRIRRRR-RRRRRRRRRRRRRRRR--------------------S-----SSSSSSCCCCSSSS----SSSSS-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQIIII-RRRRRRRRRRRRRRRRRRRR---------------------S---SSSSSSSSCCCSSSSSS----SSSS-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRI---RRRRRRRRRRRRRRRRRR-----------------------SSSSSSSSSSSCSSSSSSS----SSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRRRR-RRRRRRRRRRRRRRRRRRR---------------------S--SSSSSSSSSCSSSSSSSSS-SSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRRRR-RRR---R-RRRRRRRRRRR-----------------------SSSSSSSSSSC-SSSSSS-SSSSSSSQ-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRRRRR-R-------RRRRRRRRRRR----RR----------------SSSSSSSSSSSSSSSSSSSSSSSS-SQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ---------RRRRRRRRRRRRRRRR----------OO--SSSSSSSSSSSSSSSSSS-S-SSS--SQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ----HH--KRRRRRRRRRRRRRRR----------OO-SSSSSSSSSSSSSSSSSSSS-SSS---SQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ---H-HHHHHHRRRRRRRRRRRRRR---------OOOSSSSSSSSSSSSSSSSSSSSSS-SS---S-QQQ-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ--P-HHHHHHHHHRRRRRRRRRRRRRR----------OSSSSSSSSSSSSSSSSSSSSSS--SSS-S-Q-QQ---QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-PPPHHHHHHHHHHHHRRRRRRRRRRR----------SSSSSSSSSSSSSSSSSSSSSSSS-SSSSSQQQQQQQ----QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQPPPHHHHHHHHHHHHHHRRRRRRRRRRR---------SSSSSSSSSSSSSSSSSSSSSSSSSSS-SSQQQQQQ--Q-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQPPHHHHHHHHHHHHHHRRRRRRRRRRR----------SSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQPPPH-HHHHHHHHHHRRRRRRRRRRRR----------SSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQDDQQDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQPPP--HHHHHHHHHRRRRRRRRRRRRR----------SS--SSSSSSSSSSSSSSSSSSSSSSSSSQQDDDDQQDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQPP---HHHHHHHHRRRRRRRRRRRRR---------SSS--SSSSSSSSSSSSSSSSSSSSSSSSSQDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQP----HHHHHHHRRRRRRRRRRRRRR-------SSSS-SSSSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----HHHHHHRRRRRRRRRRRRRRR--------SSS-SSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----HHHHHRRRRRRRRRRRRRRRRR-------SSS-SSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----HHHRRRRRRRRRRRRRRRRRRR------SSSSSSSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ------HHRRRRRRRRRRRRRRRRRRRRR-----SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----HHRRRRRRRRRRRRRRRRRRRRRRR----SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDDDDDDDDDDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ------HRRRRRRRRRRRRRRRRRRRRRRRR--SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDQQQQQQQDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ------RRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQDDDDQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----RRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQDQQQQQQQQQEQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ-----RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQDQQQQQQQQEEQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ---RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQEQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ--RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQEEQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ---RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ---RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ--RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ--RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQRRRRRRRRRRRRRRRRRRRRRQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ', GC=125, GR=70;
   function badge(k){if(k==='report')return C.filter(function(c){return c.status==='unreported';}).length;return 0;}
-  /* 開くたびに変わる、先生のひとこと（時間帯ごと） */
+  /* 開くたびに変わる、先生の一言（時間帯ごと） */
   var BANDS={
-    morning:{name:'朝',act:'きょうのことを話す',msgs:['おはようございます。きょうは、どんな一日にしたいですか。','おはようございます。深呼吸をひとつ。きょうも、あなたらしくいきましょう。','よく来ましたね。朝の光は、新しい自分にしてくれますよ。']},
-    day:{name:'昼',act:'少しひと休み',msgs:['こんにちは。がんばっている自分を、少しほめてあげましょう。','こんにちは。お昼ごはんは食べましたか。午後もゆっくりいきましょう。','うまくいかない日も、ちゃんと前に進んでいますよ。']},
-    evening:{name:'夕方',act:'きょうをふりかえる',msgs:['おつかれさまでした。きょうできたことを、ひとつ思い出してみましょう。','おかえりなさい。きょうも、よくがんばりましたね。']},
-    night:{name:'夜',act:'少し話す',msgs:['こんばんは。夜はつい考えこんでしまうもの。少しお話ししましょうか。','こんばんは。きょうの心のつかれは、ここに置いていってくださいね。','ゆっくり休むことも、大事な学びのひとつですよ。']}
+    morning:{name:'朝',act:'今日のことを話す',msgs:['おはようございます。今日は、どんな一日にしたいですか。','おはようございます。深呼吸を一つ。今日も、あなたらしくいきましょう。','よく来ましたね。朝の光は、新しい自分にしてくれますよ。']},
+    day:{name:'昼',act:'少し一休み',msgs:['こんにちは。頑張っている自分を、少し褒めてあげましょう。','こんにちは。お昼ごはんは食べましたか。午後もゆっくりいきましょう。','うまくいかない日も、ちゃんと前に進んでいますよ。']},
+    evening:{name:'夕方',act:'今日を振り返る',msgs:['お疲れさまでした。今日できたことを、一つ思い出してみましょう。','おかえりなさい。今日も、よく頑張りましたね。']},
+    night:{name:'夜',act:'少し話す',msgs:['こんばんは。夜はつい考え込んでしまうもの。少しお話ししましょうか。','こんばんは。今日の心の疲れは、ここに置いていってくださいね。','ゆっくり休むことも、大事な学びの一つですよ。']}
   };
   function nowBand(){var h=new Date().getHours();return h>=5&&h<11?'morning':h<16?'day':h<20?'evening':'night';}
   function pickComment(band){var m=BANDS[band].msgs,c;do{c=m[Math.floor(Math.random()*m.length)];}while(m.length>1&&c===st.cmt);st.cmt=c;st.cmtBand=band;}
@@ -723,9 +723,9 @@ footer{font-size:12px;color:var(--ink-soft)}
   var reduceMotion=false;try{reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
   function dolphinHtml(){
     if(!st.dolphin||st.dolphinDone||reduceMotion)return '';
-    return '<button type="button" class="dolphin" id="dolphin" aria-label="イルカにえさをあげる"><span class="dbody">'+DOLPHIN+'</span><span class="splash" aria-hidden="true"></span></button>';
+    return '<button type="button" class="dolphin" id="dolphin" aria-label="イルカに餌をあげる"><span class="dbody">'+DOLPHIN+'</span><span class="splash" aria-hidden="true"></span></button>';
   }
-  var FEED_MSG=['イルカが会いに来てくれましたね。きょうは、いいことがありそうです。','イルカも、うれしそうですね。','もう一匹？ よく食べる子ですね。','あなたのやさしさ、ちゃんと伝わっていますよ。'];
+  var FEED_MSG=['イルカが会いに来てくれましたね。今日は、いいことがありそうです。','イルカも、うれしそうですね。','もう一匹？ よく食べる子ですね。','あなたの優しさ、ちゃんと伝わっていますよ。'];
   function feedDolphin(el){
     var f=document.createElement('span');f.className='fish drop';f.innerHTML=FISH;el.appendChild(f);
     f.addEventListener('animationend',function(){f.remove();});
@@ -768,12 +768,12 @@ footer{font-size:12px;color:var(--ink-soft)}
     var compass='<svg class="compass" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36" fill="rgba(251,248,238,.85)" stroke="#FFFFFF" stroke-width="2"/><path d="M40 8 L47 40 L40 72 L33 40 Z" fill="#0E7FAA"/><path d="M40 8 L47 40 L33 40 Z" fill="#EE7A62"/><path d="M8 40 L40 34 L72 40 L40 46 Z" fill="#7FA35A" opacity=".8"/><text x="40" y="22" text-anchor="middle" font-size="9" fill="#24434C" font-family="sans-serif">N</text></svg>';
     var band=st.band||nowBand(); if(!st.cmt||st.cmtBand!==band){pickComment(band);st.dolphin=Math.random()<0.34;st.dolphinDone=false;st.feeds=0;}
     var bc=BANDS[band];
-    var comment='<aside class="tcomment" aria-label="徳尾先生からのひとこと"><div class="tc-face" aria-hidden="true">'+PERSON+'</div>'+
+    var comment='<aside class="tcomment" aria-label="徳尾先生からの一言"><div class="tc-face" aria-hidden="true">'+PERSON+'</div>'+
       '<div class="tc-bubble"><span class="tc-who">'+rb([['徳尾','とくお'],' ',['先生','せんせい']])+'</span>'+
       '<p>'+esc(st.cmt)+'</p>'+
       '<div class="tc-acts"><button type="button" data-avatar="new">'+esc(bc.act)+'</button></div></div></aside>';
-    return '<div class="world"><div class="worldhead"><b>やまださんの世界地図</b><span class="note">場所をえらぶと、それぞれのページがひらきます。</span></div>'+
-      '<div class="mapwrap"><div class="mapscroll" id="mapScroll"><div class="map">'+svg+pins+dolphinHtml()+'<div class="boat" id="boat" aria-hidden="true">'+BOAT+'</div>'+compass+'<div class="tip" id="mapTip" role="status" hidden></div></div></div>'+comment+'<div class="panhint" aria-hidden="true">ゆびで地図を動かせます</div></div>'+
+    return '<div class="world"><div class="worldhead"><b>山田さんの世界地図</b><span class="note">場所を選ぶと、それぞれのページが開きます。</span></div>'+
+      '<div class="mapwrap"><div class="mapscroll" id="mapScroll"><div class="map">'+svg+pins+dolphinHtml()+'<div class="boat" id="boat" aria-hidden="true">'+BOAT+'</div>'+compass+'<div class="tip" id="mapTip" role="status" hidden></div></div></div>'+comment+'<div class="panhint" aria-hidden="true">指で地図を動かせます</div></div>'+
       '<nav class="toc" aria-label="地図の場所"><span class="tocl">場所の一覧</span>'+PLACES.map(function(p){return '<button type="button" data-fly="'+p[0]+'"><span class="tic" aria-hidden="true">'+IC[p[0]]+'</span>'+esc(p[1].split(/[・の]/)[0])+'<small>'+esc(p[2])+'</small></button>';}).join('')+'</nav></div>';
   }
   function placeView(sec){
@@ -794,7 +794,7 @@ footer{font-size:12px;color:var(--ink-soft)}
         '<p class="cap">先生のお写真・アバター映像が入ります</p></div>'+
       '<div class="talk"><div class="steps" role="group" aria-label="相談の段階">'+steps+'</div>'+
         '<div class="log">'+stageLog()+'</div>'+
-        (showInput?'<div class="inputbar"><button type="button" class="mic" aria-label="声で話す">'+MIC+'</button><input type="text" id="msgIn" placeholder="'+(b?'ここに かいても はなせます':'文字で入力することもできます')+'" aria-label="メッセージ"><button type="button" class="btn pri sm">送る</button></div>'+
+        (showInput?'<div class="inputbar"><button type="button" class="mic" aria-label="声で話す">'+MIC+'</button><input type="text" id="msgIn" placeholder="'+(b?'ここに書いても話せます':'文字で入力することもできます')+'" aria-label="メッセージ"><button type="button" class="btn pri sm">送る</button></div>'+
           (st.stage==='free'?'<div class="endrow"><button type="button" class="btn sm" data-stage="end">会話を終えて要約する</button></div>':''):'')+
       '</div></div>';
   }
