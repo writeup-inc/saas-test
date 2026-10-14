@@ -772,7 +772,7 @@ footer{font-size:12px;color:var(--ink-soft)}
       '<div class="tc-bubble"><span class="tc-who">'+rb([['徳尾','とくお'],' ',['先生','せんせい']])+'</span>'+
       '<p>'+esc(st.cmt)+'</p>'+
       '<div class="tc-acts"><button type="button" data-avatar="new">'+esc(bc.act)+'</button></div></div></aside>';
-    return '<div class="world"><div class="worldhead"><b>やまださんの世界地図</b><span class="note">場所をえらぶと、それぞれのページがひらきます。</span><span class="bandchips" role="group" aria-label="時間帯をためす">'+['morning','day','evening','night'].map(function(k){return '<button type="button" data-band="'+k+'" aria-pressed="'+(band===k)+'">'+BANDS[k].name+'</button>';}).join('')+'</span><button type="button" class="callbtn" data-calldolphin="1">イルカを呼ぶ（確認用）</button><label class="sw" style="font-size:13px"><input type="checkbox" id="triviaT"'+(st.trivia?' checked':'')+'> '+(touchMode()?'長押しで豆知識':'止まると豆知識')+'</label></div>'+
+    return '<div class="world"><div class="worldhead"><b>やまださんの世界地図</b><span class="note">場所をえらぶと、それぞれのページがひらきます。</span></div>'+
       '<div class="mapwrap"><div class="mapscroll" id="mapScroll"><div class="map">'+svg+pins+dolphinHtml()+'<div class="boat" id="boat" aria-hidden="true">'+BOAT+'</div>'+compass+'<div class="tip" id="mapTip" role="status" hidden></div></div></div>'+comment+'<div class="panhint" aria-hidden="true">ゆびで地図を動かせます</div></div>'+
       '<nav class="toc" aria-label="地図の場所"><span class="tocl">場所の一覧</span>'+PLACES.map(function(p){return '<button type="button" data-fly="'+p[0]+'"><span class="tic" aria-hidden="true">'+IC[p[0]]+'</span>'+esc(p[1].split(/[・の]/)[0])+'<small>'+esc(p[2])+'</small></button>';}).join('')+'</nav></div>';
   }
