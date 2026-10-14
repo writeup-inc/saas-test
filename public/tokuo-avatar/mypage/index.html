@@ -386,6 +386,52 @@ footer{font-size:12px;color:var(--ink-soft)}
 .ebubble p{margin:0;font-family:var(--f-kyo);font-size:16px;line-height:1.6;position:relative}
 .ebubble .k{position:relative}
 @container mock (max-width:520px){.eface{width:76px;height:76px}.eface span{display:none}.ebubble p{font-size:15px}}
+
+/* 調整9：A（スタンダード）とアバター画面のスマホ表示を整える */
+@media (max-width:600px){
+  .seg{border-radius:14px}
+  .seg button{font-size:13px;padding:6px 12px;min-height:36px}
+  .shellhead h1{font-size:22px}
+  .shellhead p{font-size:13px}
+}
+@container mock (max-width:760px){
+  .side{padding:6px 8px;gap:2px;scrollbar-width:none}
+  .side::-webkit-scrollbar{display:none}
+  .side button,.vb .side button{font-size:14px;padding:6px 12px;min-height:40px;margin:0}
+  .side ruby rt{display:none}
+  .main{padding:14px 12px 20px;gap:14px}
+  .panel{padding:14px}
+  .h{font-size:19px}
+  .wave{padding:16px 16px 36px}
+  .wave b{font-size:18px}
+  .wave span{font-size:12.5px}
+  .wave .sun{width:64px;height:64px;right:10px;top:6px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cards .panel{padding:12px;gap:6px}
+  .v{font-size:19px}
+  .entryhead{gap:10px}
+  .eface{width:64px;height:64px;border-width:3px}
+  .eface span{display:none}
+  .ebubble{padding:8px 12px}
+  .ebubble p{font-size:14px}
+  .entry .moods .btn.mood{min-height:56px;padding:10px 12px;font-size:15px}
+  .btn.mood .mi{width:36px;height:36px}
+  .tabs button{padding:12px 16px;font-size:14px}
+}
+@container mock (max-width:900px){
+  .stage{flex-direction:row;justify-content:flex-start;gap:14px;padding:14px 16px;min-height:0;border-right:0;border-bottom:1px solid var(--frame-line);text-align:left;flex-wrap:wrap}
+  .face{width:84px;height:84px}
+  .vb .face{border-width:4px}
+  .stage .name{font-size:16px}
+  .stage .cap{display:none}
+  .vb .stage .sun{width:80px;height:80px;right:6%;top:4%}
+  .vb .stage svg.sea{height:44px}
+  .avatar{min-height:0}
+  .log{max-height:none;min-height:320px}
+  .steps{padding:10px 12px}
+  .inputbar{padding:10px 12px}
+  .mic{width:46px;height:46px}
+}
 @media (prefers-reduced-motion:no-preference){
   .center .halo{animation:glow 4s ease-in-out infinite alternate}
   .routes path{animation:sail 30s linear infinite}
