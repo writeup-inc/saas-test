@@ -904,6 +904,21 @@ details.panel summary{cursor:pointer;font-family:var(--disp);font-weight:600}
 .walker.bike .fig{width:56px;height:49px}
 .tw .tface{width:32px;height:32px}
 .tw .fig.tb{width:53px;height:40px;margin-top:-8px}
+
+/* バランス調整：友だち・自転車は小さめ、先生と分身は少しだけ大きめ */
+.friend{width:55px;height:43px}
+.friend::after{width:8px;height:8px;right:-3px;top:-3px}
+.walker.bike .fig{width:40px;height:35px}
+.tw .tface{width:28px;height:28px;border:1.5px solid #24434C;box-shadow:0 0 0 2px #FFFFFF,0 2px 5px rgba(36,67,76,.25)}
+.tw .fig.tb{width:46px;height:35px;margin-top:-7px}
+.tw .tpill{font-size:10.5px;padding:1px 8px;margin-bottom:6px}
+.tw:hover .tface,.tw:focus-visible .tface{box-shadow:0 0 0 2px var(--hibiscus),0 2px 5px rgba(36,67,76,.25)}
+.mecur .mefig{left:-20px;width:40px;height:56px}
+
+.tw .tface{width:30px;height:30px;border:1.3px solid #24434C;box-shadow:0 2px 4px rgba(36,67,76,.22);background:#F3D9C0}
+.tw .tface img{transform:scale(1.35);object-position:center 38%}
+.tw:hover .tface,.tw:focus-visible .tface{box-shadow:0 0 0 2.5px var(--hibiscus)}
+.tw .fig.tb{margin-top:-6px}
 </style>
 
 <div class="wrap">
