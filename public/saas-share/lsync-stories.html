@@ -600,11 +600,15 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .flow5 li{counter-increment:f;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 14px;min-width:0;position:relative}
 .flow5 li::before{content:counter(f);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;font-family:var(--en);font-weight:800;font-size:12px;margin-bottom:8px}
 .flow5 b{display:block;font-size:15px;line-height:1.5}
+.flow3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.flownote{margin-top:14px;font-size:13px;color:var(--sub);line-height:1.8;background:var(--bg);border-left:3px solid var(--g);padding:10px 14px;border-radius:0 8px 8px 0}
+.startbox{margin-top:34px}
+.startbox .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .flow5 span{display:block;font-size:12.5px;color:var(--sub);margin-top:4px;line-height:1.7}
 .flow-foot{margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .flow-foot p{font-size:15px;font-weight:700}
 .flow-foot b{font-family:var(--en);font-size:20px;color:var(--g);margin:0 4px}
-@media (max-width:860px){.flow5{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.flow5{grid-template-columns:1fr 1fr}.flow5.flow3{grid-template-columns:1fr}}
 @media (max-width:480px){.flow5{grid-template-columns:1fr}}
 .ctab-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center}
 .ctab-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -690,6 +694,17 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="en" style="margin-top:34px">HOW TO USE</div>
     <h3 class="t3">使い方は、大きく2つ</h3>
     <div class="types" id="types"></div>
+    <div class="startbox" id="start">
+      <div class="en">HOW TO START</div>
+      <h3 class="t3">Lシンクの始め方</h3>
+      <ol class="flow5 flow3">
+      <li><b>納品</b><span>公式LINEとLシンク（AI）をつないだ状態でお渡しします。すでにお持ちの公式LINEがあるかは、納品の前に確認します。</span></li>
+      <li><b>設定・構築</b><span>公式LINEで答えてほしいこと・参照してほしい情報を、Lシンクに覚えさせます。</span></li>
+      <li><b>実運用</b><span>運用しながら修正を重ねます。最初は身近な人や社内でテストして、完成度を高めていく方が多いです。</span></li>
+      </ol>
+      <p class="flownote">運用を始めてから、足りない情報を追加していくことで、Lシンクの回答の精度を上げていけます。</p>
+      <div class="acts"><a class="pill" id="start-consult" href="#" target="_blank" rel="noopener">Lシンク事務局に相談する</a><a class="pill ol" id="start-apply" href="#" target="_blank" rel="noopener">Lシンクを申し込む</a></div>
+    </div>
   </section>
   </div>
 
@@ -752,13 +767,12 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <section class="sec alt" id="why-flow"><div class="w">
     <div class="en">02-3 ／ HOW IT STARTS</div>
     <h2 class="t">導入の流れ</h2>
-    <ol class="flow5">
-      <li><b>申込</b><span>お申し込みフォームから</span></li>
-      <li><b>設計ミーティング</b><span>画面共有で、御社のLINEの中身を一緒に確認</span></li>
-      <li><b>構築</b><span>Lシンク事務局が組み立て</span></li>
-      <li><b>公開</b><span>お客様に案内を始める</span></li>
-      <li><b>毎週の勉強会で育てる</b><span>使いながら直す・足す</span></li>
+    <ol class="flow5 flow3">
+      <li><b>納品</b><span>公式LINEとLシンク（AI）をつないだ状態でお渡しします。すでにお持ちの公式LINEがあるかは、納品の前に確認します。</span></li>
+      <li><b>設定・構築</b><span>公式LINEで答えてほしいこと・参照してほしい情報を、Lシンクに覚えさせます。</span></li>
+      <li><b>実運用</b><span>運用しながら修正を重ねます。最初は身近な人や社内でテストして、完成度を高めていく方が多いです。</span></li>
     </ol>
+    <p class="flownote">運用を始めてから、足りない情報を追加していくことで、Lシンクの回答の精度を上げていけます。</p>
   </div></section>
 
   <section class="sec" id="why-claude"><div class="w">
@@ -1589,7 +1603,7 @@ function wireLinks(){
   set("bench-consult", CONFIG.consult); set("hd-consult", CONFIG.consult); set("hd-apply", CONFIG.apply);
   set("sup-seminar", CONFIG.aiLine); set("sup-ai", CONFIG.aiLine); set("sup-consult", CONFIG.consult);
   setSm("sm-link"); set("manual-link", CONFIG.manual); set("ai-link", CONFIG.aiLine); set("consult-link", CONFIG.consult);
-  set("gm-consult", CONFIG.consult); setSm("gm-sm");
+  set("gm-consult", CONFIG.consult); set("start-consult", CONFIG.consult); set("start-apply", CONFIG.apply); setSm("gm-sm");
   const an = document.getElementById("archive-note");
   if(CONFIG.archive) an.innerHTML = `これまでの勉強会の録画を、<a href="#" data-archive="1">アーカイブ一覧</a>で見られます。`;
   document.querySelectorAll("[data-archive]").forEach(el=>{ if(CONFIG.archive){ el.href = CONFIG.archive; el.target = "_blank"; el.rel = "noopener"; } else { el.classList.add("dis"); el.textContent += "（準備中）"; } });
