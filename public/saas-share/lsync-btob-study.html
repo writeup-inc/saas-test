@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+
+<title>Lシンク勉強会 11/19 投影資料（BtoBビジネス向け）</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: sticky agenda bar at the top, one long column of large-type cards for screen share.
+   The part being talked about lights up in the bar as the page scrolls. */
+:root{
+  --bg:#F3FAFD; --surface:#FFFFFF; --fg:#13303F; --muted:#5F7A89; --line:#D9EAF2;
+  --accent:#0EA5E9; --accent-fill:#FFE04D; --accent-soft:#E3F4FC; --accent-ink:#0369A1;
+  --warn:#F59E0B; --warn-soft:#FFF5D6;
+  --blue:#10B981; --blue-soft:#DDF8EC;
+  --dark:#0B3D6B; --dark-fg:#F3FAFD; --dark-muted:#B9DBF0;
+  --font:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1C26; --surface:#15283A; --fg:#EAF6FC; --muted:#9DB8C8; --line:#28415A;
+    --accent:#38BDF8; --accent-fill:#FFE04D; --accent-soft:#1B3A52; --accent-ink:#9ADCF8;
+    --warn:#FBBF24; --warn-soft:#3A3014;
+    --blue:#34D399; --blue-soft:#153D33;
+    --dark:#071F36; --dark-fg:#EAF6FC; --dark-muted:#B9DBF0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1C26; --surface:#15283A; --fg:#EAF6FC; --muted:#9DB8C8; --line:#28415A;
+  --accent:#38BDF8; --accent-fill:#FFE04D; --accent-soft:#1B3A52; --accent-ink:#9ADCF8;
+  --warn:#FBBF24; --warn-soft:#3A3014;
+  --blue:#34D399; --blue-soft:#153D33;
+  --dark:#071F36; --dark-fg:#EAF6FC; --dark-muted:#B9DBF0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:19px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,h4{margin:0;line-height:1.35;text-wrap:normal;font-weight:900}
+p{margin:0}
+
+/* sticky agenda bar */
+#nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);
+  margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0 calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+#nav .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#nav .brand{font-weight:900;font-size:15px;color:var(--muted);letter-spacing:.04em;margin-right:6px;white-space:nowrap}
+#nav a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:15px;font-weight:700;
+  padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+#nav a .n{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.04em}
+#nav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#nav a.on .n{color:#fff}
+#nav a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+main{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:96px;padding-top:40px}
+.part{display:flex;flex-direction:column;gap:28px;scroll-margin-top:90px}
+.head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.head .no{font-size:15px;font-weight:900;letter-spacing:.1em;color:var(--accent-ink);background:var(--accent-soft);padding:6px 14px;border-radius:999px}
+.head .t{font-size:16px;color:var(--muted);font-weight:700}
+.part h2{font-size:clamp(28px,3vw,40px);line-height:1.4}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:48em}
+
+/* cover */
+.cover{background:var(--dark);color:var(--dark-fg);border-radius:28px;padding:clamp(40px,6vw,80px) clamp(28px,5vw,72px);display:flex;flex-direction:column;gap:30px;position:relative;overflow:hidden}
+.cover{background:linear-gradient(135deg,#0C7ACB 0%,#0B5A9E 55%,#0B3D6B 100%)}
+.cover::after{content:"";position:absolute;right:-140px;bottom:-200px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7FE3FF,#22C1F0 60%,#0EA5E9);opacity:.9}
+.cover::before{content:"";position:absolute;right:200px;top:-170px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FFF3A3,#FFE04D 65%);opacity:.95}
+.cover .eyebrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:18px;font-weight:700;color:var(--dark-muted)}
+.cover .eyebrow b{background:var(--accent-fill);color:#1A2A00;padding:6px 14px;border-radius:999px;font-weight:900}
+.cover .theme{font-size:clamp(18px,1.8vw,22px);font-weight:700;color:var(--dark-muted)}
+.cover h1{font-size:clamp(36px,4.6vw,64px);line-height:1.2;position:relative;z-index:1}
+.cover h1 em{font-style:normal;color:var(--accent-fill)}
+.cover .eyebrow b{background:var(--accent-fill)!important;color:#1A2A00!important}
+.cover .sub{font-size:clamp(18px,1.7vw,22px);font-weight:700;max-width:30em;position:relative;z-index:1}
+.cover .meta{display:flex;gap:28px;flex-wrap:wrap;font-size:18px;color:var(--dark-muted);font-weight:700;position:relative;z-index:1}
+
+/* goal */
+.goal{background:var(--accent-soft);border:2px solid var(--accent);border-radius:22px;padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;gap:12px}
+.goal h3{font-size:clamp(26px,2.6vw,36px);line-height:1.4}
+.goal h3 em{font-style:normal;color:var(--accent-ink);background:linear-gradient(transparent 58%,rgba(255,224,77,.75) 58%)}
+.goal p{font-size:clamp(16px,1.4vw,18px);color:var(--muted)}
+.goal-steps{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:6px}
+@media (max-width:860px){.goal-steps{grid-template-columns:1fr}}
+.goal-steps div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.goal-steps .k{font-size:13px;font-weight:900;color:var(--accent);letter-spacing:.08em}
+.goal-steps b{font-size:clamp(16px,1.4vw,18px)}
+.goal-steps span:last-child{font-size:14px;color:var(--muted)}
+
+/* generic card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.card h3{font-size:clamp(21px,1.9vw,25px)}
+.card .sub{font-size:clamp(16px,1.4vw,18px);color:var(--muted)}
+.card.hi{background:var(--accent-soft);border-color:var(--accent)}
+.eyebrow{font-size:14px;font-weight:900;letter-spacing:.12em;color:var(--accent-ink);text-transform:uppercase}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid-2{display:grid;gap:20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px){.grid-2{grid-template-columns:1fr}}
+
+/* agenda list */
+.agenda{display:flex;flex-direction:column;gap:12px}
+.agenda .row{display:flex;align-items:center;gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 24px}
+.agenda .row .k{font-size:24px;font-weight:900;color:var(--accent);min-width:1.4em;font-variant-numeric:tabular-nums}
+.agenda .row .h{font-size:clamp(18px,1.7vw,22px);font-weight:900}
+.agenda .row .d{font-size:17px;color:var(--muted);margin-left:auto;text-align:right}
+@media (max-width:700px){.agenda .row{flex-wrap:wrap}.agenda .row .d{margin-left:0;text-align:left;width:100%}}
+
+/* checklist */
+.checks{display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
+.checks li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,1.5vw,19px);font-weight:700;line-height:1.6}
+.checks li::before{content:"✓";flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-fill);color:#1A2A00;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;margin-top:4px}
+
+/* note box */
+.note{display:flex;gap:18px;align-items:flex-start;background:var(--warn-soft);border-radius:18px;padding:20px 24px;font-size:clamp(17px,1.5vw,20px);font-weight:700}
+.note .ic{flex:none;width:40px;height:40px;border-radius:50%;background:var(--warn);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:22px}
+.note span{color:var(--muted);font-weight:500;display:block;font-size:.9em;margin-top:4px}
+
+/* share prompt */
+.share{display:flex;gap:18px;align-items:center;background:var(--blue-soft);border:2px dashed var(--blue);border-radius:18px;padding:20px 26px;font-size:clamp(17px,1.5vw,20px);font-weight:900;color:var(--blue)}
+.share .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:22px}
+.share small{display:block;font-size:.72em;font-weight:500;color:var(--muted);margin-top:2px}
+
+/* store profile */
+.profile{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.profile div{background:var(--accent-soft);border-radius:14px;padding:14px 18px}
+.profile .k{font-size:13px;font-weight:900;letter-spacing:.08em;color:var(--accent-ink)}
+.profile .v{font-size:17px;font-weight:700}
+
+/* phone mock */
+.phone{background:#E4ECF4;color:#1C2823;border:1px solid #C9D6E2;border-radius:28px;padding:18px;display:flex;flex-direction:column;gap:12px;max-width:380px;width:100%;margin:0 auto;font-size:16px}
+.phone .ph-top{text-align:center;font-weight:900;font-size:15px;color:#1C2823;background:#fff;margin:-18px -18px 0;padding:14px 0 12px;border-bottom:1px solid #C9D6E2;border-radius:28px 28px 0 0}
+.phone .msg{padding:10px 14px;border-radius:16px;max-width:88%;line-height:1.55;white-space:pre-line}
+.phone .bot{background:#fff;color:#1C2823;align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.phone .me{background:#8DE05A;color:#1A2A00;align-self:flex-end;border-bottom-right-radius:4px;font-weight:700}
+.phone .vid{align-self:flex-start;width:88%;aspect-ratio:16/9;border-radius:14px;background:#fff;border:1px solid #C9D6E2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;color:#66706A;font-size:13px;font-weight:700;position:relative}
+.phone .vid::before{content:"▶";width:44px;height:44px;border-radius:50%;background:var(--accent-fill);color:#1A2A00;display:flex;align-items:center;justify-content:center;font-size:18px}
+.phone .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px -18px -18px;padding:10px 10px 12px;background:#fff;border-top:1px solid #C9D6E2;border-radius:0 0 28px 28px}
+.phone .menu div{background:#F3F6F2;color:#1C2823;border-radius:10px;padding:12px 6px;text-align:center;font-size:13px;font-weight:900;border:1px solid #D6DDD7}
+.phone .menu div.on{background:#06C755;color:#1A2A00;border-color:#06C755}
+.phone .ph-cap{font-size:12px;color:#66706A;text-align:center;padding-bottom:4px}
+
+/* interactive mock */
+.mock-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.reset{font:inherit;font-weight:900;font-size:15px;color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--accent);border-radius:999px;padding:8px 18px;cursor:pointer}
+.reset:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mock{display:grid;gap:28px;grid-template-columns:minmax(300px,430px) 1fr;align-items:start}
+@media (max-width:860px){.mock{grid-template-columns:1fr}}
+.phone.big{max-width:430px;margin:0;font-size:16px}
+.phone .chat{display:flex;flex-direction:column;gap:10px;height:560px;overflow-y:auto;padding:4px 2px;scroll-behavior:smooth}
+.phone .chat .hint{color:#66706A;font-size:14px;text-align:center;margin:auto;font-weight:700}
+.phone .menu button{font:inherit;background:#F3F6F2;color:#1C2823;border-radius:10px;padding:14px 6px;text-align:center;font-size:13px;font-weight:900;border:1px solid #D6DDD7;cursor:pointer}
+.phone .menu button:hover{background:#E2F3E8;border-color:#06C755}
+.phone .menu button.on{background:#06C755;color:#1A2A00;border-color:#06C755}
+.phone .menu button:focus-visible{outline:3px solid #06C755;outline-offset:2px}
+.phone .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.phone .chips button{font:inherit;font-size:13px;font-weight:900;background:#fff;color:#0A6B33;border:1.5px solid #06C755;border-radius:999px;padding:6px 12px;cursor:pointer}
+.phone .chips button:hover{background:#E2F3E8}
+.phone .chips button[disabled]{opacity:.45;cursor:default}
+.phone .link{display:inline-block;margin-top:6px;color:#0A6B33;font-weight:900;text-decoration:underline}
+.phone .cardmsg{align-self:flex-start;width:90%;background:#fff;color:#1C2823;border-radius:16px;overflow:hidden;font-size:14px;border:1px solid #C9D6E2}
+.phone .cardmsg .ch{background:#1C2823;color:#F3F6F2;padding:10px 14px;font-weight:900;font-size:13px;letter-spacing:.04em}
+.phone .cardmsg .cb{padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.phone .cardmsg .cb .row{display:flex;justify-content:space-between;gap:8px}
+.phone .cardmsg .cb .row b{font-weight:900}
+.phone .cardmsg .big{font-size:22px;font-weight:900;color:#0A6B33}
+.phone .cardmsg .fl{font-size:12px;color:#66706A;font-weight:700}
+.phone .cardmsg .in{border:1px solid #D6DDD7;border-radius:8px;padding:8px 10px;color:#66706A;font-size:13px}
+.phone .cardmsg .cta{font:inherit;background:var(--accent-fill);color:#1A2A00;border:0;border-radius:8px;padding:10px;font-weight:900;cursor:pointer;margin-top:4px}
+.phone .sys{align-self:center;background:rgba(28,40,35,.08);color:#4A5550;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;text-align:center}
+.phone .sys b{color:#0A6B33}
+.explain{display:flex;flex-direction:column;gap:12px;position:sticky;top:100px}
+.explain h3{font-size:22px}
+.exset{display:flex;flex-wrap:wrap;gap:8px}
+.exset span{font-size:14px;font-weight:900;background:var(--accent-soft);color:var(--accent-ink);padding:6px 12px;border-radius:999px}
+.exnote-unused{background:var(--warn-soft);border-radius:14px;padding:14px 18px;font-size:17px;font-weight:700}
+
+/* 動画の作り方 2択 */
+.opts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:8px}
+.opt b{font-size:clamp(19px,1.7vw,22px);font-weight:900;color:var(--accent-ink)}
+.opt p{font-size:clamp(15px,1.4vw,18px);line-height:1.75}
+.nb{white-space:nowrap}
+body{line-break:strict}
+
+/* 必須設定チェック */
+.must{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.must>div{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.must>div::before{content:"☐";flex:none;font-size:22px;color:var(--accent);line-height:1.2}
+.must>div>div{min-width:0}
+.must b{display:block;font-size:clamp(16px,1.4vw,18px)}
+.must span{font-size:14px;color:var(--muted);display:block}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+.sheet table{border-collapse:collapse;width:100%}
+.sheet th,.sheet td{border-bottom:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+.sheet th{background:var(--accent-soft);color:var(--accent-ink);font-size:13px;letter-spacing:.04em}
+.sheet td:first-child{font-weight:900;white-space:nowrap}
+.sheet-wrap{overflow-x:auto}
+
+/* 3-up static phones */
+.shots3{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.shots3 .phone{max-width:none;margin:0;font-size:15px}
+.phone .pick{display:inline-block;margin:6px 6px 0 0;font-size:13px;font-weight:900;background:#fff;color:#0A6B33;border:1.5px solid #06C755;border-radius:999px;padding:4px 10px}
+.phone .pick.on{background:#06C755;color:#1A2A00}
+.phone .cardmsg .cta{display:block;text-align:center}
+
+.phone .imgph{height:110px;background:#E8EDE9;color:#66706A;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.phone .chips{display:flex;flex-wrap:wrap;gap:6px}
+
+.phone .page{align-self:stretch;background:#fff;border:1px solid #C9D6E2;border-radius:12px;overflow:hidden;font-size:13px;color:#1C2823}
+.phone .pg-bar{background:#F3F6F2;border-bottom:1px solid #D6DDD7;padding:8px 12px;font-weight:900;font-size:12px;color:#66706A}
+.phone .pg-body{padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.phone .pg-body .fl{font-size:12px;color:#66706A;font-weight:700}
+.phone .pg-body .in{border:1px solid #D6DDD7;border-radius:8px;padding:8px 10px;color:#1C2823;font-size:13px}
+.phone .pg-body .cta{background:#06C755;color:#1A2A00;border-radius:8px;padding:10px;font-weight:900;text-align:center;margin-top:4px}
+.phone .pg-body .done{margin-top:8px;border-top:1px dashed #D6DDD7;padding-top:10px;text-align:center;font-weight:900;color:#0A6B33}
+
+/* playing video mock */
+.phone .vid.playing{background:#2A3630;border-color:#2A3630;color:#fff;position:relative;overflow:hidden;align-items:stretch;justify-content:flex-start;gap:0;padding:0}
+.phone .vid.playing::before{display:none}
+.phone .vid .scene{position:absolute;inset:0;background:linear-gradient(180deg,#5B7F6C 0%,#2E4A3B 70%,#1C2823 100%)}
+.phone .vid .person{position:absolute;left:50%;bottom:22%;transform:translateX(-50%);width:44%}
+.phone .vid .person .head{width:34%;aspect-ratio:1;border-radius:50%;background:#F2D7C3;margin:0 auto -4%}
+.phone .vid .person .body{width:100%;height:46px;border-radius:40% 40% 0 0;background:#E9EDE7}
+.phone .vid .caption{position:absolute;left:8px;right:8px;bottom:26px;text-align:center;font-size:12px;font-weight:900;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);background:rgba(0,0,0,.35);border-radius:6px;padding:3px 6px}
+.phone .vid .live{position:absolute;left:8px;top:8px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:900;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:3px 9px}
+.phone .vid .live .dot{width:8px;height:8px;border-radius:50%;background:#FF3B30;animation:blink 1s steps(2,start) infinite}
+.phone .vid .wave{position:absolute;right:10px;top:9px;display:flex;align-items:flex-end;gap:2px;height:14px}
+.phone .vid .wave i{width:3px;background:#06C755;border-radius:2px;animation:wave .9s ease-in-out infinite}
+.phone .vid .wave i:nth-child(1){height:40%;animation-delay:0s}.phone .vid .wave i:nth-child(2){height:90%;animation-delay:.15s}.phone .vid .wave i:nth-child(3){height:60%;animation-delay:.3s}.phone .vid .wave i:nth-child(4){height:100%;animation-delay:.45s}.phone .vid .wave i:nth-child(5){height:50%;animation-delay:.6s}
+.phone .vid .bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.25)}
+.phone .vid .bar .fill{height:100%;background:#06C755;width:24%;animation:progress 30s linear infinite}
+.phone .vid .time{position:absolute;right:8px;bottom:8px;font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.45);border-radius:4px;padding:1px 5px;font-variant-numeric:tabular-nums}
+@keyframes blink{50%{opacity:.2}}
+@keyframes wave{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+@keyframes progress{from{width:0}to{width:100%}}
+@media (prefers-reduced-motion:reduce){.phone .vid .wave i,.phone .vid .live .dot,.phone .vid .bar .fill{animation:none}}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.flow .st{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-weight:700;font-size:clamp(15px,1.3vw,17px)}
+.flow .st.hi{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.flow .st.me{background:var(--accent);border-color:var(--accent);color:#fff}
+.flow .ar{color:var(--muted);font-weight:900;font-size:22px}
+
+/* before / after */
+.ba{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.ba div{border-radius:16px;padding:16px 20px;font-size:clamp(15px,1.3vw,17px);font-weight:700;background:var(--bg);border:1px solid var(--line)}
+.ba div b{display:block;font-size:13px;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
+.ba .af{background:var(--accent-soft);border-color:var(--accent)}
+.ba .af b{color:var(--accent-ink)}
+
+/* feature cards */
+.feat{border-left:6px solid var(--accent-fill)}
+.feat .tag{display:inline-flex;align-self:flex-start;font-size:13px;font-weight:900;letter-spacing:.08em;background:var(--accent-soft);color:var(--accent-ink);padding:4px 12px;border-radius:999px}
+.feat ul{margin:0;padding-left:1.2em;font-size:clamp(15px,1.3vw,17px);display:flex;flex-direction:column;gap:6px}
+.feat .set{font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.feat .set b{color:var(--fg)}
+
+/* 店舗機能カード */
+.fn{gap:10px}
+.fn .ic{width:52px;height:52px;border-radius:14px;background:var(--accent-soft);display:inline-flex;align-items:center;justify-content:center;font-size:26px}
+.fn h3{font-size:clamp(19px,1.6vw,22px)}
+.fn p{font-size:clamp(15px,1.3vw,17px);color:var(--muted)}
+.fn .menu{font-size:13px;font-weight:900;color:var(--accent-ink);letter-spacing:.04em}
+
+/* 店舗管理メニュー（管理画面のサイドバー風） */
+.shop{display:flex;flex-direction:column;gap:24px}
+.shot{margin:0;position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;max-width:100%}
+.shot img{display:block;width:100%;height:auto}
+.shot .mark{position:absolute;left:0.4%;top:12%;width:14%;height:50%;border:4px solid #E53935;border-radius:10px;box-shadow:0 0 0 6px rgba(229,57,53,.18)}
+.shot .mark span{position:absolute;left:calc(100% + 14px);top:-4px;background:#E53935;color:#fff;font-weight:900;font-size:clamp(14px,1.6vw,22px);padding:6px 14px;border-radius:999px;white-space:nowrap}
+.shot .mark span::before{content:"";position:absolute;left:-12px;top:50%;transform:translateY(-50%);border:8px solid transparent;border-right-color:#E53935;border-left:0}
+.new{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.08em;background:var(--fg);color:var(--bg);padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:4px}
+.fn h3 .new{font-size:12px}
+
+/* Claude 指示例 */
+.ask{display:flex;flex-direction:column;gap:12px}
+.ask .l{display:flex;gap:14px;align-items:flex-start}
+.ask .who{flex:none;width:72px;font-size:13px;font-weight:900;letter-spacing:.06em;color:var(--muted);padding-top:12px;text-align:right}
+.ask .bub{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:12px 18px;font-size:clamp(15px,1.3vw,17px);font-weight:700;min-width:0}
+.ask .l.me .bub{background:var(--accent-fill);color:#1A2A00;border-color:var(--accent-fill)}
+.ask .l.me .who{color:var(--accent-ink)}
+
+/* 動画の置き場所 */
+.spots{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.spots .sp{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.spots .sp .where{font-size:13px;font-weight:900;letter-spacing:.08em;color:var(--accent-ink)}
+.spots .sp h3{font-size:clamp(18px,1.6vw,21px)}
+.spots .sp p{font-size:15px;color:var(--muted)}
+.spots .sp .ex{font-size:15px;background:var(--accent-soft);color:var(--accent-ink);border-radius:10px;padding:8px 12px;font-weight:700;margin-top:4px}
+
+/* steps */
+.steps{display:flex;flex-direction:column;gap:14px;counter-reset:s}
+.steps .s{display:flex;gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 26px;min-width:0}
+.steps .s::before{counter-increment:s;content:counter(s);flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-weight:900;font-size:26px;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.steps .s h3{font-size:clamp(19px,1.7vw,22px)}
+.steps .s p{font-size:clamp(15px,1.3vw,17px);color:var(--muted);margin-top:4px}
+.steps .s .where{font-size:14px;font-weight:900;color:var(--accent-ink);margin-top:8px}
+
+/* stage chooser */
+.stage{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.stage .c{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.stage .c .q{font-size:clamp(16px,1.4vw,18px);font-weight:900;color:var(--muted)}
+.stage .c .a{font-size:clamp(19px,1.7vw,22px);font-weight:900}
+.stage .c .a em{font-style:normal;color:var(--accent)}
+.stage .c p{font-size:15px;color:var(--muted)}
+
+/* Q&A */
+.q{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 24px}
+.q .num{flex:none;font-size:15px;font-weight:900;letter-spacing:.08em;color:var(--accent-ink);background:var(--accent-soft);padding:6px 12px;border-radius:999px;margin-top:4px}
+.q h3{font-size:clamp(18px,1.6vw,21px)}
+
+/* closing */
+.end{background:var(--dark);color:var(--dark-fg);border-radius:28px;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:18px}
+.end .pill{align-self:flex-start;background:var(--accent);color:#fff;font-weight:900;padding:6px 16px;border-radius:999px;font-size:15px}
+.end h3{font-size:clamp(26px,2.8vw,38px)}
+.end p{font-size:clamp(17px,1.5vw,20px);color:var(--dark-muted);font-weight:700}
+.end .qr{margin-top:10px;background:#fff;color:#1C2823;border-radius:16px;padding:18px;display:flex;align-items:center;gap:18px;max-width:520px}
+.end .qr img{flex:none;width:140px;height:140px;border-radius:8px;image-rendering:pixelated}
+.end .qr .box{flex:none;width:120px;height:120px;border:2px dashed #9AA7A0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#66706A;text-align:center;font-weight:700}
+.end .qr p{color:#1C2823;font-size:17px}
+.foot{font-size:15px;color:var(--muted);text-align:center;font-weight:700}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+
+/* アンケートの流れ（STEP1〜4） */
+.sv-flow{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr);gap:8px;align-items:start}
+@media (max-width:1000px){.sv-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.sv-ar{display:none}}
+@media (max-width:560px){.sv-flow{grid-template-columns:1fr}}
+.sv-ar{align-self:center;margin-top:40px;color:var(--accent);font-weight:900;font-size:24px;text-align:center}
+.sv-step{display:flex;flex-direction:column;gap:10px;min-width:0}
+.sv-no{font-size:15px;font-weight:900;line-height:1.45;display:flex;flex-direction:column;gap:4px;min-height:58px}
+.sv-no span{align-self:flex-start;font-size:12px;letter-spacing:.08em;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px}
+.sv-no.sv-admin span{background:var(--fg);color:var(--bg)}
+.sv-cap{font-size:13px;color:var(--muted);font-weight:700;line-height:1.55}
+.phone.sv-ph{max-width:none;margin:0;height:500px;padding:0;gap:0;font-size:13px;overflow:hidden}
+.phone.sv-ph .ph-top{margin:0;border-radius:28px 28px 0 0;font-size:13px}
+.sv-talk{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.sv-talk .msg{max-width:96%;font-size:12.5px}
+.sv-link{color:#0A6B33;text-decoration:underline;font-weight:900;word-break:break-all;position:relative;background:#E2F3E8;border-radius:6px;padding:2px 4px;outline:2px solid #06C755}
+.sv-tap{position:absolute;right:-6px;bottom:-26px;font-style:normal;text-decoration:none;font-size:11px;font-weight:900;background:var(--accent-fill);color:#1A2A00;border-radius:999px;padding:2px 9px;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sv-tap::before{content:"👆 "}
+.sv-input{background:#fff;border-top:1px solid #C9D6E2;padding:10px 12px}
+.sv-input span{display:block;background:#F3F6F2;border-radius:999px;padding:6px 12px;color:#9AA7A0;font-size:12px}
+.sv-liff{background:#fff}
+.sv-liffbar{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid #E1E6E2;background:#fff;border-radius:28px 28px 0 0}
+.sv-liffbar b{font-size:16px;color:#4A5550;width:18px;text-align:center}
+.sv-liffbar div{flex:1;text-align:center;line-height:1.25;min-width:0}
+.sv-liffbar strong{display:block;font-size:13px;color:#1C2823}
+.sv-liffbar small{display:block;font-size:10px;color:#9AA7A0}
+.sv-form{flex:1;padding:12px;display:flex;flex-direction:column;gap:10px;background:#F7F9F7;overflow:hidden}
+.sv-ftitle{font-weight:900;font-size:13px;color:#1C2823}
+.sv-q{background:#fff;border:1px solid #E1E6E2;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+.sv-q p{font-weight:900;font-size:12px;color:#1C2823}
+.sv-q p em{font-style:normal;font-size:10px;background:#FDE2E1;color:#C0392B;border-radius:4px;padding:0 5px;margin-left:6px}
+.sv-q label{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:12px;color:#1C2823;line-height:1.4}
+.sv-q label i{flex:none;width:14px;height:14px;border-radius:50%;border:2px solid #B5C0B9;background:#fff}
+.sv-q label.on{font-weight:900}
+.sv-q label.on i{border-color:#06C755;box-shadow:inset 0 0 0 3px #fff;background:#06C755}
+.sv-tag{font-size:10px;font-weight:900;background:var(--accent-fill);color:#1A2A00;border-radius:999px;padding:1px 7px;white-space:nowrap}
+.sv-tag::before{content:"🏷 "}
+.sv-send{margin-top:auto;background:#06C755;color:#fff;font-weight:900;text-align:center;border-radius:8px;padding:9px;font-size:13px}
+.sv-done{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;background:#fff}
+.sv-check{width:56px;height:56px;border-radius:50%;background:#06C755;color:#fff;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.sv-dt{font-weight:900;font-size:15px;color:#1C2823}
+.sv-dd{font-size:12px;color:#66706A}
+.sv-close{margin-top:8px;border:1.5px solid #06C755;color:#0A6B33;font-weight:900;border-radius:8px;padding:8px 18px;font-size:12px}
+.sv-adm{height:500px;background:var(--surface);border:2px solid var(--fg);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.sv-admbar{background:var(--fg);color:var(--bg);font-size:12px;font-weight:900;padding:9px 12px}
+.sv-admbody{padding:14px;display:flex;flex-direction:column;gap:8px;font-size:13px}
+.sv-prof{display:flex;gap:10px;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sv-av{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-weight:900;display:flex;align-items:center;justify-content:center}
+.sv-prof b{display:block;font-size:14px}
+.sv-prof small{display:block;font-size:11px;color:var(--muted)}
+.sv-lbl{font-size:11px;font-weight:900;color:var(--muted);letter-spacing:.06em;margin-top:4px}
+.sv-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sv-t{font-size:12px;font-weight:900;border-radius:999px;padding:3px 10px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}
+.sv-t.new{background:var(--accent-fill);color:#1A2A00;border-color:#E5C200;position:relative}
+.sv-t.new::after{content:"NEW";font-size:9px;margin-left:5px;background:#E53935;color:#fff;border-radius:4px;padding:0 4px;vertical-align:1px}
+.sv-ans{display:flex;flex-direction:column;gap:4px;font-size:12px}
+.sv-ans p{display:flex;gap:8px}
+.sv-ans span{flex:none;width:5em;color:var(--muted);font-weight:700}
+.sv-newnote{margin-top:auto;font-size:11px;color:var(--muted);font-weight:700}
+.sv-newnote b{font-size:9px;background:#E53935;color:#fff;border-radius:4px;padding:0 4px}
+
+/* Claude画面風 */
+.cl-col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.cl-lbl{font-size:16px;font-weight:900;display:flex;gap:10px;align-items:center}
+.cl-lbl span{font-size:12px;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;letter-spacing:.06em}
+.cl-win{background:#FAF9F5;color:#2B2A26;border:1px solid #E3DFD3;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(0,0,0,.06);font-family:var(--font)}
+.cl-top{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #E9E5DA;background:#F5F3EC;font-size:13px}
+.cl-top b{flex:1;font-weight:700;color:#2B2A26;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-dots{display:flex;gap:5px}.cl-dots i{width:10px;height:10px;border-radius:50%;background:#D9D4C7}
+.cl-model{font-size:11px;font-weight:700;color:#7A766B;border:1px solid #DDD8CB;border-radius:6px;padding:1px 8px}
+.cl-body{padding:18px 18px 8px;display:flex;flex-direction:column;gap:14px;font-size:14.5px;line-height:1.7}
+.cl-user{align-self:flex-end;max-width:88%;background:#EFEBE1;border-radius:14px;padding:10px 14px;font-weight:500;display:flex;flex-direction:column;gap:8px}
+.cl-file{align-self:flex-start;font-size:12px;font-weight:700;background:#fff;border:1px solid #DDD8CB;border-radius:8px;padding:6px 10px}
+.cl-ai{display:flex;flex-direction:column;gap:8px;padding-left:28px;position:relative}
+.cl-ai::before{content:"✳";position:absolute;left:0;top:0;color:#D97757;font-size:18px;line-height:1.3}
+.cl-ai p{margin:0}
+.cl-ai ul{margin:0;padding-left:1.2em;font-size:13.5px}
+.cl-tool{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#5E5A50;background:#fff;border:1px solid #E3DFD3;border-radius:8px;padding:5px 10px}
+.cl-ti{color:#9A958A}
+.cl-ok{color:#2E8B57;font-weight:900}
+.cl-input{margin:8px 14px 14px;background:#fff;border:1px solid #DDD8CB;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.cl-ph{font-size:13px;color:#A39E92}
+.cl-row{display:flex;align-items:center;gap:8px}
+.cl-plus{width:26px;height:26px;border:1px solid #DDD8CB;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#7A766B}
+.cl-conn{font-size:11.5px;font-weight:700;color:#5E5A50;border:1px solid #DDD8CB;border-radius:8px;padding:3px 8px}
+.cl-sendb{margin-left:auto;width:28px;height:28px;border-radius:8px;background:#D97757;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:14px}
+
+.hw{gap:10px}
+.hw-t{font-size:13px;font-weight:900;letter-spacing:.08em;color:var(--accent-ink);margin-top:6px;padding-top:12px;border-top:1px dashed var(--line)}
+.hw-steps{margin:0;padding:0;list-style:none;counter-reset:h;display:flex;flex-direction:column;gap:10px}
+.hw-steps li{display:flex;flex-direction:column;gap:2px;padding-left:36px;position:relative}
+.hw-steps li::before{counter-increment:h;content:counter(h);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+.hw-steps b{font-size:clamp(15px,1.3vw,17px)}
+.hw-steps span{font-size:14px;color:var(--muted);line-height:1.6}
+.hw-n{font-size:13px!important;color:var(--muted)}
+/* 11/19 BtoB：見込み客の仕分けルート */
+.route{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));counter-reset:r}
+@media (max-width:960px){.route{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.route{grid-template-columns:1fr}}
+.route .r{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.route .r::before{counter-increment:r;content:counter(r);width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;font-weight:900;font-size:20px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:4px}
+.route .r.main{background:var(--accent-soft);border:2px solid var(--accent)}
+.route .r.main::before{background:var(--accent-fill);color:#1A2A00}
+.route .r b{font-size:clamp(18px,1.6vw,21px)}
+.route .r span{font-size:15px;color:var(--muted)}
+.route .r .fnname{font-size:13px;font-weight:900;color:var(--accent-ink);letter-spacing:.04em;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+.tagchip{display:inline-block;font-size:13px;font-weight:900;background:var(--accent-fill);color:#1A2A00;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.sheet td .tagchip{font-size:12px}
+.send{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.send .c{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.send .c.hot{border-color:var(--accent)}
+.send .c .who{font-size:15px;font-weight:900;color:var(--muted)}
+.send .c ol{margin:0;padding-left:1.3em;font-size:clamp(15px,1.3vw,17px);font-weight:700;display:flex;flex-direction:column;gap:6px}
+.send .c p{font-size:15px;color:var(--muted)}
+.fn .lite{display:inline-block;font-size:12px;font-weight:900;background:var(--bg);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px;vertical-align:middle;margin-left:6px}
+.fn.star{border:2px solid var(--accent);background:var(--accent-soft)}
+.phone .q-ttl{font-weight:900;font-size:13px;color:#1C2823}
+.phone .opt-r{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.phone .opt-r span{border:1px solid #D6DDD7;border-radius:8px;padding:6px 10px}
+.phone .opt-r span.sel{border-color:#06C755;background:#E2F3E8;font-weight:900}
+.phone .tagged{align-self:center;background:var(--accent-fill);color:#1A2A00;font-size:12px;font-weight:900;padding:6px 12px;border-radius:999px;text-align:center}
+</style>
+<nav id="nav" aria-label="本日の流れ">
+  <div class="in">
+    <span class="brand">Lシンク勉強会 11/19</span>
+    <a href="#opening" class="on"><span class="n">00</span>オープニング</a>
+    <a href="#basic"><span class="n">01</span>土台を整える</a>
+    <a href="#lead"><span class="n">02</span>見込み客の仕分け</a>
+    <a href="#claude"><span class="n">03</span>Claudeに頼む</a>
+    <a href="#video"><span class="n">04</span>おすすめ：動画</a>
+    <a href="#case"><span class="n">05</span>構築事例</a>
+    <a href="#next"><span class="n">06</span>次にやること</a>
+    <a href="#qa"><span class="n">07</span>Q&amp;A</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========== 00 オープニング ========== -->
+<section class="part" id="opening">
+  <div class="cover">
+    <div class="eyebrow"><b>Lシンク勉強会</b><span>2026年11月19日（木）18:00〜18:30</span><span>オンライン</span></div>
+    <p class="theme">今回のテーマ</p>
+    <h1>「こんな使い方が<br>できるんだ！」<br><em>BtoBビジネス</em>のための<br>Lシンク活用事例</h1>
+    <p class="sub">展示会・セミナー・名刺交換で出会った見込み客を、公式LINEで商談につなげる。そのための土台づくりと、BtoBのお仕事で使える機能、実際の構築事例をお見せします。</p>
+    <div class="meta"><span>主催：Lシンク事務局</span><span>後半にリアルタイムQ&amp;Aタイムあり</span></div>
+  </div>
+
+  <div class="goal">
+    <span class="eyebrow">今日のゴール</span>
+    <h3>公式LINEを使って、<em>見込み客を商談につなげる</em></h3>
+    <p>そのために今日は、Lシンクの土台のつくり方と、BtoBのお仕事で使える機能を、実際の構築事例を見ながらご紹介します。</p>
+    <div class="goal-steps">
+      <div><span class="k">01</span><b>土台を整える</b><span>参考資料・スプレッドシート・必ず設定する箇所</span></div>
+      <div><span class="k">02</span><b>見込み客を「分けて、育てて、商談へ」</b><span>流入経路・アンケートでタグ・送り分け・商談予約</span></div>
+      <div><span class="k">03</span><b>自社に当てはめて持ち帰る</b><span>「うちなら、これをこう使う」を1つ決める</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="eyebrow">はじめに</span>
+      <h3>今日の進め方</h3>
+      <ul class="checks">
+        <li>実際の活用事例を用いながら、BtoBビジネスでの使い方をご説明します</li>
+        <li>質問はいつでもコメント欄へ。最後のQ&amp;Aタイムでまとめてお答えします</li>
+        <li>今日は30分。設定の「ヒント」と「次にやること」を持ち帰ってください</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="eyebrow">こんな方に</span>
+      <h3>法人のお客様を相手に、<br>営業・集客をしている方は特に必見</h3>
+      <ul class="checks">
+        <li>「展示会や名刺交換で出会った方に、全員同じ案内を送っている」</li>
+        <li>「問い合わせのあと、追いかけきれていない」</li>
+        <li>「設定中だけど、次に何をすればいい？」</li>
+        <li>BtoBの会社への提案を考えている代理店の方</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="agenda" class="card">
+    <span class="eyebrow">本日の流れ</span>
+    <div class="agenda">
+      <div class="row"><span class="k">00</span><span class="h">オープニング</span><span class="d">進め方と本日のゴール</span></div>
+      <div class="row"><span class="k">01</span><span class="h">まずは、公式LINEの土台を整える</span><span class="d">参考資料・スプレッドシート・必ず設定する箇所</span></div>
+      <div class="row"><span class="k">02</span><span class="h">特にBtoBビジネスにおすすめ：見込み客の仕分け</span><span class="d">流入経路・アンケートでタグ・送り分け・商談予約</span></div>
+      <div class="row"><span class="k">03</span><span class="h">設定は、Claudeに渡すのが早い</span><span class="d">情報を渡すだけで設定まで</span></div>
+      <div class="row"><span class="k">04</span><span class="h">おすすめの使い方：要所に動画を差し込む</span><span class="d">どの会社にも使える</span></div>
+      <div class="row"><span class="k">05</span><span class="h">実際の構築事例を見る</span><span class="d">代表の分身LINEから、打ち合わせ予約まで</span></div>
+      <div class="row"><span class="k">06</span><span class="h">次にやること</span><span class="d">いまの状況別に</span></div>
+      <div class="row"><span class="k">07</span><span class="h">Q&amp;Aタイム</span><span class="d">事務局に直接質問</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== 01 基本 ========== -->
+<section class="part" id="basic">
+  <div class="head"><span class="no">01</span><span class="t">まずは、公式LINEの土台を整える</span></div>
+  <h2>会社の公式LINEが、お問い合わせの「一次対応」をしてくれる</h2>
+  <p class="lead">BtoBならではの機能に入る前に、どの会社にも共通する土台から。参考資料と詳細情報を入れておけば、次のお問い合わせには公式LINEが先に答えます。</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="eyebrow">仕組み</span>
+      <h3>「いつも聞かれること」を<br>入れておくだけ</h3>
+      <div class="flow">
+        <span class="st">料金は？ 導入までの期間は？ 何が含まれる？</span><span class="ar">→</span>
+        <span class="st hi">答えを参考資料・詳細情報に入れる</span><span class="ar">→</span>
+        <span class="st me">次のお問い合わせには公式LINEが答える</span>
+      </div>
+      <p class="sub">営業担当が同じ説明を何度もしなくてよくなり、打ち合わせでは「その会社の話」に時間を使えます。入れていないことは答えられないので、「よく聞かれること」から順に入れていきます。</p>
+    </div>
+    <div class="card">
+      <div class="phone" aria-label="LINE画面のイメージ">
+        <div class="ph-top">会社の公式LINE</div>
+        <div class="msg me">料金はどのくらいですか？</div>
+        <div class="msg bot">お問い合わせありがとうございます😊
+ライトプランは月額30,000円（税別）からです。ユーザー5名までご利用いただけます。
+ご利用人数によって合うプランが変わるので、よろしければ打ち合わせでご案内します。</div>
+        <div class="msg me">導入までどのくらいかかりますか？</div>
+        <div class="msg bot">お申込みから最短2週間でご利用いただけます📅
+初期設定は担当者が一緒に進めます。</div>
+        <div class="ph-cap">画面・金額はイメージです</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card hi">
+    <span class="eyebrow">いちばん簡単な入れ方</span>
+    <h3>お渡ししている「連携スプレッドシート」に書くだけ</h3>
+    <p class="sub">Lシンク事務局からお渡ししているスプレッドシートは、公式LINEとつながっています。「よくいただく質問」と「提供しているサービス」を記入するだけで、公式LINEが答えられるようになります。</p>
+    <div class="grid-2">
+      <div class="sheet-wrap"><div class="sheet"><table>
+        <tr><th colspan="2">よくいただく質問（例）</th></tr>
+        <tr><td>質問</td><td>答え</td></tr>
+        <tr><td>導入までの期間は？</td><td>最短2週間。初期設定は担当者が伴走</td></tr>
+        <tr><td>お試しはできる？</td><td>打ち合わせのあとにデモ画面をご案内</td></tr>
+        <tr><td>契約期間の縛りは？</td><td>最低6ヶ月。以降は1ヶ月ごとに更新</td></tr>
+      </table></div></div>
+      <div class="sheet-wrap"><div class="sheet"><table>
+        <tr><th colspan="3">提供しているサービス（例）</th></tr>
+        <tr><td>サービス名</td><td>料金</td><td>内容</td></tr>
+        <tr><td>ライトプラン</td><td>¥30,000/月</td><td>ユーザー5名まで</td></tr>
+        <tr><td>スタンダードプラン</td><td>¥80,000/月</td><td>20名まで。月1回の定例MTG付き</td></tr>
+        <tr><td>導入研修</td><td>¥100,000</td><td>2時間×2回。オンライン</td></tr>
+      </table></div></div>
+    </div>
+    <div class="flow">
+      <span class="st">スプレッドシートに記入</span><span class="ar">→</span>
+      <span class="st hi">公式LINEが「このプランはいくら？」「何が含まれる？」に答える</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">必ず設定してほしい箇所</span>
+    <h3>設定する場所は、あらかじめ決まっています</h3>
+    <p class="sub">ホーム画面の「セットアップ進捗」が目安です。ここが埋まれば、公式LINEとして恥ずかしくない状態になります。</p>
+    <div class="must">
+      <div><div><b>プロフィール</b><span>会社名・営業時間・窓口の担当者。AIが名乗る土台</span></div></div>
+      <div><div><b>あいさつメッセージ</b><span>友だち追加の直後に届く最大5通。動画も入れられる</span></div></div>
+      <div><div><b>リッチメニュー</b><span>「資料を見る」「事例を見る」「相談を予約する」など、相手の行動で名前を付ける</span></div></div>
+      <div><div><b>ナレッジ（参考資料・スプレッドシート）</b><span>よくある質問とサービス・料金。入れた分だけAIが答える</span></div></div>
+      <div><div><b>キーワード応答</b><span>「資料」「料金」など、決まった言葉には決まった返事を即答</span></div></div>
+      <div><div><b>通知先</b><span>問い合わせ・打ち合わせの予約が入ったら、どの担当者に届くか</span></div></div>
+      <div><div><b>流入経路QR</b><span>展示会・セミナー・名刺・Webサイトで分けて「どこで出会った人か」を残す</span></div></div>
+      <div><div><b>アンケート・タグ・ステップ配信</b><span>見込み客の仕分けと送り分け。このあと02で詳しく</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02 見込み客の仕分け ========== -->
+<section class="part" id="lead">
+  <div class="head"><span class="no">02</span><span class="t">特にBtoBビジネスにおすすめ</span></div>
+  <h2>土台ができたら、見込み客を「分けて、育てて、商談へ」</h2>
+  <p class="lead">展示会、セミナー、名刺交換。出会い方も検討の温度感もバラバラな相手に、全員同じ案内を送っていませんか？ Lシンクなら、答えてもらうだけで仕分けが終わり、その人に合った案内だけを届けられます。</p>
+
+  <div class="card">
+    <span class="eyebrow">全体の流れ</span>
+    <h3>4つの機能が、1本の流れでつながっています</h3>
+    <div class="route">
+      <div class="r"><b>どこで出会ったかを残す</b><span>展示会用・セミナー用・名刺用でQRを分ける。友だち追加した時点で「どこで出会った人か」が分かる</span><span class="fnname">流入経路QR</span></div>
+      <div class="r main"><b>アンケートに答えてもらう</b><span>業種・困りごと・検討時期を選ぶだけ。回答ごとにタグが自動で付く</span><span class="fnname">アンケート × 回答タグ</span></div>
+      <div class="r"><b>タグで送り分ける</b><span>「今すぐ検討」の人には事例と商談の案内、「情報収集中」の人にはお役立ち情報だけ</span><span class="fnname">絞り込み配信・ステップ配信</span></div>
+      <div class="r"><b>LINEの中で商談予約</b><span>空いている日時を選んでもらうだけ。予約が入ると担当者に通知</span><span class="fnname">日程調整・通知先</span></div>
+    </div>
+  </div>
+
+  <div class="card hi">
+    <span class="eyebrow">今日いちばんのおすすめ</span>
+    <h3>アンケートに答えてもらうだけで、<br>見込み客の仕分けが終わる</h3>
+    <p class="sub">アンケートの選択肢ごとに「この回答を選んだ人には、このタグ」と決めておけます。営業担当が一人ひとり聞かなくても、友だち一覧に「誰が・何に困っていて・いつ検討しているか」が並びます。</p>
+    <div class="sv-flow" aria-label="アンケートの流れ">
+      <!-- STEP1 -->
+      <div class="sv-step">
+        <p class="sv-no"><span>STEP 1</span>トークにリンクが届く</p>
+        <div class="phone sv-ph">
+          <div class="ph-top">会社の公式LINE</div>
+          <div class="sv-talk">
+            <div class="msg bot">友だち追加ありがとうございます😊
+あなたに合った情報をお届けするために、3問だけ教えてください（30秒で完了）👇
+
+<span class="sv-link">https://lsync.humanoid-inc.net/liff/…?form=…<i class="sv-tap">タップ</i></span></div>
+          </div>
+          <div class="sv-input"><span>メッセージを入力</span></div>
+        </div>
+        <p class="sv-cap">あいさつメッセージや配信で、アンケートのリンクを送る</p>
+      </div>
+      <div class="sv-ar" aria-hidden="true">→</div>
+      <!-- STEP2 -->
+      <div class="sv-step">
+        <p class="sv-no"><span>STEP 2</span>LINEの中でアンケートが開く</p>
+        <div class="phone sv-ph sv-liff">
+          <div class="sv-liffbar"><b>×</b><div><strong>かんたんアンケート</strong><small>lsync.humanoid-inc.net</small></div><b>⋯</b></div>
+          <div class="sv-form">
+            <p class="sv-ftitle">3問だけお答えください</p>
+            <div class="sv-q"><p>Q1. 導入の検討時期は？<em>必須</em></p>
+              <label class="on"><i></i>3ヶ月以内<span class="sv-tag">検討_3ヶ月以内</span></label>
+              <label><i></i>半年以内</label>
+              <label><i></i>まずは情報収集</label>
+            </div>
+            <div class="sv-q"><p>Q2. いま困っていることは？<em>必須</em></p>
+              <label class="on"><i></i>問い合わせ対応に手が回らない<span class="sv-tag">課題_問い合わせ対応</span></label>
+              <label><i></i>新規の見込み客が増えない</label>
+            </div>
+            <div class="sv-q"><p>Q3. 業種を教えてください<em>必須</em></p>
+              <label class="on"><i></i>製造業<span class="sv-tag">業種_製造</span></label>
+              <label><i></i>IT・通信</label>
+              <label><i></i>サービス業</label>
+            </div>
+            <div class="sv-send">送信する</div>
+          </div>
+        </div>
+        <p class="sv-cap">選択肢ごとに「この回答には、このタグ」とあらかじめ決めておく</p>
+      </div>
+      <div class="sv-ar" aria-hidden="true">→</div>
+      <!-- STEP3 -->
+      <div class="sv-step">
+        <p class="sv-no"><span>STEP 3</span>送信すると完了画面に</p>
+        <div class="phone sv-ph sv-liff">
+          <div class="sv-liffbar"><b>×</b><div><strong>かんたんアンケート</strong><small>lsync.humanoid-inc.net</small></div><b>⋯</b></div>
+          <div class="sv-done">
+            <div class="sv-check">✓</div>
+            <p class="sv-dt">ご回答ありがとう<br>ございました</p>
+            <p class="sv-dd">いただいた内容をもとに、あなたに合った情報をお届けします。</p>
+            <div class="sv-close">トークに戻る</div>
+          </div>
+        </div>
+        <p class="sv-cap">相手は答えるだけ。タグが付いたことは相手には見えません</p>
+      </div>
+      <div class="sv-ar" aria-hidden="true">→</div>
+      <!-- STEP4 -->
+      <div class="sv-step">
+        <p class="sv-no sv-admin"><span>STEP 4</span>管理画面で、タグが付いている</p>
+        <div class="sv-adm">
+          <div class="sv-admbar">Lシンク管理画面 ／ 友だち詳細</div>
+          <div class="sv-admbody">
+            <div class="sv-prof"><span class="sv-av">山</span><div><b>山田 太郎</b><small>友だち追加：展示会QR</small></div></div>
+            <p class="sv-lbl">タグ</p>
+            <div class="sv-tags">
+              <span class="sv-t old">流入_展示会</span>
+              <span class="sv-t new">検討_3ヶ月以内</span>
+              <span class="sv-t new">課題_問い合わせ対応</span>
+              <span class="sv-t new">業種_製造</span>
+            </div>
+            <p class="sv-lbl">アンケートの回答</p>
+            <div class="sv-ans">
+              <p><span>検討時期</span>3ヶ月以内</p>
+              <p><span>困りごと</span>問い合わせ対応に手が回らない</p>
+              <p><span>業種</span>製造業</p>
+            </div>
+            <p class="sv-newnote"><b>NEW</b> 回答した瞬間に自動で付いたタグ</p>
+          </div>
+        </div>
+        <p class="sv-cap">あとは、このタグで送り分けるだけ</p>
+      </div>
+    </div>
+    <p class="sv-cap">画面はイメージです。名前・回答内容は例です。</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>回答と、自動で付くタグの例</h3>
+        <div class="sheet-wrap"><div class="sheet"><table>
+          <tr><th>質問</th><th>選んだ回答</th><th>付くタグ</th></tr>
+          <tr><td>検討時期</td><td>3ヶ月以内</td><td><span class="tagchip">検討_3ヶ月以内</span></td></tr>
+          <tr><td>検討時期</td><td>半年以内</td><td><span class="tagchip">検討_半年以内</span></td></tr>
+          <tr><td>検討時期</td><td>まずは情報収集</td><td><span class="tagchip">検討_情報収集</span></td></tr>
+          <tr><td>困りごと</td><td>問い合わせ対応に手が回らない</td><td><span class="tagchip">課題_問い合わせ対応</span></td></tr>
+          <tr><td>業種</td><td>製造業</td><td><span class="tagchip">業種_製造</span></td></tr>
+        </table></div></div>
+      </div>
+      <div class="note" style="align-self:start"><span class="ic">!</span><div>コツは「1問目に検討時期を聞く」こと<span>3問すべてでなくても、検討時期の1問だけで「今すぐの人」と「まだ先の人」に分けられます。</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">タグで送り分けると、こうなる</span>
+    <h3>タグ別に、届ける案内を分けられる</h3>
+    <p class="sub">一斉配信のときに、送る相手をタグで選ぶだけ。同じ友だちリストでも、相手に合わせて話題を変えられます。</p>
+    <div class="send">
+      <div class="c hot">
+        <span class="tagchip">検討_3ヶ月以内</span>
+        <p class="who">今すぐ検討している人</p>
+        <ol><li>同業の導入事例を送る</li><li>2日後に「30分の打ち合わせ」のご案内</li><li>LINEの中で日時を選んで予約</li></ol>
+      </div>
+      <div class="c">
+        <span class="tagchip">検討_半年以内</span>
+        <p class="who">いずれ検討したい人</p>
+        <ol><li>月1回のお役立ち情報</li><li>セミナー・勉強会のご案内</li><li>反応があれば打ち合わせへ</li></ol>
+      </div>
+      <div class="c">
+        <span class="tagchip">検討_情報収集</span>
+        <p class="who">まずは情報収集の人</p>
+        <ol><li>資料と事例集だけを送る</li><li>売り込みはしない</li><li>検討時期が変わったら回答し直してもらう</li></ol>
+      </div>
+    </div>
+    <p class="sub">全員に同じ案内を送るより、それぞれに合った内容が届くので、反応が上がりやすく、ブロックされにくくなります。</p>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">あわせて注目！</span>
+    <h3>BtoBなら、この2つの機能もおすすめ</h3>
+    <div class="grid-2">
+      <div class="card fn hw">
+        <span class="ic">🗂️</span><h3>会話から情報を残す</h3>
+        <p>AIとのやりとりの中から、会社名・人数・困りごとを項目として残す。営業担当への引き継ぎが楽になる。</p>
+        <p class="hw-t">設定のしかた</p>
+        <ol class="hw-steps">
+          <li><b>「会話分析」で、読み取る項目を作る</b><span>例：会社名（文字）／従業員数（数値）／困りごと（選択式）。項目ごとに「何を読み取ってほしいか」をAIへの指示として書く</span></li>
+          <li><b>読み取れたらタグを付けるルールを作る</b><span>例：会社名と困りごとが両方読み取れたら〈引き継ぎOK〉タグ</span></li>
+          <li><b>そのタグをきっかけに、担当者へ知らせる</b><span>〈引き継ぎOK〉が付いたら始まるステップ配信に「通知」を入れる（右のカードと同じ仕組み）</span></li>
+        </ol>
+        <div class="exset"><span>会話分析</span><span>タグ</span><span>ステップ配信（通知）</span></div>
+        <p class="hw-n">設定した後のやりとりから読み取ります。読み取った内容は、管理画面の友だちの情報で確認できます。</p>
+      </div>
+      <div class="card fn hw">
+        <span class="ic">🔔</span><h3>AI一次受付 × 通知先</h3>
+        <p>質問にはAIが24時間答える。見積りや個別の判断は答えさせず、担当営業へ通知して引き継ぐ。</p>
+        <p class="hw-t">設定のしかた</p>
+        <ol class="hw-steps">
+          <li><b>AIが答える材料を入れる</b><span>「商材管理」の商品・サービスと参考資料、「プロフィール」に、料金・よくある質問・会社の情報を入れる</span></li>
+          <li><b>「AI応答の設定」で、答えてよい範囲を決める</b><span>見積り・納期・個別の判断は範囲外にして、範囲外のときは「担当者に引き継ぐ」を選ぶ。引き継ぐときの案内文もオンにする</span></li>
+          <li><b>「通知メール」に担当営業のアドレスを登録する</b><span>ここが0件だと、通知を設定しても誰にも届かない</span></li>
+          <li><b>「自動タグ」で、見積りの相談に印を付ける</b><span>AIに文意を読ませる判定で「見積りの相談だと読み取れたら〈見積り相談〉タグ」</span></li>
+          <li><b>そのタグで始まるステップ配信に「通知」を入れる</b><span>〈見積り相談〉が付いた瞬間に、担当営業へメールが届く</span></li>
+        </ol>
+        <div class="exset"><span>商材管理</span><span>AI応答の設定</span><span>通知メール</span><span>自動タグ</span><span>ステップ配信（通知）</span></div>
+      </div>
+    </div>
+    <p class="sub" style="font-size:15px">どちらも「<span class="nb">Claude</span>に頼む」で設定できます。例：「見積りの相談が来たら、営業の山田さん（yamada@…）にメールで知らせて」</p>
+  </div>
+</section>
+
+<!-- ========== 03 Claude ========== -->
+<section class="part" id="claude">
+  <div class="head"><span class="no">03</span><span class="t">設定のしかた</span></div>
+  <h2>管理画面からでもいいけれど、Claudeに渡すともっと早い</h2>
+  <p class="lead">ClaudeとLシンクをつなぐと、会社の情報を渡すだけで設定まで一気にやってくれます。管理画面を開いて1つずつ入れなくて大丈夫です。</p>
+
+  <div class="grid-2">
+    <div class="cl-col">
+      <p class="cl-lbl"><span>例1</span>資料を渡して、答えられるようにする</p>
+      <div class="cl-win" aria-label="Claudeの画面のイメージ">
+        <div class="cl-top"><span class="cl-dots"><i></i><i></i><i></i></span><b>サービス資料をLシンクに登録</b><span class="cl-model">Claude</span></div>
+        <div class="cl-body">
+          <div class="cl-user"><div class="cl-file">📄 サービス資料.pdf</div>この資料のプランと料金を、Lシンクの公式LINEに登録して。聞かれたら答えられるようにして</div>
+          <div class="cl-ai">
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：商品・サービスを登録<span class="cl-ok">✓</span></div>
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：参考資料を追加<span class="cl-ok">✓</span></div>
+            <p>資料から3つのプランを登録し、参考資料にも追加しました。</p>
+            <ul><li>ライトプラン：月額30,000円・5名まで</li><li>スタンダードプラン：月額80,000円・20名まで</li><li>導入研修：100,000円・2時間×2回</li></ul>
+            <p>「スタンダードプランは何人まで？」と聞かれると、「20名まで」と答えます。</p>
+          </div>
+          <div class="cl-user">あいさつメッセージを丁寧な文面にして。2通目に担当者の自己紹介動画を入れて</div>
+          <div class="cl-ai">
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：あいさつメッセージを設定<span class="cl-ok">✓</span></div>
+            <p>設定しました。1通目があいさつ文、2通目が自己紹介動画です。</p>
+          </div>
+        </div>
+        <div class="cl-input"><span class="cl-ph">Claudeに返信…</span><div class="cl-row"><span class="cl-plus">＋</span><span class="cl-conn">🔌 Lシンク</span><span class="cl-sendb">↑</span></div></div>
+      </div>
+    </div>
+    <div class="cl-col">
+      <p class="cl-lbl"><span>例2</span>アンケート・タグ・配信も言葉で頼む</p>
+      <div class="cl-win" aria-label="Claudeの画面のイメージ">
+        <div class="cl-top"><span class="cl-dots"><i></i><i></i><i></i></span><b>見込み客の仕分けと配信</b><span class="cl-model">Claude</span></div>
+        <div class="cl-body">
+          <div class="cl-user">友だち追加のあとに、業種・困りごと・検討時期を聞くアンケートを作って。回答ごとにタグを付けて</div>
+          <div class="cl-ai">
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：アンケートを作成<span class="cl-ok">✓</span></div>
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：回答タグのルールを作成<span class="cl-ok">✓</span></div>
+            <p>3問のアンケートを作り、回答ごとに付くタグを設定しました。</p>
+            <p>あいさつメッセージの最後に、アンケートのリンクを入れますか？</p>
+          </div>
+          <div class="cl-user">お願い。あと「検討_3ヶ月以内」の人に事例を送って、2日後に打ち合わせの案内を送って。予約が入ったら営業の山田さんに通知</div>
+          <div class="cl-ai">
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：日程調整を作成<span class="cl-ok">✓</span></div>
+            <div class="cl-tool"><span class="cl-ti">⚙</span>Lシンク：ステップ配信を作成（下書き）<span class="cl-ok">✓</span></div>
+            <p>日程調整と通知先を設定し、ステップ配信を下書きで作りました。内容をご確認いただいてから配信を始めます。</p>
+          </div>
+        </div>
+        <div class="cl-input"><span class="cl-ph">Claudeに返信…</span><div class="cl-row"><span class="cl-plus">＋</span><span class="cl-conn">🔌 Lシンク</span><span class="cl-sendb">↑</span></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="sub" style="font-size:14px">画面はイメージです。「⚙ Lシンク：〜」の行は、ClaudeがLシンクの設定を実際に動かしたところです。</p>
+
+<div class="note"><span class="ic">!</span><div>管理画面でやるか、Claudeに頼むかは好みで<span>どちらも同じ設定に反映されます。「とにかく早く形にしたい」ならClaude、「1つずつ確かめながら」なら管理画面がおすすめです。</span></div></div>
+</section>
+
+<!-- ========== 04 おすすめの使い方：動画 ========== -->
+<section class="part" id="video">
+  <div class="head"><span class="no">04</span><span class="t">おすすめの使い方</span></div>
+  <h2>文字だけでなく、要所要所に「動画」を差し込む</h2>
+  <p class="lead">ここからは事例ではなく、どの会社にもおすすめしたい使い方です。公式LINEで動画を送ると、相手が再生ボタンを押さなくても、トーク画面でそのまま動き出します。</p>
+
+  <div class="grid-2">
+    <div class="card hi">
+      <span class="eyebrow">なぜ動画か</span>
+      <h3>動画は「見てもらう」ではなく、<br>「目に入ってしまう」</h3>
+      <ul class="checks">
+        <li>LINEに動画が届くと、再生ボタンを押さなくても自動で動き出す。読まなくても目に入る</li>
+        <li>「こんな人が担当してくれるんだ」「話しやすそう、一度聞いてみようかな」が先に生まれる</li>
+        <li>打ち合わせで会ったときに「LINEで見た人だ！」となり、初回から話が早い</li>
+      </ul>
+      <p class="sub">人柄や会社の雰囲気を伝えるなら、文字より動画。資料だけでは伝わらない部分が届きます。</p>
+    </div>
+    <div class="card">
+      <div class="phone" aria-label="LINE画面のイメージ">
+        <div class="ph-top">会社の公式LINE</div>
+        <div class="msg bot">友だち追加ありがとうございます😊
+担当の〇〇です。30秒だけ、自己紹介させてください。</div>
+        <div class="vid playing" aria-label="担当者の自己紹介の動画が自動再生されているイメージ">
+          <div class="scene">
+            <div class="person"><div class="head"></div><div class="body"></div></div>
+            <div class="caption">はじめまして、担当の〇〇です</div>
+          </div>
+          <div class="live"><span class="dot"></span>自動で再生中</div>
+          <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="bar"><div class="fill"></div></div>
+          <div class="time">0:07 / 0:30</div>
+        </div>
+        <div class="msg bot">メニューの「相談を予約する」から、いつでも打ち合わせをご予約いただけます。お話しできるのを楽しみにしています！</div>
+        <div class="ph-cap">あいさつメッセージは最大5通。テキスト・画像・動画・ボタンを組み合わせられます</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">どんな動画を撮るか</span>
+    <h3>最初に見せる動画は「会社が伝えたいこと」なら何でもいい</h3>
+    <div class="spots">
+      <div class="sp"><p class="where">あいさつメッセージ</p><h3>30秒の自己紹介</h3><p>担当者本人が、顔を出して名乗るだけ。「どんな人が対応してくれるか」がいちばん伝わる。</p><p class="ex">例：「担当の〇〇です。お気軽にご相談ください」</p></div>
+      <div class="sp"><p class="where">サービスのご案内</p><h3>1分のサービス紹介</h3><p>資料を開く前に、全体像が伝わる。文字で読むと長くなる内容ほど動画に。</p><p class="ex">例：「〇〇でお困りの方へ」を1分で</p></div>
+      <div class="sp"><p class="where">導入事例</p><h3>お客様の声</h3><p>導入企業の担当者が話す動画。同じ業種の声がいちばん響く。</p><p class="ex">例：「導入して変わったこと」を1分で</p></div>
+      <div class="sp"><p class="where">打ち合わせの前に</p><h3>当日の流れの説明</h3><p>予約のあとに送る。初回の打ち合わせで何を話すか、何を準備すればいいか。</p><p class="ex">例：「初回打ち合わせの流れ」を1分で</p></div>
+    </div>
+  </div>
+
+  <div class="card hi">
+    <span class="eyebrow">動画の作り方は2通り</span>
+    <h3>凝らなくて大丈夫。まずは、あいさつメッセージの1本から</h3>
+    <div class="opts">
+      <div class="opt">
+        <b>① アバター動画</b>
+        <p>台本を用意すれば、<span class="nb">AIアバター</span>が話してくれます。<br>ライトアップでもサクッと作れます。<br>撮り直しが要らず、何本でも作れます。</p>
+      </div>
+      <div class="opt">
+        <b>② スマホで自分で撮影</b>
+        <p>スマホで十分です。<br>担当者本人の顔が出る動画は、<br>初回の打ち合わせの「会ったことある感」が一番強い。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">設定のしかた</span>
+    <h3>動画はメディアに上げて、メッセージに差し込む</h3>
+    <div class="flow">
+      <span class="st">動画を撮る／作る</span><span class="ar">→</span>
+      <span class="st">管理画面のメディアにアップロード</span><span class="ar">→</span>
+      <span class="st hi">あいさつメッセージやキーワード応答に差し込む</span>
+    </div>
+    <p class="sub">「あいさつの2通目に、この動画を入れて」と<span class="nb">Claude</span>に頼んでもできます。</p>
+  </div>
+
+  <div class="note"><span class="ic">!</span><div>動画で「動線」をつくる、動画で「見せる」<span>自己紹介 → サービス紹介 → 導入事例 → 打ち合わせの案内。見込み客が進む順番に動画を置いていくのが、公式LINEで工夫したいポイントです。</span></div></div>
+</section>
+
+<!-- ========== 05 実際の構築事例 ========== -->
+<section class="part" id="case">
+  <div class="head"><span class="no">05</span><span class="t">実際の構築事例</span></div>
+  <h2>実際の構築事例から、「代表の分身LINE」をご紹介</h2>
+  <p class="lead">医療業界向けに3つの事業を手がける企業の公式LINEです。代表の分身として相談を受け、LINEの中で完結させずに、打ち合わせの予約までつなげています。</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="eyebrow">企業のプロフィール</span>
+      <div class="profile">
+        <div><p class="k">業種</p><p class="v">医療業界向けの事業会社</p></div>
+        <div><p class="k">事業</p><p class="v">採用・人事／開業・移転の物件／IT・AI活用</p></div>
+        <div><p class="k">LINEの役割</p><p class="v">代表の分身として相談の一次対応</p></div>
+        <div><p class="k">ゴール</p><p class="v">打ち合わせ（面談）の予約</p></div>
+      </div>
+      <div class="ba">
+        <div><b>LINEがやること</b>相談を受け、困りごとを1つ深掘りして、対応できることを伝える</div>
+        <div class="af"><b>人がやること</b>具体的な提案は打ち合わせで。予約はLINEの中で完了し、カレンダーに入る</div>
+      </div>
+    </div>
+    <div class="card hi">
+      <span class="eyebrow">設計で決めたこと</span>
+      <h3>LINEで全部答えようとしない</h3>
+      <ul class="checks">
+        <li>事業ごとに相談の入口を分け、どの相談かを最初に分かるようにする</li>
+        <li>答えすぎると「LINEで十分」になってしまうので、困りごとを1つだけ深掘りする</li>
+        <li>できることを伝えたら、打ち合わせの予約を案内する</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">公式LINEでのやりとり（設計をもとに再現）</span>
+    <h3>相談から、打ち合わせの予約まで</h3>
+    <div class="shots3">
+      <div class="phone" aria-label="相談の入口">
+        <div class="ph-top">代表の分身LINE</div>
+        <div class="msg me">採用・人事の相談をしたいです</div>
+        <div class="msg bot">ご相談ありがとうございます😊
+いま一番困っていることを、1つ教えてください👇
+<div class="chips"><span class="pick on">求人を出しても応募が来ない</span><span class="pick">採用してもすぐ辞めてしまう</span><span class="pick">人事評価の仕組みがない</span></div></div>
+        <div class="sys">選んだ回答で <b>タグ</b> が付き、相談内容が残る</div>
+        <div class="menu">
+          <div>代表に相談</div><div>IT課題チェック</div><div class="on">採用・人事の相談</div>
+          <div>会社について</div><div>開業・移転の物件相談</div><div>IT・AI活用の相談</div>
+        </div>
+        <div class="ph-cap">事業ごとに相談の入口を分けたリッチメニュー</div>
+      </div>
+      <div class="phone" aria-label="深掘りとできることの案内">
+        <div class="ph-top">代表の分身LINE</div>
+        <div class="msg bot">どの職種の募集で、どこに求人を出していますか？</div>
+        <div class="msg me">看護師です。求人サイト1つだけです</div>
+        <div class="msg bot">ありがとうございます。看護師の採用は、求人の出し先と求人票の書き方で、応募の集まり方が大きく変わります。
+私たちは医療機関の採用の仕組みづくりから、求人票の見直しまでお手伝いしています。</div>
+        <div class="msg bot">状況をもう少し詳しく伺えれば、具体的な打ち手をお伝えできます。30分ほど、お時間をいただけませんか？
+<div class="chips"><span class="pick on">打ち合わせを予約する</span><span class="pick">まずは資料がほしい</span></div></div>
+        <div class="ph-cap">深掘りは1つだけ。できることを伝えたら予約へ</div>
+      </div>
+      <div class="phone" aria-label="打ち合わせの予約">
+        <div class="ph-top">代表の分身LINE</div>
+        <div class="msg me">打ち合わせを予約する</div>
+        <div class="cardmsg"><div class="ch">打ち合わせのご予約（30分・オンライン）</div><div class="cb"><div class="cta">空いている日時を見る</div></div></div>
+        <div class="sys">ボタンを押すと、LINEの中で <b>予約ページ</b> が開く</div>
+        <div class="page">
+          <div class="pg-bar">× 　打ち合わせのご予約</div>
+          <div class="pg-body">
+            <div class="fl">日時</div><div class="in">カレンダーから空いている枠を選ぶ</div>
+            <div class="fl">ご相談内容</div><div class="in">採用・人事（看護師の採用）</div>
+            <div class="cta">予約する</div>
+            <div class="done">ご予約を承りました<br>当日お話しできるのを楽しみにしています</div>
+          </div>
+        </div>
+        <div class="sys">予約は代表の <b>Googleカレンダー</b> に入り、担当者に <b>通知</b></div>
+        <div class="ph-cap">予約前に相談内容を聞いておけるので、準備して臨める</div>
+      </div>
+    </div>
+    <p class="sub">メニュー名と流れは実際の設計から。やりとりの文面はイメージです。</p>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow">相手から見た流れ</span>
+    <div class="flow">
+      <span class="st">名刺交換・紹介で友だち追加</span><span class="ar">→</span>
+      <span class="st hi">メニューから相談したい事業を選ぶ</span><span class="ar">→</span>
+      <span class="st hi">困りごとを1つ聞かれる</span><span class="ar">→</span>
+      <span class="st">対応できることが分かる</span><span class="ar">→</span>
+      <span class="st me">LINEの中で打ち合わせを予約</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card feat">
+      <span class="tag">✅ 相談の入口</span>
+      <h3>事業ごとに入口を分けて、<br>最初から「何の相談か」が分かる</h3>
+      <ul>
+        <li>採用・人事、開業・移転の物件、IT・AI活用。事業ごとにメニューのボタンを用意</li>
+        <li>「IT課題チェック」のような、気軽に試せる入口も置く</li>
+        <li>押されたボタンで相談内容が分かるので、そのまま担当に引き継げる</li>
+      </ul>
+      <p class="set">使っている設定：<b>リッチメニュー</b>・<b>キーワード応答</b>・<b>タグ</b></p>
+    </div>
+    <div class="card feat">
+      <span class="tag">✅ 分身AIの答え方</span>
+      <h3>答えすぎず、<br>困りごとを1つ深掘りする</h3>
+      <ul>
+        <li>代表の考え方や事業の内容を参考資料に入れ、代表の分身として答える</li>
+        <li>聞くのは1つだけ。詳しい提案は打ち合わせで、と線を引く</li>
+        <li>できることを伝えたら、打ち合わせの予約を案内する</li>
+      </ul>
+      <p class="set">使っている設定：<b>参考資料</b>・<b>プロフィール（話し方・会話のスタンス）</b></p>
+    </div>
+    <div class="card feat">
+      <span class="tag">✅ 打ち合わせの予約</span>
+      <h3>LINEの中で日時を選んで、<br>カレンダーに自動で入る</h3>
+      <ul>
+        <li>「打ち合わせを予約する」から、空いている日時を選ぶだけ</li>
+        <li>予約の前に相談内容を聞いておくので、準備して臨める</li>
+        <li>予約は代表のGoogleカレンダーに入り、担当者にも通知</li>
+      </ul>
+      <p class="set">使っている設定：<b>日程調整</b>・<b>Googleカレンダー連携</b>・<b>通知先</b></p>
+    </div>
+    <div class="card feat">
+      <span class="tag">✅ 会社と代表を知ってもらう</span>
+      <h3>「どんな会社？」「どんな人？」に<br>メニュー1つで答える</h3>
+      <ul>
+        <li>「会社について」から事業と代表の紹介へ</li>
+        <li>相談する前に人柄が分かるので、打ち合わせの予約につながりやすい</li>
+        <li>04の自己紹介動画と組み合わせると、さらに効く</li>
+      </ul>
+      <p class="set">使っている設定：<b>リッチメニュー</b>・<b>あいさつメッセージ（動画）</b></p>
+    </div>
+  </div>
+
+  <div class="note"><span class="ic">!</span><div>ポイントは「LINEで全部答えようとしない」こと<span>分身LINEのゴールは、打ち合わせの予約です。困りごとを聞いて、できることを伝えたら、あとは人が会って話す。この線引きを最初に決めておくと、設計がぶれません。</span></div></div>
+</section>
+
+<!-- ========== 06 次にやること ========== -->
+<section class="part" id="next">
+  <div class="head"><span class="no">06</span><span class="t">次にやること</span></div>
+  <h2>商談を増やす最初の一歩。いまの状況別に「次の1つ」を決めて帰る</h2>
+  <div class="card">
+    <div class="stage">
+      <div class="c"><p class="q">まだ設定が進んでいない</p><p class="a">まずは<em>あいさつメッセージ＋リッチメニュー</em>だけ</p><p>この2つができれば、名刺交換や展示会で友だち追加してもらっても恥ずかしくない状態になります。</p></div>
+      <div class="c"><p class="q">設定中。次に何をすれば？</p><p class="a"><em>アンケート1本</em>に、回答ごとのタグを付ける</p><p>「検討時期」の1問だけでもOK。「今すぐの人」と「まだ先の人」に分かれ、送り分けができるようになります。</p></div>
+      <div class="c"><p class="q">やりたいことはあるが、やり方が分からない</p><p class="a">このあとの<em>Q&amp;Aタイム</em>でそのまま聞く</p><p>「こういう設定をしたい」と書いてもらえれば、どの画面で何をするか（またはClaudeへの頼み方）をお答えします。</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <span class="eyebrow">代理店の方へ</span>
+    <h3>BtoBの会社に提案するときの入口は「展示会・名刺交換のその後」</h3>
+    <p class="sub">展示会や交流会で名刺は集まるのに、そのあとのフォローが止まっている企業ほど効果が出ます。「名刺の代わりにQRで友だち追加 → アンケートで仕分け」の提案から始めると、伝わりやすいです。</p>
+  </div>
+</section>
+
+<!-- ========== 07 Q&A ========== -->
+<section class="part" id="qa">
+  <div class="head"><span class="no">07</span><span class="t">Q&amp;Aタイム</span></div>
+  <h2>コメント欄で、事務局に直接質問をどうぞ</h2>
+  <div class="note"><span class="ic">?</span><div>答えられる範囲でその場でお答えします<span>すぐに答えが出ないものは一度持ち帰って、次回の勉強会か事務局LINEでお返事します。</span></div></div>
+
+  <div class="card">
+    <span class="eyebrow">こんな質問、歓迎です</span>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="q"><span class="num">例</span><h3>アンケートの回答で付けたタグは、あとから付け直せますか？</h3></div>
+      <div class="q"><span class="num">例</span><h3>展示会ごとにQRを分けるには、どこで設定しますか？</h3></div>
+      <div class="q"><span class="num">例</span><h3>打ち合わせの予約が入ったとき、担当営業ごとに通知を分けられますか？</h3></div>
+      <div class="q"><span class="num">例</span><h3>Claudeにお願いするとき、最初に何を渡せばいいですか？</h3></div>
+    </div>
+  </div>
+
+  <div class="end">
+    <span class="pill">最後に</span>
+    <h3>満足度アンケートにご回答ください</h3>
+    <p>公式LINEからお送りします。2分で完了します。<br>次回のLシンク勉強会もお楽しみに！</p>
+    <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAACqklEQVR4Xu1bwY2DQAy0A9I9QUoBKYV0cCVdTdcBW0o6gOdJIJ883iXJvZZHdA6yHytQEFpsxh6PCQtVWjpVXkhEcWl4IDxwIpo521VhkZiZaG6Jr7pkawMwXjzQCAxxu2c7GbuFaMBPk5u9VtqhYcgM9FAjfO1El4UAMEMeQHdsD1TZv78DCNKjDePaChGWZ/v3vcYGnqLV/bAkbixOTNQ8hSuc5cQDIqKpTzPhlyxKMD6EBlSrTkTGyIR+PLAa8SuF6gluShGZ+6hbLjzQKnpKwptXltRr/usWEiIsmznJA1V20L2SyFQY/DA1QgNyokYrM3icajo8qAfe6bG0ZOXKJCMhWnoKBm8lS0lHRMtHJjRsGaI2WBm2tCe2WFpA3+klPOhejQ4CQrYgMY6dShswxC2i5QZbm7Zk2CpCVNabNAlaBA/6vr7TY2Vs5ZDlGoWQ3ZeMvHd6rIPuNZcnpD4rXuiJ1ZRv3I8CWw6U0twKD7d2EZrPKsQ3C1M3EaV+sn6LaT4vDvZ6UMDse6xOpSZd+KJHBLytWXlP/cqgGhEtBx7IDD5zi8Lbrd/6U7z2vQO1Fnfd6QFFj4qFquUyX1CtQON/WER0iWmkDwavdatZePjuSaATbqMtHlC2UMsiE/qIVsmEaIfRWxUmmBFV0mFwQgd16/SoMt10qo+JCZiHSRurpsNgGS4mJhuE0GCBZUCDoiLyaskypXdnNay0uOsOD1jdgmd1tC+Urg2OFnz+JNp+Zb/vuGtc+koPlG+eVuavaWUIGjJiqKz9VorZsZ9MWDRB+3awjB8fR5Kh6nqM1n1svA0iYTGN9BQt4+35u9wyQAbKjGUEtnxES1kGtAy1+azcoiFJTCTpcxJKFyGO7thJtFS8qLP4R9BLiV6VvZJpVllsYIcHfgGZCc2+pnWdtwAAAABJRU5ErkJggg==" alt="満足度アンケートのQRコード" width="140" height="140"><p>スマホのカメラでQRを読み取ってください。<br>公式LINEからも同じアンケートをお送りします。<br><span style="font-size:13px;color:#66706A;word-break:break-all">https://lsync.humanoid-inc.net/s/za33evv</span></p></div>
+  </div>
+  <p class="foot">Lシンク勉強会 2026/11/19（木）18:00〜18:30 ｜ BtoBビジネスのためのLシンク活用事例 ｜ Lシンク事務局</p>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  var map={opening:['opening','agenda'],basic:['basic'],lead:['lead'],claude:['claude'],video:['video'],case:['case'],next:['next'],qa:['qa']};
+  var owner={};Object.keys(map).forEach(function(k){map[k].forEach(function(id){owner[id]=k;});});
+  var targets=Object.keys(owner).map(function(id){return document.getElementById(id);}).filter(Boolean);
+  function set(key){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+key);});}
+  function update(){
+    var navH=document.getElementById('nav').offsetHeight+24;
+    var cur=targets[0];
+    for(var i=0;i<targets.length;i++){ if(targets[i].getBoundingClientRect().top<=navH) cur=targets[i]; }
+    if(cur) set(owner[cur.id]);
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
+
+</body></html>
