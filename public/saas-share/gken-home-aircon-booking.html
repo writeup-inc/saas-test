@@ -5,11 +5,11 @@
 <style>
   /* Layout: operation manual. Header → 全体図(before/after) → STEP cards (text left, annotated screenshot right) → 完了後の自動の流れ → 困ったとき */
   :root{
-    --bg:#f3f5f8; --paper:#ffffff; --ink:#1b2430; --ink-2:#4f5b6b; --ink-3:#8a95a4; --line:#d9dfe7; --line-soft:#e9edf2;
-    --brand:#2c5282; --brand-ink:#1e3a5f; --brand-soft:#e4ecf6;
-    --mark:#d63c28; --mark-soft:#fbe7e3;
-    --new:#1f7a4d; --new-soft:#e3f1e8;
-    --warn:#8a6d1c; --warn-soft:#f7efd6;
+    --bg:#f5f9ff; --paper:#ffffff; --ink:#1f2a3a; --ink-2:#55657a; --ink-3:#8c9bb0; --line:#d6e3f3; --line-soft:#e8f0fa;
+    --brand:#1e88e5; --brand-ink:#1565c0; --brand-soft:#e3f1fd;
+    --mark:#ef5a47; --mark-soft:#ffebe7;
+    --new:#1fa66a; --new-soft:#e4f7ec;
+    --warn:#d98a12; --warn-soft:#fff3dc;
     --display:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
     --body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
   }
@@ -73,7 +73,7 @@
   .step.key .num i{background:var(--mark)}
   .step.key .num{color:var(--mark)}
   .noshot .txt{grid-column:1/-1}
-  .msg{background:#7494c0;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .msg{background:#a9cdf5;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;margin-top:6px}
   .bubble{background:#fff;color:#1b2430;border-radius:12px;border-top-left-radius:4px;padding:10px 13px;font-size:13px;line-height:1.7;white-space:pre-wrap;max-width:96%}
   .after{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .af{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--new);border-radius:12px;padding:16px 18px;min-width:0}
