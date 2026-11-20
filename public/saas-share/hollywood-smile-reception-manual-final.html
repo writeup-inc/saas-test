@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ハリウッド・スマイル 受付マニュアル（最終版）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: 受付スタッフが手元で見返す1カラムのマニュアル。各STEPは「説明（患者さん/自動/受付）＋画面」の2列、狭い画面では縦積み */
+:root{
+  --bg:#fdf3f5; --surface:#ffffff; --ink:#4a3439; --muted:#8a6f76; --line:#f3d9df;
+  --rose:#c9728a; --rose-soft:#fbe4ea; --sage:#c4607c; --sage-soft:#fbdfe6;
+  --lsync:#7c3aed; --lsync-soft:#f3ecfa; --on-accent:#ffffff;
+  --chat:#f7e9ed; --bubble:#ffffff;
+  --display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#211a1c; --surface:#2b2225; --ink:#f4e8eb; --muted:#b9a4a9; --line:#43343a;
+  --rose:#e9a3b5; --rose-soft:#3e2a30; --sage:#eaa0b4; --sage-soft:#44262e;
+  --lsync:#a78bfa; --lsync-soft:#2c2438; --on-accent:#211a1c;
+  --chat:#2f2428; --bubble:#3d3035; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211a1c; --surface:#2b2225; --ink:#f4e8eb; --muted:#b9a4a9; --line:#43343a;
+  --rose:#e9a3b5; --rose-soft:#3e2a30; --sage:#eaa0b4; --sage-soft:#44262e;
+  --lsync:#a78bfa; --lsync-soft:#2c2438; --on-accent:#211a1c;
+  --chat:#2f2428; --bubble:#3d3035; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8}
+img{max-width:100%}
+.wrap{max-width:900px;margin:0 auto;padding:48px 16px 72px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.4;margin:0}
+h1{font-size:clamp(26px,4.4vw,36px)} h2{font-size:clamp(21px,3vw,26px)} h3{font-size:18px}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--rose);font-weight:700}
+header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:28px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 20px;color:var(--muted);font-size:14px}
+section{display:flex;flex-direction:column;gap:20px}
+.lead{color:var(--muted);max-width:62ch}
+.note{font-size:13px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--surface);border:1px solid var(--line)}
+.legend i.a{background:var(--lsync-soft);border-color:transparent}
+.legend i.s{background:var(--sage-soft);border-color:transparent}
+.new{display:inline-block;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--on-accent);background:var(--rose);border-radius:999px;padding:1px 9px;margin-left:8px;vertical-align:2px}
+
+/* 変更点 */
+.changes{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.changes li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rose);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.75}
+.changes b{font-size:15px}
+.changes .was{color:var(--muted);font-size:13px}
+
+/* 全体の流れ */
+.overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0;padding:0;list-style:none}
+.overview li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.overview li.staff{background:var(--sage-soft);border-color:transparent}
+.overview li.auto{background:var(--lsync-soft);border-color:transparent}
+.overview b{font-size:12px;color:var(--muted);font-weight:500}
+.overview span{font-weight:700;font-size:15px}
+
+/* STEP */
+.steps{display:flex;flex-direction:column;gap:20px;margin:0;padding:0;list-style:none}
+.stepcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px}
+.stepcard.wide{grid-template-columns:1fr}
+@media (max-width:680px){.stepcard{grid-template-columns:1fr}}
+.stepcard .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
+.step-no{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--rose)}
+.lane{border-radius:8px;padding:10px 14px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:1.75}
+.lane b{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.lane.auto{background:var(--lsync-soft);border-color:transparent} .lane.auto b{color:var(--lsync)}
+.lane.staff{background:var(--sage-soft);border-color:transparent} .lane.staff b{color:var(--sage)}
+.lane ol,.lane ul{margin:4px 0 0;padding-left:1.3em}
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;align-content:start;min-width:0}
+.pfig{margin:0;display:flex;flex-direction:column;gap:6px}
+.pfig img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.pfig figcaption,.cap{font-size:12px;color:var(--muted);line-height:1.5}
+.adm{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.adm.print{grid-column:1 / -1}
+.adm figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.adm img{width:100%;border-radius:10px;border:1px solid var(--line);display:block;background:var(--surface)}
+.adm figcaption{font-size:13px;line-height:1.65}
+.adm figcaption b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--sage);color:var(--on-accent);font-size:11px;margin-right:6px}
+
+/* LINEの画面（再現） */
+.shots{display:flex;flex-direction:column;gap:10px;min-width:0}
+.chat{background:var(--chat);border-radius:14px;padding:14px 12px;display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.7}
+.msg{background:var(--bubble);border-radius:4px 14px 14px 14px;padding:10px 12px;max-width:92%;white-space:pre-line}
+.msg.me{align-self:flex-end;border-radius:14px 4px 14px 14px;background:var(--sage-soft)}
+.msg u{color:var(--lsync)}
+.btns{display:flex;gap:8px;max-width:92%}
+.btns span{flex:1;text-align:center;font-weight:700;border-radius:8px;padding:7px 8px;background:var(--bubble);border:1px solid var(--line)}
+.btns span.go{background:var(--sage);color:var(--on-accent);border-color:transparent}
+.liff{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center;font-size:13px;line-height:1.75;display:flex;flex-direction:column;gap:10px}
+.liff strong{font-size:16px;line-height:1.5}
+.liff u{color:var(--lsync);word-break:break-all}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.branch>div{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.branch h4{margin:0;font-size:15px;font-family:var(--body)}
+
+/* メール */
+.mail{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.mail-head{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.mail-head span{color:var(--muted);font-size:11px;word-break:break-all}
+.mail-band{background:var(--lsync);color:var(--on-accent);font-weight:700;text-align:center;padding:10px;font-size:15px}
+.mail-body{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.mail-info{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--lsync-soft)}
+.mail-info dt{color:var(--muted)} .mail-info dd{margin:0;font-weight:700;min-width:0}
+.btn{align-self:center;background:var(--lsync);color:var(--on-accent);font-weight:700;border-radius:8px;padding:8px 16px}
+
+/* 自動化のまとめ */
+.sumgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+@media (max-width:680px){.sumgrid{grid-template-columns:1fr}}
+.sumbox{border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.sumbox.auto{background:var(--lsync-soft)} .sumbox.staff{background:var(--sage-soft)}
+.sumbox h3{font-family:var(--body);font-size:15px}
+.sumbox.auto h3{color:var(--lsync)} .sumbox.staff h3{color:var(--sage)}
+.sumbox ul,.sumbox ol{margin:0;padding-left:1.3em;font-size:14px;line-height:1.8}
+.sumbox .was{color:var(--muted);font-size:12px;display:block;line-height:1.6}
+/* パートの見出し */
+.part{display:flex;flex-direction:column;gap:20px}
+.part-head{border-left:5px solid var(--rose);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:6px}
+.part-head .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;border-radius:999px;padding:1px 10px}
+.part-head .tag.auto{background:var(--lsync-soft);color:var(--lsync)}
+.part-head .tag.staff{background:var(--sage-soft);color:var(--sage)}
+.overview li em{font-style:normal;font-size:11px;color:var(--muted)}
+.ovgroup{display:flex;flex-direction:column;gap:8px}
+.ovgroup>b{font-size:13px;color:var(--rose);letter-spacing:.06em}
+
+/* 表 */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.path{font-size:13px;color:var(--rose)}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+
+/* 3本立て */
+.tri{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tri .sumbox.pt{background:var(--surface);border:1px solid var(--line)}
+.tri .sumbox.pt h3{color:var(--ink)}
+.tri .sumbox ol{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:6px}
+.tri .sumbox a{color:inherit;text-decoration:none;font-weight:700}
+.tri .sumbox a:hover{text-decoration:underline}
+.part-head .tag.pt{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.when{font-size:13px;border-left:3px solid var(--rose);padding-left:10px;color:var(--muted)}
+.when b{color:var(--ink)}
+.stepcard p{font-size:14px;line-height:1.8}
+.stepcard .txt>ol,.stepcard .txt>ul{margin:0;padding-left:1.3em;font-size:14px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">医療法人社団櫻会 ハリウッド・スマイル矯正歯科 様</div>
+    <h1>受付マニュアル　初回カウンセリング当日までの流れ</h1>
+    <p class="lead">患者さんがLINEから初回カウンセリングを申し込んでから、ご来院いただくまでの流れを、「患者さんが行うこと」「受付が行うこと」「Lシンクが自動で行うこと」の3つに分けてまとめています。</p>
+    <div class="meta"><span>最終版（2026年11月20日）</span><span>公式LINE（Lシンク）</span><span>Lシンク事務局</span></div>
+  </header>
+
+  <section>
+    <div class="eyebrow">全体像</div>
+    <h2>だれが、何をするか</h2>
+    <div class="tri">
+      <div class="sumbox pt">
+        <h3>1　患者さんが行うこと</h3>
+        <ol>
+          <li><a href="#p1">① 予約フォームで希望日を送る（仮予約）</a></li>
+          <li><a href="#p2">② 問診票に答える</a><span class="was">任意・あとからでも可</span></li>
+          <li><a href="#p3">③ 「予約する」を押して確定する</a></li>
+          <li><a href="#p4">④ リマインドを受け取る</a></li>
+          <li><a href="#p5">⑤ 来院する</a></li>
+        </ol>
+      </div>
+      <div class="sumbox staff">
+        <h3>2　受付が行うこと</h3>
+        <ol>
+          <li><a href="#r1">① 日程を登録して確認を送る</a><span class="was">問診票を待たずに進めます</span></li>
+          <li><a href="#r2">② 問診票をメールから確認する</a><span class="was">必要であれば印刷も可</span></li>
+          <li><a href="#r3">③ キャンセルが出たら予約一覧を確かめる</a></li>
+          <li><a href="#r4">④ 来院当日の対応</a></li>
+        </ol>
+      </div>
+      <div class="sumbox auto">
+        <h3>3　Lシンクが自動で行うこと</h3>
+        <ol>
+          <li><a href="#a1">① 予約が入らない方へのフォロー</a></li>
+          <li><a href="#a2">② 問診票のご案内</a></li>
+          <li><a href="#a3">③ 予約確定のお知らせ</a></li>
+          <li><a href="#a4">④ 3日前・前日のリマインド</a></li>
+          <li><a href="#a5">⑤ キャンセルの受付とご案内</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="part-head">
+      <span class="tag pt">患者さん</span>
+      <h2>1　患者さんが行うこと</h2>
+      <p class="lead">患者さんから見た、予約から来院までの流れです。受付の皆さまは、患者さんに何が見えているかの確認用にご覧ください。</p>
+    </div>
+    <ol class="steps">
+
+      <li class="stepcard" id="p1">
+        <div class="txt">
+          <span class="step-no">患者さん ①</span>
+          <h3>初回カウンセリング予約フォームで、希望日を送る（仮予約）</h3>
+          <ol>
+            <li>LINEのメニューの「初回カウンセリング予約」を押します。</li>
+            <li>はじめての方には、患者さま情報の登録フォームが先に届きます。登録後、もう一度「初回カウンセリング予約」を押します。</li>
+            <li>ご案内と「予約フォームを開く」ボタンが届きます。フォームで第1〜第3希望の日時を入れ、「仮予約を申し込む」を押します。</li>
+          </ol>
+          <p class="note">本日から1週間以上先の日程だけ受け付けています。この時点では仮予約で、まだ確定していません。</p>
+        </div>
+        <div class="phones">
+          <figure class="pfig"><img src="img/ph1_richmenu.jpg" alt="LINEのトーク画面とメニュー" loading="lazy"><figcaption>メニューの「初回カウンセリング予約」</figcaption></figure>
+          <figure class="pfig"><img src="img/ph2_form_top.jpg" alt="初回カウンセリング予約フォームの上部" loading="lazy"><figcaption>予約フォーム</figcaption></figure>
+          <figure class="pfig"><img src="img/ph3_form_dates.jpg" alt="第1〜第3希望の日時の入力欄" loading="lazy"><figcaption>第1〜第3希望を入力</figcaption></figure>
+        </div>
+      </li>
+
+      <li class="stepcard" id="p2">
+        <div class="txt">
+          <span class="step-no">患者さん ②</span>
+          <h3>問診票に答える<span class="new">任意</span></h3>
+          <ul>
+            <li>予約フォームを送ると、完了画面に問診票へのリンクが出ます。お時間のある方は、そのまま回答します（3〜5分）。</li>
+            <li>ここで答えなくても、仮予約は受け付けられています。</li>
+            <li>あとから答えたい方は、3日前・前日のリマインドに入っているリンクから回答できます。</li>
+            <li>当日、来院してから紙で記入することもできます。</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="liff" role="img" aria-label="予約フォームを送ったあとの完了画面">
+            <strong>仮予約を受け付けました<br>（まだ確定していません）</strong>
+            <span>仮予約を受け付けました😊<br>ご希望日の確認後、スタッフより日程確定のご連絡をLINEでお送りします📆</span>
+            <span>▼お時間がありましたら、続けて問診票のご記入をお願いします（任意・3〜5分）<br>問診票は当日ご来院時にもご記入いただけますが、事前にご回答いただくと当日のご案内がスムーズになります🌸<br><u>（問診票のリンク）</u></span>
+          </div>
+          <p class="cap">予約フォームを送ったあとの完了画面（画面を再現したもの）</p>
+          <div class="phones">
+            <figure class="pfig"><img src="img/ph5_monshin.jpg" alt="問診票の入力画面" loading="lazy"><figcaption>問診票に回答</figcaption></figure>
+            <figure class="pfig"><img src="img/ph6_monshin2.jpg" alt="問診票の「気になっているところ」" loading="lazy"><figcaption>紙の問診票と同じ設問</figcaption></figure>
+          </div>
+        </div>
+      </li>
+
+      <li class="stepcard" id="p3">
+        <div class="txt">
+          <span class="step-no">患者さん ③</span>
+          <h3>届いた確認メッセージで「予約する」を押す（予約確定）</h3>
+          <ul>
+            <li>受付が日程を登録すると、LINEに確認メッセージが届きます。</li>
+            <li>日時を見て「予約する」を押すと、予約が確定します。確定のお知らせ（持ち物・ご来院時の注意事項）が続けて届きます。</li>
+            <li>都合が合わないときは「キャンセル」を押し、予約フォームから希望日を出し直します。</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="chat" role="img" aria-label="確認メッセージと、予約するを押したあとの確定のお知らせ">
+            <div class="msg">【ご予約内容のご確認🦷】
+初回カウンセリングのご予約を、以下の内容でお取りしてよろしいでしょうか？
+
+📅ご予約内容
+メニュー：初回無料カウンセリング
+日時：2026/12/10 16:30</div>
+            <div class="btns"><span class="go">予約する</span><span>キャンセル</span></div>
+            <div class="msg">【ご予約確定のお知らせ🦷】
+初回カウンセリングのご予約が確定しました！
+（ご予約内容・当日の持ち物・ご来院時の注意事項）</div>
+          </div>
+          <p class="cap">確認メッセージと確定のお知らせ（画面を再現したもの）</p>
+        </div>
+      </li>
+
+      <li class="stepcard wide" id="p4">
+        <div class="txt">
+          <span class="step-no">患者さん ④</span>
+          <h3>予約日の3日前と前日に、リマインドを受け取る</h3>
+          <ul>
+            <li>予定どおり来院できる場合は、何もしなくて大丈夫です。</li>
+            <li>問診票にまだ答えていない方は、リマインドに入っているリンクから回答できます。</li>
+            <li>都合が悪くなった場合は「予約をキャンセル」を押します。</li>
+          </ul>
+          <p class="note">届く文面は「3　Lシンクが自動で行うこと」の④に載せています。</p>
+        </div>
+      </li>
+
+      <li class="stepcard wide" id="p5">
+        <div class="txt">
+          <span class="step-no">患者さん ⑤</span>
+          <h3>来院する</h3>
+          <p>予約した日時に来院します。問診票に答えていない方は、来院時に紙の問診票に記入します。</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="part">
+    <div class="part-head">
+      <span class="tag staff">受付</span>
+      <h2>2　受付が行うこと</h2>
+      <p class="lead">受付の操作は、どれも通知メール（hollywood-smile@mirror.ocn.ne.jp 宛て）が届いたときに行います。ふだんの操作は①と②の2つです。</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>届く通知メール</th><th>届くタイミング</th><th>受付が行うこと</th></tr></thead>
+        <tbody>
+          <tr><td>初回カウンセリング予約フォーム</td><td>患者さんが希望日を送ったとき</td><td>① 日程を登録して確認を送る</td></tr>
+          <tr><td>問診票</td><td>患者さんが問診票に答えたとき（仮予約の直後、またはリマインドのあと）</td><td>② メールから問診票を確認する</td></tr>
+          <tr><td>初回カウンセリングのキャンセル</td><td>患者さんが「キャンセル」を押したとき</td><td>③ 予約一覧を確かめる</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="steps">
+
+      <li class="stepcard wide" id="r1">
+        <div class="txt">
+          <span class="step-no">受付 ①</span>
+          <h3>日程を登録して、確認メッセージを送る</h3>
+          <p class="when"><b>きっかけ：</b>「初回カウンセリング予約フォーム」の通知メールが届いたとき</p>
+          <p>予約フォームの第1〜第3希望から日程を決め、Lシンクの管理画面で次の順に登録します。問診票の回答が届いていなくても、登録して構いません。<strong>手順4で「予約の確認（ボタン付き）」を選びます。</strong></p>
+        </div>
+        <ol class="adm">
+          <li><figure><img src="img/adm1_calendar.jpg" alt="予約管理のカレンダー画面" loading="lazy"><figcaption><b>1</b>「予約管理」→「カレンダー」を開き、「予約を手動で追加」を押します。</figcaption></figure></li>
+          <li><figure><img src="img/adm2_friend.jpg" alt="予約を手動で追加の画面" loading="lazy"><figcaption><b>2</b>お客様の種類で「LINE友だち」を選び、仮予約をした患者さんを選びます。</figcaption></figure></li>
+          <li><figure><img src="img/adm3_menu.jpg" alt="メニューと日時の入力欄" loading="lazy"><figcaption><b>3</b>メニューは「初回無料カウンセリング」を選び、決めた日付と時刻を入れます。</figcaption></figure></li>
+          <li><figure><img src="img/adm4_choice.jpg" alt="お客様のLINEへ知らせるの選択肢。右側の「予約の確認（ボタン付き）」に印" loading="lazy"><figcaption><b>4</b>「お客様のLINEへ知らせる」がONになっていることを確かめ、右側の<strong>「予約の確認（ボタン付き）」</strong>を選びます（ピンクの枠）。下に、患者さんに届く文面が表示されます。</figcaption></figure></li>
+          <li><figure><img src="img/adm5_create.jpg" alt="予約を作成するボタン" loading="lazy"><figcaption><b>5</b>文面を確かめて「予約を作成する」を押します。カレンダーに予約が入り、患者さんに確認メッセージが届きます。</figcaption></figure></li>
+        </ol>
+        <p class="note">このあと、患者さんが「予約する」を押すと確定します。確定の連絡をチャットで別に送る必要はありません。</p>
+        <p class="note">左側の「予約確定のお知らせ」を選ぶと、患者さんの返事を待たずに確定のお知らせだけが届きます。電話などで日程の了承をいただいている場合に使えます。</p>
+      </li>
+
+      <li class="stepcard" id="r2">
+        <div class="txt">
+          <span class="step-no">受付 ②</span>
+          <h3>問診票をメールから確認する（必要であれば印刷も可）</h3>
+          <p class="when"><b>きっかけ：</b>「問診票」の通知メールが届いたとき</p>
+          <ol>
+            <li>メールの紫のボタン「回答内容を確認する（印刷用）」を押します。Lシンクへのログインは要りません。</li>
+            <li>紙の問診票と同じ形に回答が入ったページが開くので、内容を確認します。</li>
+            <li>紙で手元に置きたい場合は、ページの「印刷する」ボタンで印刷できます。</li>
+          </ol>
+          <p class="note">メール本文には回答内容は載りません。ボタンのリンクは7日間有効です。早めに確認してください。</p>
+          <p class="note">問診票は任意なので、メールが届かない患者さんもいます。未回答の方に催促する必要はありません。</p>
+        </div>
+        <div class="shots">
+          <div class="mail" role="img" aria-label="届く通知メール">
+            <div class="mail-head"><strong>【Lシンク】アンケート回答を受信しました: 問診票</strong><span>差出人：Lシンク（info@lsync.humanoid-inc.net）</span></div>
+            <div class="mail-band">アンケート回答通知</div>
+            <div class="mail-body">
+              <p><b>〇〇 〇〇</b> さんから回答がありました。</p>
+              <dl class="mail-info">
+                <dt>チャンネル</dt><dd>ハリウッド・スマイル矯正歯科</dd>
+                <dt>フォーム</dt><dd>問診票</dd>
+                <dt>回答日時</dt><dd>2026/11/16 10:18</dd>
+              </dl>
+              <span class="btn">回答内容を確認する（印刷用）</span>
+            </div>
+          </div>
+          <p class="cap">お名前の欄には、患者さんのLINEの表示名が入ります。</p>
+        </div>
+        <ol class="adm print">
+          <li><figure><img src="img/print1_page.jpg" alt="印刷用の問診票ページ" loading="lazy"><figcaption><b>1</b>ボタンを押すと、回答が入った問診票が開きます。選ばれた選択肢に印が付き、未回答の欄は「該当なし」と出ます。印刷する場合は、右上の「印刷する」を押します。</figcaption></figure></li>
+          <li><figure><img src="img/print2_dialog.jpg" alt="印刷の画面" loading="lazy"><figcaption><b>2</b>（印刷する場合）印刷の画面が開くので、プリンターを選んで「印刷」を押します（A4で3枚ほど）。</figcaption></figure></li>
+        </ol>
+      </li>
+
+      <li class="stepcard wide" id="r3">
+        <div class="txt">
+          <span class="step-no">受付 ③</span>
+          <h3>キャンセルが出たら、予約一覧を確かめる</h3>
+          <p class="when"><b>きっかけ：</b>「初回カウンセリングのキャンセル」の通知メールが届いたとき</p>
+          <ol>
+            <li>「予約管理」→「予約一覧」で、どなたのどの日時がキャンセルになったかを確かめます。</li>
+            <li>患者さんが予約フォームを出し直したら、新しい通知メールが届きます。受付①と同じように日程を登録します。</li>
+          </ol>
+          <p class="note">患者さんへのキャンセル受付と出し直しのご案内は、自動で届いています。受付から連絡する必要はありません。</p>
+        </div>
+      </li>
+
+      <li class="stepcard wide" id="r4">
+        <div class="txt">
+          <span class="step-no">受付 ④</span>
+          <h3>来院当日の対応</h3>
+          <ul>
+            <li><strong>問診票に回答済みの方：</strong>受付②で確認した回答内容を、初回カウンセリングでお使いください。印刷した場合は、その紙をご用意ください。</li>
+            <li><strong>問診票に未回答の方：</strong>来院時に紙の問診票をお渡しし、その場でご記入いただいてください。</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="part">
+    <div class="part-head">
+      <span class="tag auto">自動</span>
+      <h2>3　Lシンクが自動で行うこと</h2>
+      <p class="lead">当日までの声かけや確認は、LINEが自動で送ります。受付から個別に連絡する必要はありません。</p>
+    </div>
+    <ol class="steps">
+
+      <li class="stepcard" id="a1">
+        <div class="txt">
+          <span class="step-no">自動 ①</span>
+          <h3>予約が入らない方へのフォロー</h3>
+          <ul>
+            <li>「初回カウンセリング予約」を押して予約フォームのご案内が届いたのに、希望日を送っていない方が対象です。</li>
+            <li>翌日（9〜20時のあいだ）に、右のフォローと「予約フォームを開く」ボタンが一度だけ届きます。</li>
+            <li>それまでに希望日を送った方には届きません。</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="chat" role="img" aria-label="予約が入らない方に届くフォロー">
+            <div class="msg">〇〇様
+ご登録ありがとうございます。
+初回カウンセリング（無料）のご予約をご希望でしょうか？
+
+ご希望の場合は、下のボタンから予約フォームを開き、ご希望の日時（第3希望まで）をご入力いただけますと幸いです。
+内容を確認のうえ、スタッフより日程をご案内いたします。
+
+よろしくお願いいたします🕊️</div>
+            <div class="msg"><strong>初回カウンセリング予約フォーム</strong>
+ボタンを押すとフォームが開きます。ご希望の日時を第3希望までご入力ください。</div>
+            <div class="btns"><span>予約フォームを開く</span></div>
+          </div>
+          <p class="cap">翌日に届くフォロー（画面を再現したもの）。「〇〇様」には、患者さんのLINEの表示名が入ります。</p>
+        </div>
+      </li>
+
+      <li class="stepcard wide" id="a2">
+        <div class="txt">
+          <span class="step-no">自動 ②</span>
+          <h3>問診票のご案内（任意）</h3>
+          <ul>
+            <li>予約フォームを送った直後の完了画面で、問診票へのリンクをご案内します。</li>
+            <li>3日前・前日のリマインドでも、問診票のリンクをご案内します。</li>
+            <li>どちらも「当日も記入できますが、事前にご回答いただけると助かります」という任意のお願いです。</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="stepcard wide" id="a3">
+        <div class="txt">
+          <span class="step-no">自動 ③</span>
+          <h3>予約確定のお知らせ（持ち物・注意事項）</h3>
+          <p>患者さんが「予約する」を押すと、予約が確定し「ご予約確定のお知らせ」が届きます。持ち物と、ご来院時の注意事項（アクセサリーを外してくることなど）が入っています。</p>
+          <p class="note">確認メッセージ・確定のお知らせの実際の文面は「予約管理」→「通知メッセージ」で確認・変更できます。</p>
+        </div>
+      </li>
+
+      <li class="stepcard" id="a4">
+        <div class="txt">
+          <span class="step-no">自動 ④</span>
+          <h3>予約日の3日前と前日のリマインド</h3>
+          <ul>
+            <li>予約日の3日前と前日の朝9時に、患者さんのLINEへリマインドが届きます。</li>
+            <li>問診票のご案内とリンクが入っています。回答済みの方にも同じ文面が届きます。</li>
+            <li>「予約をキャンセル」ボタンが付いています。押されたときの動きは、自動⑤と同じです。</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="chat" role="img" aria-label="患者さんに届くリマインド">
+            <div class="msg">初回カウンセリングのご予約日が近づいてまいりました🦷
+以下の内容でご予約を承っております。
+
+📅 予約日時：2026/12/10 16:30
+🦷 メニュー：初回無料カウンセリング
+
+✅ ご予約内容に変更がなければ、ご返信は不要です。
+
+万が一、ご都合が悪くなった場合は、下記の「予約をキャンセル」ボタンを押してください。
+
+📝 問診票のご記入について
+問診票は当日ご来院時にもご記入いただけますが、当日のスムーズなご案内のため、お時間がありましたら事前にご回答いただけますと大変助かります（3〜5分）。
+▼問診票はこちら
+<u>（問診票のリンク）</u>
+※すでにご回答済みの方は、再度のご記入は不要です。
+
+当日はお気をつけてお越しください。
+ご来院を心よりお待ちしております。</div>
+            <div class="btns"><span>予約をキャンセル</span></div>
+          </div>
+          <p class="cap">患者さんに届くリマインド（3日前・前日とも同じ文面。画面を再現したもの）</p>
+        </div>
+      </li>
+
+      <li class="stepcard" id="a5">
+        <div class="txt">
+          <span class="step-no">自動 ⑤</span>
+          <h3>キャンセルの受付と、日程の出し直しのご案内</h3>
+          <ul>
+            <li>患者さんが確認メッセージの「キャンセル」、またはリマインドの「予約をキャンセル」を押すと、右のご案内が届きます。</li>
+            <li>同時に、受付へ「初回カウンセリングのキャンセル」の通知メールが届きます（受付③）。</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="chat" role="img" aria-label="キャンセルを押したあとに届く案内">
+            <div class="msg">初回カウンセリングのキャンセルを承りました。
+
+別の日程をご希望の場合は、メニューの「初回カウンセリング予約」からいつでもお申し込みいただけます。
+
+「再度回答する」を押して、改めてご希望日をご入力ください📆</div>
+          </div>
+          <p class="cap">キャンセル時に届くご案内（画面を再現したもの）</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">こんなときは</div>
+    <h2>よくある困りごとと対応</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>こんなとき</th><th>対応</th></tr></thead>
+        <tbody>
+          <tr><td>フォローが届いても、希望日が送られてこない</td><td>自動のフォローは一度だけです。そのあとは、患者さんがメニューの「初回カウンセリング予約」をもう一度押せば、いつでも申し込めます。お急ぎの方には、チャットでお声がけください。</td></tr>
+          <tr><td>確認メッセージを送ったのに、ボタンが押されない</td><td>「予約管理」→「予約一覧」の「お客様の返答」で、返事の有無を確かめられます。返事がないときは、LINEのチャットで「ご確認をお願いします」とお声がけください。</td></tr>
+          <tr><td>確定したあとに、日程を変えたいと連絡が来た</td><td>リマインドが届いたあとなら、患者さんに「予約をキャンセル」ボタンを押して、予約フォームを出し直していただけます。それ以外のときは、チャットで新しいご希望日をお伺いし、決まったら受付①と同じ手順で新しい日時を登録してください。元の予約は「予約一覧」から取り消します。</td></tr>
+          <tr><td>希望日がどれも都合が合わない</td><td>LINEのチャットで、別の候補日を患者さんにお伺いしてください。決まったら受付①と同じく予約管理に登録します。</td></tr>
+          <tr><td>1週間以内の日付が届いた</td><td>フォームには「改めて日程をお伺いする」と書いています。チャットで別の日程をお伺いしてください。</td></tr>
+          <tr><td>問診票にまだ答えていない患者さんがいる</td><td>問診票は任意なので、そのままで大丈夫です。3日前と前日のリマインドで自動でご案内しています。当日までに回答がなければ、来院時に紙でご記入いただいてください。</td></tr>
+          <tr><td>問診票のリンクが期限切れ</td><td>Lシンクの管理画面にログインし、アンケートの「問診票」から回答を開いて確認してください。</td></tr>
+          <tr><td>通知メールが届かない</td><td>迷惑メールフォルダを確認してください。それでも届かないときは、Lシンク事務局へご連絡ください。</td></tr>
+          <tr><td>さくら先生がうまく答えられなかった</td><td>初期設定シートの「QA集」に、その質問と答えを書き足してください。自動で読み込まれます。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">直したいときは</div>
+    <h2>どこを直せば、何が変わるか</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>変えたいこと</th><th>直す場所</th><th>変わること</th></tr></thead>
+        <tbody>
+          <tr><td>予約が入らない方へのフォローの文面</td><td><span class="path">ステップ配信「初回カウンセリング予約」</span></td><td>自動①のフォローが変わります。変えたいときはLシンク事務局へご相談ください</td></tr>
+          <tr><td>確認・確定・キャンセル時の文面</td><td><span class="path">予約管理 → 通知メッセージ</span></td><td>自動③・⑤で患者さんに届く文面が変わります</td></tr>
+          <tr><td>リマインドの文面・送る日</td><td><span class="path">予約管理 → メニュー設定（リマインド設定）</span></td><td>自動④のリマインド（問診票のご案内を含む）が変わります</td></tr>
+          <tr><td>カウンセリングの時間・休診日</td><td><span class="path">予約管理 → メニュー設定</span></td><td>予約を登録できる時間帯や枠が変わります</td></tr>
+          <tr><td>問診票・予約フォームの質問</td><td><span class="path">アンケート</span></td><td>患者さんが入力する項目が変わります</td></tr>
+          <tr><td>通知の届け先</td><td><span class="path">通知メール設定</span></td><td>メールが届くアドレスを追加・停止できます</td></tr>
+          <tr><td>さくら先生に覚えさせること</td><td><span class="path">初期設定シート「QA集」</span></td><td>書き足すと、さくら先生が答えられる内容が増えます</td></tr>
+          <tr><td>よくある質問のボタンの返事</td><td><span class="path">キーワード応答</span></td><td>「費用について」などを押したときの返事が変わります</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>お困りのときは：株式会社ライトアップ Lシンク事務局</footer>
+</div>
+</body>
+</html>
